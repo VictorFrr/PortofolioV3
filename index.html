@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Victor Ponthus — Portfolio Bac Pro CIEL, Cybersécurité & Développement" />
   <title>Victor Ponthus — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -10,27 +11,55 @@
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ========= NAVBAR ========= -->
   <nav id="navbar">
     <div class="nav-inner">
       <a class="nav-logo" href="#">VP<span class="dot">.</span></a>
-      <ul class="nav-links">
-        <li><a href="#skills">Compétences</a></li>
-        <li><a href="#projects">Projets</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#skills"   data-i18n="nav.skills"></a></li>
+        <li><a href="#projects" data-i18n="nav.projects"></a></li>
+        <li><a href="#contact"  data-i18n="nav.contact"></a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="menu">
-        <span></span><span></span><span></span>
-      </button>
+
+      <div class="nav-controls">
+        <!-- Language switcher -->
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-btn active" data-lang="fr">FR</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <!-- Theme toggle -->
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+        </button>
+
+        <!-- Hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+
+    <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#skills" class="mob-link">Compétences</a>
-      <a href="#projects" class="mob-link">Projets</a>
-      <a href="#contact" class="mob-link">Contact</a>
+      <a href="#skills"   class="mob-link" data-i18n="nav.skills"></a>
+      <a href="#projects" class="mob-link" data-i18n="nav.projects"></a>
+      <a href="#contact"  class="mob-link" data-i18n="nav.contact"></a>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ========= HERO ========= -->
   <section id="hero">
     <div class="hero-bg">
       <div class="grid-lines"></div>
@@ -38,248 +67,136 @@
       <div class="glow glow-2"></div>
     </div>
     <div class="hero-content">
-      <p class="hero-tag"><span class="tag-dot"></span>Étudiant en Bac Pro CIEL — Cybersécurité Informatique réseau et ELectronique</p>
+      <p class="hero-tag"><span class="tag-dot"></span><span data-i18n="hero.tag"></span></p>
       <h1 class="hero-title">
-        <span class="line">Bonjour, je suis</span>
+        <span class="line" data-i18n="hero.greeting"></span>
         <span class="line accent">Victor Ponthus</span>
       </h1>
-      <p class="hero-sub">Passionné par la cybersécurité, le développement logiciel et le hardware — je construis des projets concrets qui allient code, sécurité et curiosité technique.</p>
+      <p class="hero-sub" data-i18n="hero.sub"></p>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">Voir mes projets</a>
-        <a href="#contact" class="btn btn-ghost">Me contacter</a>
+        <a href="#projects" class="btn btn-primary" data-i18n="hero.cta_projects"></a>
+        <a href="#contact"  class="btn btn-ghost"   data-i18n="hero.cta_contact"></a>
       </div>
       <div class="hero-scroll">
-        <span>Scroll</span>
+        <span data-i18n="hero.scroll"></span>
         <div class="scroll-line"></div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
+  <!-- ========= SKILLS ========= -->
   <section id="skills">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-number">01</span>
-        <h2>Compétences</h2>
+        <h2 data-i18n="skills.title"></h2>
       </div>
-      <div class="skills-grid">
-
-        <div class="skill-category">
-          <h3 class="cat-title"><span class="cat-icon">⬡</span> Développement</h3>
-          <div class="skill-tags">
-            <span class="tag">Python</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">HTML / CSS</span>
-            <span class="tag">VBA</span>
-            <span class="tag">Next.js</span>
-            <span class="tag">Custom Tkinter</span>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h3 class="cat-title"><span class="cat-icon">⬡</span> Cybersécurité</h3>
-          <div class="skill-tags">
-            <span class="tag">Pentesting</span>
-            <span class="tag">ESP32 / Firmware</span>
-            <span class="tag">Analyse réseau</span>
-            <span class="tag">Chiffrement</span>
-            <span class="tag">Wi-Fi & Bluetooth</span>
-            <span class="tag">OSINT</span>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h3 class="cat-title"><span class="cat-icon">⬡</span> Systèmes & Outils</h3>
-          <div class="skill-tags">
-            <span class="tag">Linux / Debian</span>
-            <span class="tag">Administration serveur</span>
-            <span class="tag">Hardware / Assemblage PC</span>
-            <span class="tag">Git / GitHub</span>
-            <span class="tag">Vercel</span>
-            <span class="tag">Microsoft Excel</span>
-          </div>
-        </div>
-
-      </div>
+      <div class="skills-grid" id="skillsGrid"></div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- ========= PROJECTS ========= -->
   <section id="projects">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-number">02</span>
-        <h2>Projets</h2>
+        <h2 data-i18n="projects.title"></h2>
       </div>
-      <div class="projects-grid" id="projectsGrid">
-
-        <article class="project-card">
-          <div class="card-top">
-            <div class="card-number">001</div>
-            <div class="card-links">
-              <a href="https://github.com/VictorFrr/nextjs-portfolio-pageview-counter" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="card-title">Tool de cybersécurité multifonctions</h3>
-          <p class="card-desc">Outil de cybersécurité en Python — interface console inspirée de Mr. Robot, architecture modulaire avec scan réseau, IP lookup, simulation de phishing, quiz, générateur de mots de passe et plus encore. Projet majeur de fin de Bac Pro.</p>
-          <div class="card-tech">
-            <span>Python</span><span>CMD / Terminal</span><span>Architecture modulaire</span>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="card-top">
-            <div class="card-number">002</div>
-            <div class="card-links">
-              <a href="https://github.com/VictorFrr" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="card-title">ESP32 Marauder — Pentesting Wi-Fi & Bluetooth</h3>
-          <p class="card-desc">ESP32 flashé avec le firmware Marauder, relié à une antenne externe et un écran tactile. Permet le scan, sniffing Wi-Fi et Bluetooth, et des tests de sécurité sans fil depuis un appareil portable entièrement autonome.</p>
-          <div class="card-tech">
-            <span>ESP32</span><span>Firmware Marauder</span><span>Wi-Fi</span><span>Bluetooth</span><span>Hardware</span>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="card-top">
-            <div class="card-number">003</div>
-            <div class="card-links">
-              <a href="https://github.com/VictorFrr" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="card-title">Gestionnaire de mots de passe chiffré</h3>
-          <p class="card-desc">Application Python 100% locale avec interface graphique Custom Tkinter. Coffre-fort protégé par mot de passe maître, données chiffrées, générateur de mots de passe sécurisé intégré. Aucune donnée transmise sur le réseau.</p>
-          <div class="card-tech">
-            <span>Python</span><span>Custom Tkinter</span><span>Chiffrement</span>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="card-top">
-            <div class="card-number">004</div>
-            <div class="card-links">
-              <a href="https://github.com/VictorFrr" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="card-title">Serveur local auto-hébergé sur matériel recyclé</h3>
-          <p class="card-desc">Serveur construit à partir d'une ancienne tour et de disques durs récupérés lors d'un stage chez Dell, pour ~25€. Installation Debian, administration à distance, hébergement web. Projet d'apprentissage Linux et auto-hébergement.</p>
-          <div class="card-tech">
-            <span>Debian / Linux</span><span>Admin système</span><span>Hardware</span><span>Serveur web</span>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="card-top">
-            <div class="card-number">005</div>
-            <div class="card-links">
-              <a href="https://github.com/VictorFrr" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="card-title">Keylogger pédagogique — Pentest & sensibilisation</h3>
-          <p class="card-desc">Module de cybersécurité développé en Python avec un camarade, intégré dans le tool principal. Screenshots, presse-papier, envoi via bot Discord, persistance au redémarrage. Réalisé uniquement sur machines autorisées, à des fins éducatives.</p>
-          <div class="card-tech">
-            <span>Python</span><span>Custom Tkinter</span><span>Discord Bot</span><span>Pentest</span>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="card-top">
-            <div class="card-number">006</div>
-            <div class="card-links">
-              <a href="https://github.com/VictorFrr" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="card-title">Outil VBA — Fusion & nettoyage Excel</h3>
-          <p class="card-desc">Macro Excel en VBA qui fusionne automatiquement plusieurs fichiers, nettoie les données (lignes vides, doublons), renumérote les lignes et génère un journal d'import horodaté. Remplace un traitement manuel long et error-prone.</p>
-          <div class="card-tech">
-            <span>VBA</span><span>Microsoft Excel</span><span>Automatisation</span>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="card-top">
-            <div class="card-number">007</div>
-            <div class="card-links">
-              <a href="https://github.com/VictorFrr/nextjs-portfolio-pageview-counter" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="card-title">Montage PC custom — De A à Z</h3>
-          <p class="card-desc">Assemblage complet d'un PC fixe : Ryzen 5 5600X, RTX 4060, 32 Go DDR4, SSD + HDD 4 To. Sélection des composants, câblage propre, installation et tests de stabilité. Maîtrise totale du hardware et de la compatibilité.</p>
-          <div class="card-tech">
-            <span>AMD Ryzen 5 5600X</span><span>RTX 4060</span><span>32 Go DDR4</span><span>Hardware</span>
-          </div>
-        </article>
-
-      </div>
+      <div class="projects-grid" id="projectsGrid"></div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- ========= CONTACT ========= -->
   <section id="contact">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-number">03</span>
-        <h2>Contact</h2>
+        <h2 data-i18n="contact.title"></h2>
       </div>
       <div class="contact-inner">
-        <div class="contact-text">
-          <h3>Travaillons ensemble</h3>
-          <p>Tu as un projet en tête, une idée à développer, ou tu cherches un collaborateur ? Je suis disponible — envoie-moi un message.</p>
+        <div class="contact-text reveal">
+          <h3 data-i18n="contact.heading"></h3>
+          <p data-i18n="contact.sub"></p>
           <div class="contact-socials">
             <a href="https://github.com/VictorFrr" target="_blank" class="social-link">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
               GitHub
             </a>
-            <a href="victor.ponrhus@gmail.com" class="social-link">
+            <a href="mailto:victor.ponthus@gmail.com" class="social-link">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               victor.ponthus@gmail.com
             </a>
           </div>
         </div>
-        <form class="contact-form" id="contactForm">
+
+        <form class="contact-form reveal" id="contactForm">
           <div class="form-group">
-            <label for="name">Nom</label>
-            <input type="text" id="name" placeholder="Ton nom" required />
+            <label for="fname" data-i18n="contact.name"></label>
+            <input type="text" id="fname" data-i18n-ph="contact.name_ph" required />
           </div>
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="ton@email.com" required />
+            <label for="femail" data-i18n="contact.email"></label>
+            <input type="email" id="femail" data-i18n-ph="contact.email_ph" required />
           </div>
           <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" rows="5" placeholder="Décris ton projet..." required></textarea>
+            <label for="fmessage" data-i18n="contact.message"></label>
+            <textarea id="fmessage" rows="5" data-i18n-ph="contact.msg_ph" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary full">Envoyer le message</button>
+          <button type="submit" class="btn btn-primary full" data-i18n="contact.send"></button>
           <p class="form-note" id="formNote"></p>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ========= FOOTER ========= -->
   <footer>
     <div class="container footer-inner">
       <span class="footer-logo">VP<span class="dot">.</span></span>
-      <span class="footer-copy">© 2025 Victor Ponthus — Tous droits réservés</span>
+      <span class="footer-copy" data-i18n="footer.copy"></span>
       <a href="https://github.com/VictorFrr" target="_blank" class="footer-gh">GitHub ↗</a>
     </div>
   </footer>
 
+  <!-- ========= PROJECT MODAL ========= -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <div class="modal-image-wrap">
+        <img class="modal-image" id="modalImage" src="" alt="" />
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-header">
+          <span class="modal-num" id="modalNum"></span>
+          <div class="modal-actions" id="modalActions"></div>
+        </div>
+        <h2 class="modal-title" id="modalTitle"></h2>
+
+        <div class="modal-section">
+          <h4 class="modal-section-title" id="modalContextLabel"></h4>
+          <p class="modal-context" id="modalContext"></p>
+        </div>
+
+        <div class="modal-section">
+          <h4 class="modal-section-title" id="modalFeaturesLabel"></h4>
+          <ul class="modal-features" id="modalFeatures"></ul>
+        </div>
+
+        <div class="modal-section">
+          <h4 class="modal-section-title" id="modalTechLabel"></h4>
+          <div class="modal-tech" id="modalTech"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
