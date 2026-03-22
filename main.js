@@ -55,7 +55,7 @@ form.addEventListener('submit', async (e) => {
 
   // Pour activer l'envoi réel, remplace l'URL ci-dessous par ton endpoint Formspree :
   // https://formspree.io/f/XXXXXXXX
-  const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
+  const FORMSPREE_URL = 'https://formspree.io/f/xpqyeegr';
 
   const data = {
     name: document.getElementById('name').value,
