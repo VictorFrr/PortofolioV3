@@ -1,0 +1,63 @@
+<svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d0a00"/>
+      <stop offset="100%" style="stop-color:#1a0d00"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg5)" rx="12"/>
+  <!-- warning banner -->
+  <rect x="40" y="20" width="720" height="30" rx="4" fill="#f97316" opacity="0.15" stroke="#f97316" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="400" y="40" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#f97316">⚠ EDUCATIONAL USE ONLY — Authorized machines — Informed consent</text>
+  <!-- main control window -->
+  <rect x="40" y="65" width="340" height="330" rx="8" fill="#111008" stroke="#2a1e00" stroke-width="1.5"/>
+  <rect x="40" y="65" width="340" height="30" rx="8" fill="#1a1500"/>
+  <rect x="40" y="88" width="340" height="7" fill="#1a1500"/>
+  <circle cx="58" cy="80" r="5" fill="#ff5f57"/>
+  <circle cx="74" cy="80" r="5" fill="#febc2e"/>
+  <circle cx="90" cy="80" r="5" fill="#28c840"/>
+  <text x="210" y="83" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#f97316">Keylogger Control Panel</text>
+  <!-- toggles -->
+  <text x="60" y="120" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#6a4a00">MODULES</text>
+  <rect x="60" y="128" width="300" height="32" rx="4" fill="#1a1500" stroke="#2a1e00" stroke-width="1"/>
+  <rect x="290" y="135" width="56" height="18" rx="9" fill="#f97316" opacity="0.8"/>
+  <circle cx="336" cy="144" r="7" fill="white"/>
+  <text x="72" y="149" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#e2e8f0">📸 Screenshots</text>
+  <rect x="60" y="168" width="300" height="32" rx="4" fill="#1a1500" stroke="#2a1e00" stroke-width="1"/>
+  <rect x="290" y="175" width="56" height="18" rx="9" fill="#f97316" opacity="0.8"/>
+  <circle cx="336" cy="184" r="7" fill="white"/>
+  <text x="72" y="189" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#e2e8f0">📋 Clipboard</text>
+  <rect x="60" y="208" width="300" height="32" rx="4" fill="#1a1500" stroke="#2a1e00" stroke-width="1"/>
+  <rect x="290" y="215" width="56" height="18" rx="9" fill="#2a2a2a"/>
+  <circle cx="298" cy="224" r="7" fill="#444"/>
+  <text x="72" y="229" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#6a5a4a">🔄 Persistence</text>
+  <rect x="60" y="248" width="300" height="32" rx="4" fill="#1a1500" stroke="#2a1e00" stroke-width="1"/>
+  <rect x="290" y="255" width="56" height="18" rx="9" fill="#f97316" opacity="0.8"/>
+  <circle cx="336" cy="264" r="7" fill="white"/>
+  <text x="72" y="269" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#e2e8f0">🤖 Discord Bot</text>
+  <!-- interval -->
+  <text x="60" y="308" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#6a4a00">CAPTURE INTERVAL</text>
+  <rect x="60" y="315" width="220" height="28" rx="4" fill="#1a1500" stroke="#2a1e00" stroke-width="1"/>
+  <text x="72" y="334" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#f97316">30</text>
+  <text x="105" y="334" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#6a4a00">seconds</text>
+  <rect x="290" y="315" width="70" height="28" rx="4" fill="#f97316" opacity="0.8"/>
+  <text x="325" y="334" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#0d0a00">START</text>
+  <!-- Discord preview -->
+  <rect x="400" y="65" width="360" height="330" rx="8" fill="#36393f" stroke="#2a2d33" stroke-width="1.5"/>
+  <rect x="400" y="65" width="90" height="330" rx="8" fill="#2f3136"/>
+  <rect x="480" y="65" width="10" height="330" fill="#2f3136"/>
+  <text x="445" y="100" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#8e9297">TEST-BOT</text>
+  <text x="445" y="120" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#72767d"># pentest-log</text>
+  <text x="445" y="140" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#72767d"># screenshots</text>
+  <!-- messages -->
+  <text x="500" y="110" font-family="sans-serif" font-size="8" fill="#f97316">🤖 PentestBot</text>
+  <text x="500" y="124" font-family="sans-serif" font-size="8" fill="#dcddde">📸 Screenshot captured</text>
+  <rect x="498" y="130" width="240" height="80" rx="4" fill="#2a2d33"/>
+  <rect x="503" y="135" width="230" height="70" rx="3" fill="#1a1d23"/>
+  <text x="618" y="178" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#4a5568">[screenshot.png]</text>
+  <text x="500" y="230" font-family="sans-serif" font-size="8" fill="#f97316">🤖 PentestBot</text>
+  <text x="500" y="244" font-family="sans-serif" font-size="8" fill="#dcddde">📋 Clipboard: </text>
+  <rect x="498" y="250" width="240" height="24" rx="4" fill="#2a2d33"/>
+  <text x="510" y="266" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#f97316">test@example.com</text>
+  <text x="500" y="295" font-family="sans-serif" font-size="8" fill="#72767d">Today at 14:32</text>
+</svg>
