@@ -292,41 +292,53 @@ function initScrollProgress() {
 function initHeroCanvas() {
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
-
-  const ctx = canvas.getContext('2d');
+  const ctx  = canvas.getContext('2d');
   const hero = document.getElementById('hero');
-  let W = 0, H = 0;
-  let particles = [];
-  let animId = null;
+  let W = 0, H = 0, animId = null;
+  let particles = [], meteors = [];
 
-  function getAccent() {
-    if (currentTheme === 'light') return '#0077aa';
-    return '#00e5ff';
+  function getColors() {
+    return currentTheme === 'light'
+      ? { main: '#0077aa', alt: '#5b3fc8' }
+      : { main: '#00e5ff', alt: '#7b61ff' };
   }
 
   function resize() {
-    // Use the hero section's actual rendered size
     W = canvas.width  = hero.clientWidth  || window.innerWidth;
     H = canvas.height = hero.clientHeight || window.innerHeight;
   }
 
   function spawnParticles() {
     particles = [];
-    for (let i = 0; i < 60; i++) {
+    // More particles, 2 color types
+    for (let i = 0; i < 90; i++) {
       particles.push({
-        x:  Math.random() * W,
-        y:  Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r:  Math.random() * 1.8 + 0.4,
-        o:  Math.random() * 0.5 + 0.15,
+        x:    Math.random() * W,
+        y:    Math.random() * H,
+        vx:   (Math.random() - 0.5) * 0.4,
+        vy:   (Math.random() - 0.5) * 0.4,
+        r:    Math.random() * 2 + 0.4,
+        o:    Math.random() * 0.55 + 0.1,
+        type: Math.random() > 0.7 ? 1 : 0, // 0=main, 1=alt color
       });
     }
   }
 
+  function spawnMeteor() {
+    meteors.push({
+      x:   Math.random() * W,
+      y:   -20,
+      len: Math.random() * 80 + 60,
+      spd: Math.random() * 4 + 3,
+      o:   0.7,
+    });
+  }
+
   resize();
   spawnParticles();
-  window.addEventListener('resize', () => { resize(); }, { passive: true });
+  // Spawn meteors periodically
+  setInterval(spawnMeteor, 2800);
+  window.addEventListener('resize', () => { resize(); spawnParticles(); }, { passive: true });
 
   let mouse = { x: -9999, y: -9999 };
   hero.addEventListener('mousemove', e => {
@@ -338,44 +350,68 @@ function initHeroCanvas() {
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
-    const col = getAccent();
+    const { main, alt } = getColors();
 
+    // Draw meteors
+    meteors = meteors.filter(m => m.o > 0.05);
+    for (const m of meteors) {
+      const grad = ctx.createLinearGradient(m.x, m.y, m.x - m.len * 0.5, m.y - m.len);
+      grad.addColorStop(0, main + 'cc');
+      grad.addColorStop(1, main + '00');
+      ctx.beginPath();
+      ctx.moveTo(m.x, m.y);
+      ctx.lineTo(m.x - m.len * 0.5, m.y - m.len);
+      ctx.strokeStyle = grad;
+      ctx.globalAlpha = m.o;
+      ctx.lineWidth   = 1.5;
+      ctx.stroke();
+      m.x   += m.spd * 0.5;
+      m.y   += m.spd;
+      m.o   -= 0.008;
+    }
+
+    // Draw particles + connections
     for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
+      const p   = particles[i];
+      const col = p.type === 1 ? alt : main;
+      p.x += p.vx; p.y += p.vy;
       if (p.x < 0) p.x = W;
       if (p.x > W) p.x = 0;
       if (p.y < 0) p.y = H;
       if (p.y > H) p.y = 0;
 
-      // Mouse repulsion
-      const mdx = p.x - mouse.x, mdy = p.y - mouse.y;
+      // Mouse attraction (subtle)
+      const mdx = mouse.x - p.x, mdy = mouse.y - p.y;
       const md  = Math.sqrt(mdx * mdx + mdy * mdy);
-      if (md < 130 && md > 0) {
-        p.x += (mdx / md) * 1.5;
-        p.y += (mdy / md) * 1.5;
+      if (md < 160 && md > 0) {
+        p.x += (mdx / md) * 0.5;
+        p.y += (mdy / md) * 0.5;
       }
 
-      // Draw particle
+      // Draw particle with soft glow
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = col;
       ctx.globalAlpha = p.o;
       ctx.fill();
 
-      // Draw connections
+      // Connections between nearby particles
       for (let j = i + 1; j < particles.length; j++) {
-        const p2  = particles[j];
-        const dx  = p.x - p2.x, dy = p.y - p2.y;
-        const d   = Math.sqrt(dx * dx + dy * dy);
-        if (d < 110) {
+        const p2 = particles[j];
+        const dx = p.x - p2.x, dy = p.y - p2.y;
+        const d  = Math.sqrt(dx * dx + dy * dy);
+        if (d < 130) {
+          const c2 = p2.type === 1 ? alt : main;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = col;
-          ctx.globalAlpha = (1 - d / 110) * 0.18;
-          ctx.lineWidth   = 0.6;
+          // Gradient line between the two particle colors
+          const lg = ctx.createLinearGradient(p.x, p.y, p2.x, p2.y);
+          lg.addColorStop(0, col);
+          lg.addColorStop(1, c2);
+          ctx.strokeStyle = lg;
+          ctx.globalAlpha = (1 - d / 130) * 0.2;
+          ctx.lineWidth   = 0.7;
           ctx.stroke();
         }
       }

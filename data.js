@@ -339,12 +339,126 @@ const PROJECTS = [
       tech: ["AMD Ryzen 5 5600X", "NVIDIA RTX 4060", "32GB DDR4", "Hardware", "PC Assembly"],
     }
   },
+  {
+    id: "arcade",
+    num: "008",
+    github: "https://github.com/VictorFrr",
+    demo: null,
+    image: "images/arcade.svg",
+    color: "#f97316",
+    fr: {
+      title: "Borne d'arcade custom — De A à Z",
+      short: "Borne d'arcade complète construite à la main : Raspberry Pi 4, RetroPie, centaines de ROMs, écran Dell récupéré, structure en bois faite maison.",
+      context: "Construction intégrale d'une borne d'arcade 100% fonctionnelle. Tout a été fait à la main : la structure en bois (découpe, ponçage, vissage), le câblage électronique, la configuration logicielle et l'intégration du kit joystick/boutons. L'écran provient d'un Dell que l'entreprise allait jeter — récupéré et réutilisé.",
+      features: [
+        "Raspberry Pi 4 (8 Go RAM) comme cerveau de la borne",
+        "RetroPie flashé et configuré — OS dédié au rétrogaming",
+        "Centaines de ROMs sur ~15 consoles différentes (NES, SNES, PS1, GBA…)",
+        "Écran Dell récupéré et intégré dans la structure",
+        "Kit joystick + boutons arcade câblé et configuré",
+        "Structure entière construite en bois (découpe, ponçage, vissage, assemblage)",
+        "Borne 100% fonctionnelle et autonome",
+      ],
+      tech: ["Raspberry Pi 4", "RetroPie", "Linux embarqué", "Électronique", "Bois / Fabrication", "ROMs"],
+    },
+    en: {
+      title: "Custom Arcade Cabinet — Start to Finish",
+      short: "Full arcade cabinet built by hand: Raspberry Pi 4, RetroPie, hundreds of ROMs, salvaged Dell screen, homemade wooden structure.",
+      context: "Complete build of a 100% functional arcade cabinet. Everything was handmade: the wooden structure (cutting, sanding, screwing), electronics wiring, software configuration and joystick/button kit integration. The screen was salvaged from a Dell unit that was about to be thrown away.",
+      features: [
+        "Raspberry Pi 4 (8GB RAM) as the brain of the cabinet",
+        "RetroPie flashed and configured — dedicated retrogaming OS",
+        "Hundreds of ROMs across ~15 different consoles (NES, SNES, PS1, GBA…)",
+        "Salvaged Dell screen integrated into the structure",
+        "Arcade joystick + button kit wired and configured",
+        "Full wooden structure built from scratch (cutting, sanding, screwing, assembly)",
+        "100% functional and standalone cabinet",
+      ],
+      tech: ["Raspberry Pi 4", "RetroPie", "Embedded Linux", "Electronics", "Wood / Fabrication", "ROMs"],
+    }
+  },
+  {
+    id: "streamdeck",
+    num: "009",
+    github: "https://github.com/VictorFrr",
+    demo: null,
+    image: "images/streamdeck.svg",
+    color: "#22d3ee",
+    fr: {
+      title: "Contrôleur audio Bluetooth — Stream Deck DIY",
+      short: "ESP32 + potentiomètres en Bluetooth pour contrôler le volume de chaque application (Discord, CSGO, Steam, Apple Music…) depuis un boîtier physique.",
+      context: "Création d'un contrôleur audio physique maison, similaire à un Stream Deck, permettant de régler le volume de chaque application indépendamment depuis des potentiomètres. L'ESP32 envoie les valeurs en Bluetooth au PC, un script Python tourne en arrière-plan et ajuste les volumes en temps réel. Le script se lance automatiquement au démarrage du PC via le dossier Démarrage Windows.",
+      features: [
+        "ESP32 relié en Bluetooth au PC",
+        "Potentiomètres physiques — un par application",
+        "Contrôle indépendant : Apple Music, Discord, CS:GO, Steam, Volume général",
+        "Script Python en arrière-plan qui reçoit les valeurs BT et ajuste les volumes",
+        "Démarrage automatique au lancement du PC (dossier Startup Windows)",
+        "Script embarqué sur l'ESP32 pour lecture des potentiomètres et envoi BT",
+        "Boîtier physique entièrement fonctionnel",
+      ],
+      tech: ["ESP32", "Bluetooth", "Python", "Script embarqué", "Windows API", "Électronique"],
+    },
+    en: {
+      title: "Bluetooth Audio Controller — DIY Stream Deck",
+      short: "ESP32 + potentiometers over Bluetooth to control volume per app (Discord, CSGO, Steam, Apple Music…) from a physical device.",
+      context: "A homemade physical audio controller, similar to a Stream Deck, allowing independent volume control per application using potentiometers. The ESP32 sends values over Bluetooth to the PC, a Python script runs in the background and adjusts volumes in real time. The script auto-starts on Windows boot via the Startup folder.",
+      features: [
+        "ESP32 connected via Bluetooth to the PC",
+        "Physical potentiometers — one per application",
+        "Independent control: Apple Music, Discord, CS:GO, Steam, Master volume",
+        "Python background script receiving BT values and adjusting volumes",
+        "Auto-start on PC boot (Windows Startup folder)",
+        "Firmware on ESP32 for potentiometer reading and BT transmission",
+        "Fully functional physical enclosure",
+      ],
+      tech: ["ESP32", "Bluetooth", "Python", "Embedded Firmware", "Windows API", "Electronics"],
+    }
+  },
+  {
+    id: "sites",
+    num: "010",
+    github: "https://github.com/VictorFrr",
+    demo: null,
+    image: "images/sites.svg",
+    color: "#a78bfa",
+    fr: {
+      title: "Sites web — Portfolios & Site entreprise",
+      short: "Plusieurs sites web réalisés en HTML, CSS, JS : portfolios personnels, site pour l'entreprise TMI Orion (entreprise familiale), apprentissage via stage et formation JS.",
+      context: "Réalisation de nombreux projets web en HTML, CSS et JavaScript pur. Parmi eux : plusieurs versions de portfolios personnels (dont ce site), et un site vitrine pour l'entreprise familiale TMI Orion. Ces projets ont été développés grâce aux compétences acquises en Bac Pro CIEL et lors d'un stage où une formation JavaScript a été suivie.",
+      features: [
+        "Plusieurs portfolios personnels — itérations et améliorations progressives",
+        "Site vitrine pour TMI Orion (entreprise de famille)",
+        "100% HTML, CSS, JavaScript vanilla — aucun framework",
+        "Formation JavaScript suivie en stage — mise en pratique immédiate",
+        "Responsive design, animations CSS, interactions JS",
+        "Déploiement sur Vercel",
+        "Apprentissage continu du développement web front-end",
+      ],
+      tech: ["HTML", "CSS", "JavaScript", "Vercel", "Responsive Design", "Animations CSS"],
+    },
+    en: {
+      title: "Web Projects — Portfolios & Business Website",
+      short: "Multiple websites in HTML, CSS, JS: personal portfolios, business site for TMI Orion (family company), skills built through internship and JS training.",
+      context: "Several web projects built in pure HTML, CSS and JavaScript. Among them: multiple versions of personal portfolios (including this site) and a showcase website for the family business TMI Orion. These projects were developed using skills acquired in Bac Pro CIEL and during an internship that included a JavaScript training course.",
+      features: [
+        "Multiple personal portfolios — iterative improvements over time",
+        "Showcase website for TMI Orion (family business)",
+        "100% HTML, CSS, vanilla JavaScript — no framework",
+        "JavaScript training during internship — immediately applied",
+        "Responsive design, CSS animations, JS interactions",
+        "Deployed on Vercel",
+        "Continuous front-end web development learning",
+      ],
+      tech: ["HTML", "CSS", "JavaScript", "Vercel", "Responsive Design", "CSS Animations"],
+    }
+  },
 ];
 
 // Patch: add stats + availability to translations
 (function() {
-  TRANSLATIONS.fr.stats = { projects: "Projets réalisés", langs: "Langages maîtrisés", years: "Ans d'expérience", passion: "Passion" };
-  TRANSLATIONS.en.stats = { projects: "Projects built", langs: "Languages mastered", years: "Years experience", passion: "Passion" };
+  TRANSLATIONS.fr.stats = { projects: "Projets réalisés", langs: "Langages maîtrisés", years: "Ans d'expérience", consoles: "Consoles émulées" };
+  TRANSLATIONS.en.stats = { projects: "Projects built", langs: "Languages mastered", years: "Years experience", consoles: "Consoles emulated" };
   TRANSLATIONS.fr.contact.available = "Disponible pour stage / alternance";
   TRANSLATIONS.en.contact.available = "Available for internship / apprenticeship";
 })();
