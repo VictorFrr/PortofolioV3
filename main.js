@@ -1,12 +1,11 @@
 /* ============================================================
-   MAIN.JS — Victor Ponthus Portfolio — PREMIUM
+   MAIN.JS — Victor Ponthus Portfolio
    ============================================================ */
 
 let currentLang  = localStorage.getItem('lang')  || 'fr';
 let currentTheme = localStorage.getItem('theme') || 'dark';
 let revealObserver = null;
 
-/* ── INIT ──────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   applyTheme(currentTheme);
   initScrollReveal();
@@ -21,23 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initCursor();
   initScrollProgress();
-  initHeroCanvas();
   initTypingEffect();
   initCounters();
   initMagneticButtons();
   document.querySelectorAll('.reveal').forEach(el => observeReveal(el));
+  // Canvas AFTER a short delay so hero has its real size
+  setTimeout(initHeroCanvas, 100);
 });
 
 /* ── THEME ─────────────────────────────────────────────────── */
-function applyTheme(t) {
-  currentTheme = t;
-  document.documentElement.setAttribute('data-theme', t);
-  localStorage.setItem('theme', t);
+function applyTheme(theme) {
+  currentTheme = theme;
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
 }
 function initThemeToggle() {
-  document.getElementById('themeBtn').addEventListener('click', () => {
-    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
-  });
+  const btn = document.getElementById('themeBtn');
+  if (btn) btn.addEventListener('click', () => applyTheme(currentTheme === 'dark' ? 'light' : 'dark'));
 }
 
 /* ── i18n ──────────────────────────────────────────────────── */
@@ -51,16 +50,24 @@ function applyLang(lang) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-  document.querySelectorAll('[data-i18n]').forEach(el => { const v = tr(el.dataset.i18n); if (v !== el.dataset.i18n) el.textContent = v; });
-  document.querySelectorAll('[data-i18n-ph]').forEach(el => { const v = tr(el.dataset.i18nPh); if (v) el.placeholder = v; });
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = tr(el.dataset.i18n);
+    if (v !== el.dataset.i18n) el.textContent = v;
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const v = tr(el.dataset.i18nPh);
+    if (v) el.placeholder = v;
+  });
   renderSkills();
   renderProjects();
 }
 function initLangSwitcher() {
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => { if (btn.dataset.lang !== currentLang) applyLang(btn.dataset.lang); });
-  });
+  document.querySelectorAll('.lang-btn').forEach(btn =>
+    btn.addEventListener('click', () => {
+      if (btn.dataset.lang !== currentLang) applyLang(btn.dataset.lang);
+    }));
 }
 
 /* ── SCROLL REVEAL ─────────────────────────────────────────── */
@@ -71,11 +78,11 @@ function initScrollReveal() {
   }
   revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        const isCard = entry.target.classList.contains('project-card') || entry.target.classList.contains('skill-category');
-        setTimeout(() => entry.target.classList.add('visible'), isCard ? i * 70 : 0);
-        revealObserver.unobserve(entry.target);
-      }
+      if (!entry.isIntersecting) return;
+      const isCard = entry.target.classList.contains('project-card')
+                  || entry.target.classList.contains('skill-category');
+      setTimeout(() => entry.target.classList.add('visible'), isCard ? i * 70 : 0);
+      revealObserver.unobserve(entry.target);
     });
   }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
 }
@@ -139,7 +146,7 @@ function renderProjects() {
 
 /* ── NAVBAR ────────────────────────────────────────────────── */
 function initNavbar() {
-  const navbar = document.getElementById('navbar');
+  const navbar   = document.getElementById('navbar');
   const navLinks = document.querySelectorAll('.nav-links a');
   const sections = document.querySelectorAll('section[id]');
   window.addEventListener('scroll', () => {
@@ -154,14 +161,19 @@ function initNavbar() {
 function initHamburger() {
   const h = document.getElementById('hamburger');
   const m = document.getElementById('mobileMenu');
+  if (!h || !m) return;
   h.addEventListener('click', () => { h.classList.toggle('open'); m.classList.toggle('open'); });
-  document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => { m.classList.remove('open'); h.classList.remove('open'); }));
+  document.querySelectorAll('.mob-link').forEach(l =>
+    l.addEventListener('click', () => { m.classList.remove('open'); h.classList.remove('open'); }));
 }
 
 /* ── MODAL ─────────────────────────────────────────────────── */
 function initModal() {
-  document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === document.getElementById('modalOverlay')) closeModal(); });
-  document.getElementById('modalClose').addEventListener('click', closeModal);
+  const overlay = document.getElementById('modalOverlay');
+  const closeBtn = document.getElementById('modalClose');
+  if (!overlay || !closeBtn) return;
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  closeBtn.addEventListener('click', closeModal);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 }
 function openModal(id) {
@@ -169,17 +181,17 @@ function openModal(id) {
   if (!p) return;
   const d = p[currentLang];
   const T = TRANSLATIONS[currentLang].projects;
-  document.getElementById('modalImage').src             = p.image;
-  document.getElementById('modalImage').alt             = d.title;
-  document.getElementById('modalNum').textContent       = p.num;
-  document.getElementById('modalTitle').textContent     = d.title;
+  document.getElementById('modalImage').src                 = p.image;
+  document.getElementById('modalImage').alt                 = d.title;
+  document.getElementById('modalNum').textContent           = p.num;
+  document.getElementById('modalTitle').textContent         = d.title;
   document.getElementById('modalContextLabel').textContent  = T.context;
-  document.getElementById('modalContext').textContent   = d.context;
+  document.getElementById('modalContext').textContent       = d.context;
   document.getElementById('modalFeaturesLabel').textContent = T.features;
-  document.getElementById('modalFeatures').innerHTML    = d.features.map(f => `<li>${f}</li>`).join('');
-  document.getElementById('modalTechLabel').textContent = T.tech;
-  document.getElementById('modalTech').innerHTML        = d.tech.map(t => `<span>${t}</span>`).join('');
-  document.getElementById('modalActions').innerHTML     = [
+  document.getElementById('modalFeatures').innerHTML        = d.features.map(f => `<li>${f}</li>`).join('');
+  document.getElementById('modalTechLabel').textContent     = T.tech;
+  document.getElementById('modalTech').innerHTML            = d.tech.map(t => `<span>${t}</span>`).join('');
+  document.getElementById('modalActions').innerHTML         = [
     p.github ? `<a href="${p.github}" target="_blank" rel="noopener">${GH_SVG} ${T.github}</a>` : '',
     p.demo   ? `<a href="${p.demo}"   target="_blank" rel="noopener">${EXT_SVG} ${T.demo}</a>`   : '',
   ].join('');
@@ -195,23 +207,47 @@ function closeModal() {
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const note = document.getElementById('formNote');
-  if (!form) return;
+  if (!form || !note) return;
+
   form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn      = form.querySelector('button[type="submit"]');
     const T        = TRANSLATIONS[currentLang].contact;
     const ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
-    btn.disabled   = true;
-    const payload  = { name: document.getElementById('fname').value, email: document.getElementById('femail').value, message: document.getElementById('fmessage').value };
+
+    btn.disabled    = true;
+    btn.textContent = '...';
+
+    const payload = {
+      name:    document.getElementById('fname').value,
+      email:   document.getElementById('femail').value,
+      message: document.getElementById('fmessage').value,
+    };
+
     try {
-      const res = await fetch(ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(payload) });
-      if (res.ok) { note.textContent = T.success; note.style.color = 'var(--accent)'; form.reset(); }
-      else throw new Error();
+      const res = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) {
+        note.textContent = T.success;
+        note.style.color = 'var(--accent)';
+        form.reset();
+      } else {
+        throw new Error('form error');
+      }
     } catch {
-      window.location.href = `mailto:victor.ponthus@gmail.com?subject=${encodeURIComponent('Contact depuis portfolio')}&body=${encodeURIComponent(payload.message)}`;
-      note.textContent = T.error; note.style.color = 'var(--text-muted)';
+      // Fallback: open mail client directly
+      const sub  = encodeURIComponent('Contact depuis portfolio');
+      const body = encodeURIComponent(`Nom: ${payload.name}\nEmail: ${payload.email}\n\n${payload.message}`);
+      window.open(`mailto:victor.ponthus@gmail.com?subject=${sub}&body=${body}`);
+      note.textContent = T.error;
+      note.style.color = 'var(--text-muted)';
     }
-    btn.textContent = T.send; btn.disabled = false;
+
+    btn.textContent = T.send;
+    btn.disabled    = false;
   });
 }
 
@@ -222,13 +258,17 @@ function initCursor() {
   const ring = document.getElementById('cursor-ring');
   if (!dot || !ring) return;
   let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx+'px'; dot.style.top = my+'px'; }, { passive: true });
-  (function animateRing() {
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px';
+    dot.style.top  = my + 'px';
+  }, { passive: true });
+  (function animRing() {
     rx += (mx - rx) * 0.12;
     ry += (my - ry) * 0.12;
-    ring.style.left = rx+'px';
-    ring.style.top  = ry+'px';
-    requestAnimationFrame(animateRing);
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animRing);
   })();
   document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
   document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-click'));
@@ -238,94 +278,113 @@ function initCursor() {
   });
 }
 
-/* ── SCROLL PROGRESS BAR ───────────────────────────────────── */
+/* ── SCROLL PROGRESS ───────────────────────────────────────── */
 function initScrollProgress() {
   const bar = document.getElementById('scroll-progress');
   if (!bar) return;
   window.addEventListener('scroll', () => {
-    const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
     bar.style.width = Math.min(pct, 100) + '%';
   }, { passive: true });
 }
 
-/* ── HERO CANVAS (floating particles) ─────────────────────── */
+/* ── HERO CANVAS ───────────────────────────────────────────── */
 function initHeroCanvas() {
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
+
   const ctx = canvas.getContext('2d');
+  const hero = document.getElementById('hero');
+  let W = 0, H = 0;
   let particles = [];
-  let W, H;
+  let animId = null;
+
+  function getAccent() {
+    if (currentTheme === 'light') return '#0077aa';
+    return '#00e5ff';
+  }
 
   function resize() {
-    const hero = canvas.parentElement;
-    W = canvas.width  = hero ? hero.offsetWidth  : window.innerWidth;
-    H = canvas.height = hero ? hero.offsetHeight : window.innerHeight;
-    // Reinit particles spread across new dimensions
-    particles.forEach(p => {
-      if (p.x > W) p.x = Math.random() * W;
-      if (p.y > H) p.y = Math.random() * H;
-    });
-  }
-  resize(); // set W and H BEFORE creating particles
-
-  for (let i = 0; i < 55; i++) {
-    particles.push({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      vx: (Math.random() - .5) * .3,
-      vy: (Math.random() - .5) * .3,
-      r: Math.random() * 1.5 + .5,
-      o: Math.random() * .5 + .1,
-    });
+    // Use the hero section's actual rendered size
+    W = canvas.width  = hero.clientWidth  || window.innerWidth;
+    H = canvas.height = hero.clientHeight || window.innerHeight;
   }
 
-  window.addEventListener('resize', resize, { passive: true });
+  function spawnParticles() {
+    particles = [];
+    for (let i = 0; i < 60; i++) {
+      particles.push({
+        x:  Math.random() * W,
+        y:  Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r:  Math.random() * 1.8 + 0.4,
+        o:  Math.random() * 0.5 + 0.15,
+      });
+    }
+  }
 
-  let mouse = { x: -999, y: -999 };
-  canvas.parentElement.addEventListener('mousemove', e => {
-    const rect = canvas.getBoundingClientRect();
+  resize();
+  spawnParticles();
+  window.addEventListener('resize', () => { resize(); }, { passive: true });
+
+  let mouse = { x: -9999, y: -9999 };
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
   }, { passive: true });
+  hero.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
-    const col = accentColor();
+    const col = getAccent();
 
-    particles.forEach((p, i) => {
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
-      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0) p.x = W;
+      if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H;
+      if (p.y > H) p.y = 0;
 
       // Mouse repulsion
-      const dx = p.x - mouse.x, dy = p.y - mouse.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 120) { p.x += dx/dist * 1.2; p.y += dy/dist * 1.2; }
+      const mdx = p.x - mouse.x, mdy = p.y - mouse.y;
+      const md  = Math.sqrt(mdx * mdx + mdy * mdy);
+      if (md < 130 && md > 0) {
+        p.x += (mdx / md) * 1.5;
+        p.y += (mdy / md) * 1.5;
+      }
 
+      // Draw particle
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = col;
       ctx.globalAlpha = p.o;
       ctx.fill();
 
-      // Connect nearby particles
-      particles.slice(i+1).forEach(p2 => {
-        const dx2 = p.x-p2.x, dy2 = p.y-p2.y;
-        const d2 = Math.sqrt(dx2*dx2+dy2*dy2);
-        if (d2 < 100) {
+      // Draw connections
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2  = particles[j];
+        const dx  = p.x - p2.x, dy = p.y - p2.y;
+        const d   = Math.sqrt(dx * dx + dy * dy);
+        if (d < 110) {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
           ctx.strokeStyle = col;
-          ctx.globalAlpha = (1 - d2/100) * 0.15;
-          ctx.lineWidth = .6;
+          ctx.globalAlpha = (1 - d / 110) * 0.18;
+          ctx.lineWidth   = 0.6;
           ctx.stroke();
         }
-      });
-    });
+      }
+    }
     ctx.globalAlpha = 1;
-    requestAnimationFrame(draw);
+    animId = requestAnimationFrame(draw);
   }
+
+  if (animId) cancelAnimationFrame(animId);
   draw();
 }
 
@@ -340,37 +399,36 @@ function initTypingEffect() {
   function type() {
     if (i < text.length) {
       el.innerHTML = text.slice(0, ++i) + '<span class="typed-cursor"></span>';
-      setTimeout(type, 80 + Math.random() * 40);
+      setTimeout(type, 75 + Math.random() * 45);
     }
+    // cursor stays visible after typing is done
   }
-  setTimeout(type, 800);
+  setTimeout(type, 900);
 }
 
-/* ── ANIMATED COUNTERS ─────────────────────────────────────── */
+/* ── COUNTERS ──────────────────────────────────────────────── */
 function initCounters() {
   const nums = document.querySelectorAll('.stat-num[data-count]');
-  if (!nums.length) return;
+  if (!nums.length || !('IntersectionObserver' in window)) return;
 
-  const counterObs = new IntersectionObserver((entries) => {
+  const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = parseInt(el.dataset.count);
-      const duration = 1500;
-      const start = performance.now();
-      (function update(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        // easeOutExpo
-        const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-        el.textContent = Math.round(eased * target);
-        if (progress < 1) requestAnimationFrame(update);
+      const el     = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      const dur    = 1400;
+      const start  = performance.now();
+      (function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const e = 1 - Math.pow(2, -10 * p); // easeOutExpo
+        el.textContent = Math.round(e * target);
+        if (p < 1) requestAnimationFrame(tick);
       })(start);
-      counterObs.unobserve(el);
+      obs.unobserve(el);
     });
   }, { threshold: 0.5 });
 
-  nums.forEach(el => counterObs.observe(el));
+  nums.forEach(el => obs.observe(el));
 }
 
 /* ── MAGNETIC BUTTONS ──────────────────────────────────────── */
@@ -378,15 +436,11 @@ function initMagneticButtons() {
   if (window.matchMedia('(pointer: coarse)').matches) return;
   document.querySelectorAll('.mag-btn').forEach(btn => {
     btn.addEventListener('mousemove', e => {
-      const rect = btn.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top  + rect.height / 2;
-      const dx = (e.clientX - cx) * 0.25;
-      const dy = (e.clientY - cy) * 0.25;
+      const r  = btn.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width  / 2)) * 0.22;
+      const dy = (e.clientY - (r.top  + r.height / 2)) * 0.22;
       btn.style.transform = `translate(${dx}px, ${dy}px) translateY(-2px)`;
     });
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = '';
-    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
   });
 }
