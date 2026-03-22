@@ -873,3 +873,9 @@ footer {
   .modal { border-radius: 20px 20px 0 0; max-height: 95vh; }
   .modal-image-wrap { border-radius: 20px 20px 0 0; }
 }
+
+/* ── REVEAL SAFETY NET ──────────────────────────────────────── */
+/* If JS fails or is slow, show content after 2s */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
