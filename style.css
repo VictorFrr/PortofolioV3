@@ -126,7 +126,7 @@ body.cursor-click #cursor-ring{width:28px;height:28px}
 }
 .nav-logo:hover::after{transform:scaleX(1)}
 .dot{color:var(--accent)}
-.nav-links{display:flex;gap:2.5rem;flex:1;justify-content:center}
+.nav-links{display:flex;gap:1.8rem;flex:1;justify-content:center}
 .nav-links a{
   font-family:var(--font-m);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--text-muted);transition:color var(--t);position:relative;padding-bottom:4px;

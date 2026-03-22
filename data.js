@@ -5,7 +5,7 @@
 
 const TRANSLATIONS = {
   fr: {
-    nav: { skills: "Compétences", projects: "Projets", contact: "Contact" },
+    nav: { skills: "Compétences", projects: "Projets", about: "À propos", contact: "Contact" },
     hero: {
       tag: "Étudiant Bac Pro CIEL — Cybersécurité, Informatique, Réseau & Électronique",
       greeting: "Bonjour, je suis",
@@ -20,8 +20,7 @@ const TRANSLATIONS = {
       categories: [
         { name: "Développement", tags: ["Python","JavaScript","HTML / CSS","VBA","Next.js","Custom Tkinter"] },
         { name: "Cybersécurité",  tags: ["Pentesting","ESP32 / Firmware","Analyse réseau","Chiffrement","Wi-Fi & Bluetooth","OSINT"] },
-        { name: "Systèmes & Outils", tags: ["Linux / Debian","Administration serveur","Hardware / Assemblage PC","Git / GitHub","Vercel","Microsoft Excel"] },
-        { name: "Langues", tags: ["Français — Natif","Anglais — Niveau avancé (B2/C1)"] },
+        { name: "Systèmes & Outils", tags: ["Linux / Debian","Administration serveur","Hardware / Assemblage PC","Git / GitHub","Vercel","Microsoft Excel"] }
       ]
     },
     projects: { title: "Projets", details: "Voir les détails", github: "GitHub", demo: "Démo", close: "Fermer", features: "Fonctionnalités", tech: "Technologies", context: "Contexte" },
@@ -58,7 +57,7 @@ const TRANSLATIONS = {
     theme: { light: "Mode clair", dark: "Mode sombre" },
   },
   en: {
-    nav: { skills: "Skills", projects: "Projects", contact: "Contact" },
+    nav: { skills: "Skills", projects: "Projects", about: "About", contact: "Contact" },
     hero: {
       tag: "Bac Pro CIEL Student — Cybersecurity, Networks & Electronics",
       greeting: "Hi, I'm",
@@ -73,8 +72,7 @@ const TRANSLATIONS = {
       categories: [
         { name: "Development", tags: ["Python","JavaScript","HTML / CSS","VBA","Next.js","Custom Tkinter"] },
         { name: "Cybersecurity", tags: ["Pentesting","ESP32 / Firmware","Network Analysis","Encryption","Wi-Fi & Bluetooth","OSINT"] },
-        { name: "Systems & Tools", tags: ["Linux / Debian","Server Administration","Hardware / PC Building","Git / GitHub","Vercel","Microsoft Excel"] },
-        { name: "Languages", tags: ["French — Native","English — Advanced level (B2/C1)"] },
+        { name: "Systems & Tools", tags: ["Linux / Debian","Server Administration","Hardware / PC Building","Git / GitHub","Vercel","Microsoft Excel"] }
       ]
     },
     projects: { title: "Projects", details: "See details", github: "GitHub", demo: "Demo", close: "Close", features: "Features", tech: "Technologies", context: "Context" },
