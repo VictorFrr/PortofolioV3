@@ -26,9 +26,9 @@
     <div class="nav-inner">
       <a class="nav-logo" href="#" aria-label="Home">VP<span class="dot">.</span></a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about"    data-i18n="nav.about"></a></li>
         <li><a href="#skills"   data-i18n="nav.skills"></a></li>
         <li><a href="#projects" data-i18n="nav.projects"></a></li>
+        <li><a href="#about"    data-i18n="nav.about"></a></li>
         <li><a href="#contact"  data-i18n="nav.contact"></a></li>
       </ul>
       <div class="nav-controls">
@@ -45,9 +45,9 @@
       </div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#about"    class="mob-link" data-i18n="nav.about"></a>
       <a href="#skills"   class="mob-link" data-i18n="nav.skills"></a>
       <a href="#projects" class="mob-link" data-i18n="nav.projects"></a>
+      <a href="#about"    class="mob-link" data-i18n="nav.about"></a>
       <a href="#contact"  class="mob-link" data-i18n="nav.contact"></a>
     </div>
   </nav>
@@ -65,7 +65,7 @@
       <p class="hero-tag"><span class="tag-dot"></span><span data-i18n="hero.tag"></span></p>
       <h1 class="hero-title">
         <span class="line" data-i18n="hero.greeting"></span>
-        <span class="line accent" id="typedName"></span>
+        <span class="line accent" id="typedName" aria-label="Victor Ponthus"><span class="typed-placeholder">Victor Ponthus</span></span>
       </h1>
       <p class="hero-sub" data-i18n="hero.sub"></p>
       <div class="hero-cta">
@@ -92,7 +92,7 @@
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <span class="stat-num" data-count="3">0</span>
+        <span class="stat-num" data-count="4">0</span>
         <span class="stat-label" data-i18n="stats.langs"></span>
       </div>
       <div class="stat-divider"></div>
@@ -104,11 +104,33 @@
   </div>
 
 
+  <!-- ── SKILLS ── -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-number">01</span>
+        <h2 data-i18n="skills.title"></h2>
+      </div>
+      <div class="skills-grid" id="skillsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-number">02</span>
+        <h2 data-i18n="projects.title"></h2>
+      </div>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
   <!-- ── ABOUT ── -->
   <section id="about">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-number">01</span>
+        <span class="section-number">03</span>
         <h2 data-i18n="about.title"></h2>
       </div>
       <div class="about-grid">
@@ -127,7 +149,7 @@
             <span class="country-tag">🇲🇦 Maroc</span>
             <span class="country-tag">🇳🇱 Pays-Bas</span>
             <span class="country-tag">🇪🇬 Égypte</span>
-            <span class="country-tag">🇺🇸 New York</span>
+            <span class="country-tag">🇺🇸 États-Unis</span>
             <span class="country-tag">🇪🇸 Canaries</span>
             <span class="country-tag">🇬🇷 Crète</span>
             <span class="country-tag">🇪🇸 Majorque</span>
@@ -195,28 +217,6 @@
 
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ── SKILLS ── -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-number">02</span>
-        <h2 data-i18n="skills.title"></h2>
-      </div>
-      <div class="skills-grid" id="skillsGrid"></div>
-    </div>
-  </section>
-
-  <!-- ── PROJECTS ── -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-number">03</span>
-        <h2 data-i18n="projects.title"></h2>
-      </div>
-      <div class="projects-grid" id="projectsGrid"></div>
     </div>
   </section>
 

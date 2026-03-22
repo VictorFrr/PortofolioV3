@@ -21,6 +21,7 @@ const TRANSLATIONS = {
         { name: "Développement", tags: ["Python","JavaScript","HTML / CSS","VBA","Next.js","Custom Tkinter"] },
         { name: "Cybersécurité",  tags: ["Pentesting","ESP32 / Firmware","Analyse réseau","Chiffrement","Wi-Fi & Bluetooth","OSINT"] },
         { name: "Systèmes & Outils", tags: ["Linux / Debian","Administration serveur","Hardware / Assemblage PC","Git / GitHub","Vercel","Microsoft Excel"] },
+        { name: "Langues", tags: ["Français — Natif","Anglais — Niveau avancé (B2/C1)"] },
       ]
     },
     projects: { title: "Projets", details: "Voir les détails", github: "GitHub", demo: "Démo", close: "Fermer", features: "Fonctionnalités", tech: "Technologies", context: "Contexte" },
@@ -44,9 +45,9 @@ const TRANSLATIONS = {
       },
       cinema: {
         title: "Le cinéma",
-        desc: "Plus de 100 films en 2024. Objectif 300 en 2025. J'ai vu toute la filmographie de Kubrick, courts-métrages inclus.",
-        fav1: "The Shining — film préféré",
-        fav2: "Eraserhead, Blue Velvet…",
+        desc: "Plus de 100 films en 2025. Objectif 300 en 2026. J'ai vu toute la filmographie de Kubrick, courts-métrages inclus.",
+        fav1: "Eyes Wide Shut · Le Baiser du Tueur",
+        fav2: "Mulholland Drive · Blue Velvet",
       },
       sport: {
         title: "Sport & musculation",
@@ -73,6 +74,7 @@ const TRANSLATIONS = {
         { name: "Development", tags: ["Python","JavaScript","HTML / CSS","VBA","Next.js","Custom Tkinter"] },
         { name: "Cybersecurity", tags: ["Pentesting","ESP32 / Firmware","Network Analysis","Encryption","Wi-Fi & Bluetooth","OSINT"] },
         { name: "Systems & Tools", tags: ["Linux / Debian","Server Administration","Hardware / PC Building","Git / GitHub","Vercel","Microsoft Excel"] },
+        { name: "Languages", tags: ["French — Native","English — Advanced level (B2/C1)"] },
       ]
     },
     projects: { title: "Projects", details: "See details", github: "GitHub", demo: "Demo", close: "Close", features: "Features", tech: "Technologies", context: "Context" },
@@ -96,9 +98,9 @@ const TRANSLATIONS = {
       },
       cinema: {
         title: "Cinema",
-        desc: "Over 100 films in 2024. Target: 300 in 2025. I've seen Kubrick's entire filmography, including short films.",
-        fav1: "The Shining — all-time favorite",
-        fav2: "Eraserhead, Blue Velvet…",
+        desc: "Over 100 films in 2025. Target: 300 in 2026. I've seen Kubrick's entire filmography, including short films.",
+        fav1: "Eyes Wide Shut · The Killing",
+        fav2: "Mulholland Drive · Blue Velvet",
       },
       sport: {
         title: "Sport & fitness",

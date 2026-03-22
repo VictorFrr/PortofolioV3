@@ -430,6 +430,13 @@ function initTypingEffect() {
   if (!el) return;
   const text = 'Victor Ponthus';
   let i = 0;
+
+  // Key fix: set explicit width BEFORE clearing content
+  // This prevents the layout shift when the placeholder disappears
+  const fullWidth = el.offsetWidth;
+  if (fullWidth > 0) el.style.minWidth = fullWidth + 'px';
+
+  // Now clear and start typing
   el.innerHTML = '<span class="typed-cursor"></span>';
 
   function type() {
@@ -437,9 +444,8 @@ function initTypingEffect() {
       el.innerHTML = text.slice(0, ++i) + '<span class="typed-cursor"></span>';
       setTimeout(type, 75 + Math.random() * 45);
     }
-    // cursor stays visible after typing is done
   }
-  setTimeout(type, 900);
+  setTimeout(type, 500);
 }
 
 /* ── COUNTERS ──────────────────────────────────────────────── */
