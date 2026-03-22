@@ -1,57 +1,48 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Victor Ponthus — Portfolio Bac Pro CIEL, Cybersécurité & Développement" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Victor Ponthus — Portfolio Bac Pro CIEL, Cybersécurité & Développement"/>
   <title>Victor Ponthus — Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
-  <!-- ========= NAVBAR ========= -->
+  <!-- CURSOR -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- SCROLL PROGRESS -->
+  <div id="scroll-progress"></div>
+
+  <!-- NOISE OVERLAY -->
+  <div class="noise-overlay"></div>
+
+  <!-- ── NAVBAR ── -->
   <nav id="navbar">
     <div class="nav-inner">
-      <a class="nav-logo" href="#">VP<span class="dot">.</span></a>
-
+      <a class="nav-logo" href="#" aria-label="Home">VP<span class="dot">.</span></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#skills"   data-i18n="nav.skills"></a></li>
         <li><a href="#projects" data-i18n="nav.projects"></a></li>
         <li><a href="#contact"  data-i18n="nav.contact"></a></li>
       </ul>
-
       <div class="nav-controls">
-        <!-- Language switcher -->
-        <div class="lang-switcher" id="langSwitcher">
+        <div class="lang-switcher">
           <button class="lang-btn active" data-lang="fr">FR</button>
           <span class="lang-sep">|</span>
           <button class="lang-btn" data-lang="en">EN</button>
         </div>
-
-        <!-- Theme toggle -->
         <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
         </button>
-
-        <!-- Hamburger -->
-        <button class="hamburger" id="hamburger" aria-label="menu">
-          <span></span><span></span><span></span>
-        </button>
+        <button class="hamburger" id="hamburger" aria-label="menu"><span></span><span></span><span></span></button>
       </div>
     </div>
-
-    <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
       <a href="#skills"   class="mob-link" data-i18n="nav.skills"></a>
       <a href="#projects" class="mob-link" data-i18n="nav.projects"></a>
@@ -59,32 +50,63 @@
     </div>
   </nav>
 
-  <!-- ========= HERO ========= -->
+  <!-- ── HERO ── -->
   <section id="hero">
+    <canvas id="heroCanvas"></canvas>
     <div class="hero-bg">
       <div class="grid-lines"></div>
       <div class="glow glow-1"></div>
       <div class="glow glow-2"></div>
+      <div class="glow glow-3"></div>
     </div>
     <div class="hero-content">
       <p class="hero-tag"><span class="tag-dot"></span><span data-i18n="hero.tag"></span></p>
       <h1 class="hero-title">
         <span class="line" data-i18n="hero.greeting"></span>
-        <span class="line accent">Victor Ponthus</span>
+        <span class="line accent" id="typedName"></span>
       </h1>
       <p class="hero-sub" data-i18n="hero.sub"></p>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary" data-i18n="hero.cta_projects"></a>
-        <a href="#contact"  class="btn btn-ghost"   data-i18n="hero.cta_contact"></a>
+        <a href="#projects" class="btn btn-primary mag-btn" data-i18n="hero.cta_projects"></a>
+        <a href="#contact"  class="btn btn-ghost  mag-btn" data-i18n="hero.cta_contact"></a>
       </div>
       <div class="hero-scroll">
         <span data-i18n="hero.scroll"></span>
         <div class="scroll-line"></div>
       </div>
     </div>
+    <!-- floating badges -->
+    <div class="hero-badge badge-1"><span>Python</span></div>
+    <div class="hero-badge badge-2"><span>Cybersec</span></div>
+    <div class="hero-badge badge-3"><span>Linux</span></div>
   </section>
 
-  <!-- ========= SKILLS ========= -->
+  <!-- ── STATS STRIP ── -->
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-num" data-count="7">0</span>
+        <span class="stat-label" data-i18n="stats.projects"></span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-count="3">0</span>
+        <span class="stat-label" data-i18n="stats.langs"></span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-count="2">0</span>
+        <span class="stat-label" data-i18n="stats.years"></span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-count="100">0</span><span class="stat-num">%</span>
+        <span class="stat-label" data-i18n="stats.passion"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SKILLS ── -->
   <section id="skills">
     <div class="container">
       <div class="section-header reveal">
@@ -95,7 +117,7 @@
     </div>
   </section>
 
-  <!-- ========= PROJECTS ========= -->
+  <!-- ── PROJECTS ── -->
   <section id="projects">
     <div class="container">
       <div class="section-header reveal">
@@ -106,7 +128,7 @@
     </div>
   </section>
 
-  <!-- ========= CONTACT ========= -->
+  <!-- ── CONTACT ── -->
   <section id="contact">
     <div class="container">
       <div class="section-header reveal">
@@ -127,29 +149,32 @@
               victor.ponthus@gmail.com
             </a>
           </div>
+          <div class="availability-badge">
+            <span class="avail-dot"></span>
+            <span data-i18n="contact.available"></span>
+          </div>
         </div>
-
         <form class="contact-form reveal" id="contactForm">
           <div class="form-group">
             <label for="fname" data-i18n="contact.name"></label>
-            <input type="text" id="fname" data-i18n-ph="contact.name_ph" required />
+            <input type="text" id="fname" data-i18n-ph="contact.name_ph" required/>
           </div>
           <div class="form-group">
             <label for="femail" data-i18n="contact.email"></label>
-            <input type="email" id="femail" data-i18n-ph="contact.email_ph" required />
+            <input type="email" id="femail" data-i18n-ph="contact.email_ph" required/>
           </div>
           <div class="form-group">
             <label for="fmessage" data-i18n="contact.message"></label>
             <textarea id="fmessage" rows="5" data-i18n-ph="contact.msg_ph" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary full" data-i18n="contact.send"></button>
+          <button type="submit" class="btn btn-primary full mag-btn" data-i18n="contact.send"></button>
           <p class="form-note" id="formNote"></p>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- ========= FOOTER ========= -->
+  <!-- ── FOOTER ── -->
   <footer>
     <div class="container footer-inner">
       <span class="footer-logo">VP<span class="dot">.</span></span>
@@ -158,36 +183,30 @@
     </div>
   </footer>
 
-  <!-- ========= PROJECT MODAL ========= -->
+  <!-- ── MODAL ── -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal" id="modal" role="dialog" aria-modal="true">
       <button class="modal-close" id="modalClose" aria-label="Close">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
-
       <div class="modal-image-wrap">
-        <img class="modal-image" id="modalImage" src="" alt="" />
+        <img class="modal-image" id="modalImage" src="" alt=""/>
+        <div class="modal-image-gradient"></div>
       </div>
-
       <div class="modal-body">
         <div class="modal-header">
           <span class="modal-num" id="modalNum"></span>
           <div class="modal-actions" id="modalActions"></div>
         </div>
         <h2 class="modal-title" id="modalTitle"></h2>
-
         <div class="modal-section">
           <h4 class="modal-section-title" id="modalContextLabel"></h4>
           <p class="modal-context" id="modalContext"></p>
         </div>
-
         <div class="modal-section">
           <h4 class="modal-section-title" id="modalFeaturesLabel"></h4>
           <ul class="modal-features" id="modalFeatures"></ul>
         </div>
-
         <div class="modal-section">
           <h4 class="modal-section-title" id="modalTechLabel"></h4>
           <div class="modal-tech" id="modalTech"></div>

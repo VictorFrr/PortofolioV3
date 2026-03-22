@@ -340,3 +340,11 @@ const PROJECTS = [
     }
   },
 ];
+
+// Patch: add stats + availability to translations
+(function() {
+  TRANSLATIONS.fr.stats = { projects: "Projets réalisés", langs: "Langages maîtrisés", years: "Ans d'expérience", passion: "Passion" };
+  TRANSLATIONS.en.stats = { projects: "Projects built", langs: "Languages mastered", years: "Years experience", passion: "Passion" };
+  TRANSLATIONS.fr.contact.available = "Disponible pour stage / alternance";
+  TRANSLATIONS.en.contact.available = "Available for internship / apprenticeship";
+})();
