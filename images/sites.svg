@@ -1,0 +1,98 @@
+<svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="webBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d0a1a"/>
+      <stop offset="100%" style="stop-color:#120d22"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="420" fill="url(#webBg)" rx="12"/>
+  <!-- Browser 1 - Portfolio -->
+  <rect x="30" y="30" width="360" height="200" rx="8" fill="#111018" stroke="#2a1a3e" stroke-width="1.5"/>
+  <rect x="30" y="30" width="360" height="28" rx="8" fill="#1a1030"/>
+  <rect x="30" y="50" width="360" height="8" fill="#1a1030"/>
+  <circle cx="50" cy="44" r="5" fill="#ff5f57"/>
+  <circle cx="66" cy="44" r="5" fill="#febc2e"/>
+  <circle cx="82" cy="44" r="5" fill="#28c840"/>
+  <rect x="100" y="36" width="200" height="16" rx="8" fill="#0d0a18" stroke="#2a1a3e" stroke-width="1"/>
+  <text x="200" y="48" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#6a4a9a">victor.ponthus.vercel.app</text>
+  <!-- Portfolio content -->
+  <rect x="38" y="66" width="344" height="156" rx="4" fill="#080b10"/>
+  <text x="210" y="110" text-anchor="middle" font-family="'Syne',sans-serif" font-size="22" fill="#a78bfa" font-weight="800">Victor Ponthus</text>
+  <text x="210" y="128" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#64748b">Cybersécurité · Développement · Hardware</text>
+  <rect x="150" y="140" width="80" height="18" rx="4" fill="#a78bfa"/>
+  <text x="190" y="153" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#080b10" font-weight="bold">Voir projets</text>
+  <rect x="240" y="140" width="80" height="18" rx="4" fill="none" stroke="#a78bfa" stroke-width="1"/>
+  <text x="280" y="153" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#a78bfa">Contact</text>
+  <text x="60" y="210" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#2a1a3e">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</text>
+  <text x="38" y="230" font-family="'IBM Plex Mono',monospace" font-size="6" fill="#3a2a4e">Portfolio personnel — itérations multiples</text>
+
+  <!-- Browser 2 - TMI Orion -->
+  <rect x="410" y="30" width="360" height="200" rx="8" fill="#111018" stroke="#1e3a1e" stroke-width="1.5"/>
+  <rect x="410" y="30" width="360" height="28" rx="8" fill="#0d1a0d"/>
+  <rect x="410" y="50" width="360" height="8" fill="#0d1a0d"/>
+  <circle cx="430" cy="44" r="5" fill="#ff5f57"/>
+  <circle cx="446" cy="44" r="5" fill="#febc2e"/>
+  <circle cx="462" cy="44" r="5" fill="#28c840"/>
+  <rect x="480" y="36" width="200" height="16" rx="8" fill="#080e08" stroke="#1e3a1e" stroke-width="1"/>
+  <text x="580" y="48" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#4a7a4a">tmi-orion.fr</text>
+  <!-- TMI Orion content -->
+  <rect x="418" y="66" width="344" height="156" rx="4" fill="#06100a"/>
+  <!-- logo zone -->
+  <rect x="430" y="75" width="100" height="30" rx="3" fill="#0d2a0d" stroke="#1e3a1e" stroke-width="1"/>
+  <text x="480" y="95" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#4ade80" font-weight="bold">TMI ORION</text>
+  <!-- nav -->
+  <text x="570" y="90" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#4a7a4a">Accueil</text>
+  <text x="610" y="90" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#4a7a4a">Services</text>
+  <text x="655" y="90" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#4a7a4a">Contact</text>
+  <line x1="418" y1="115" x2="762" y2="115" stroke="#1e3a1e" stroke-width="1"/>
+  <!-- hero text -->
+  <text x="590" y="140" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#4ade80" font-weight="bold">Solutions IT</text>
+  <text x="590" y="156" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#4a7a4a">Expertise &amp; Innovation</text>
+  <rect x="550" y="165" width="80" height="16" rx="3" fill="#4ade80"/>
+  <text x="590" y="177" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#06100a" font-weight="bold">Découvrir</text>
+  <text x="418" y="230" font-family="'IBM Plex Mono',monospace" font-size="6" fill="#1e3a1e">Site vitrine — Entreprise familiale — TMI Orion</text>
+
+  <!-- Code panel bas gauche -->
+  <rect x="30" y="245" width="230" height="150" rx="8" fill="#0a0e0a" stroke="#1e3a1e" stroke-width="1"/>
+  <rect x="30" y="245" width="230" height="22" rx="8" fill="#0d1a0d"/>
+  <rect x="30" y="259" width="230" height="8" fill="#0d1a0d"/>
+  <text x="145" y="259" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#4a7a4a">index.html</text>
+  <text x="42" y="280" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#e879f9">&lt;!DOCTYPE html&gt;</text>
+  <text x="42" y="294" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#7b61ff">&lt;html&gt;</text>
+  <text x="48" y="308" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#22d3ee">  &lt;head&gt;</text>
+  <text x="54" y="322" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#4a6080">    &lt;link rel="stylesheet"...</text>
+  <text x="48" y="336" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#22d3ee">  &lt;/head&gt;</text>
+  <text x="48" y="350" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#22d3ee">  &lt;body&gt;</text>
+  <text x="54" y="364" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#4a6080">    &lt;script src="main.js"&gt;</text>
+  <rect x="195" y="353" width="8" height="12" fill="#a78bfa"><animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite"/></rect>
+
+  <!-- Stats bas droite -->
+  <rect x="275" y="245" width="495" height="150" rx="8" fill="#111018" stroke="#2a1a3e" stroke-width="1.5"/>
+  <rect x="275" y="245" width="495" height="22" rx="8" fill="#1a1030"/>
+  <rect x="275" y="259" width="495" height="8" fill="#1a1030"/>
+  <text x="522" y="259" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#a78bfa">Projets Web — Bilan</text>
+  <!-- skills utilisées -->
+  <text x="290" y="282" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#a78bfa">HTML5</text>
+  <rect x="340" y="273" width="120" height="10" rx="3" fill="#0a0818"/>
+  <rect x="340" y="273" width="114" height="10" rx="3" fill="#a78bfa" opacity="0.7"/>
+  <text x="468" y="282" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#64748b">95%</text>
+  <text x="290" y="300" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#22d3ee">CSS3  </text>
+  <rect x="340" y="291" width="120" height="10" rx="3" fill="#0a0818"/>
+  <rect x="340" y="291" width="110" height="10" rx="3" fill="#22d3ee" opacity="0.7"/>
+  <text x="468" y="300" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#64748b">92%</text>
+  <text x="290" y="318" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#f97316">JS    </text>
+  <rect x="340" y="309" width="120" height="10" rx="3" fill="#0a0818"/>
+  <rect x="340" y="309" width="88" height="10" rx="3" fill="#f97316" opacity="0.7"/>
+  <text x="468" y="318" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#64748b">73%</text>
+  <!-- badges -->
+  <rect x="500" y="272" width="70" height="18" rx="4" fill="#1a1030" stroke="#a78bfa" stroke-width="1"/>
+  <text x="535" y="285" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#a78bfa">Portfolio ×N</text>
+  <rect x="580" y="272" width="70" height="18" rx="4" fill="#0d1a0d" stroke="#4ade80" stroke-width="1"/>
+  <text x="615" y="285" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#4ade80">TMI Orion</text>
+  <rect x="500" y="298" width="70" height="18" rx="4" fill="#1a0f00" stroke="#f97316" stroke-width="1"/>
+  <text x="535" y="311" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#f97316">Vercel ✓</text>
+  <rect x="580" y="298" width="90" height="18" rx="4" fill="#0a0818" stroke="#22d3ee" stroke-width="1"/>
+  <text x="625" y="311" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#22d3ee">Formation JS ✓</text>
+  <rect x="290" y="340" width="460" height="22" rx="4" fill="#0d0a18" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
+  <text x="520" y="355" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#a78bfa">100% HTML · CSS · JavaScript vanilla — aucun framework</text>
+</svg>
