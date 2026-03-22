@@ -257,24 +257,29 @@ function initHeroCanvas() {
   let W, H;
 
   function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+    const hero = canvas.parentElement;
+    W = canvas.width  = hero ? hero.offsetWidth  : window.innerWidth;
+    H = canvas.height = hero ? hero.offsetHeight : window.innerHeight;
+    // Reinit particles spread across new dimensions
+    particles.forEach(p => {
+      if (p.x > W) p.x = Math.random() * W;
+      if (p.y > H) p.y = Math.random() * H;
+    });
   }
-  resize();
-  window.addEventListener('resize', resize, { passive: true });
-
-  const accentColor = () => getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00e5ff';
+  resize(); // set W and H BEFORE creating particles
 
   for (let i = 0; i < 55; i++) {
     particles.push({
-      x: Math.random() * 1200,
-      y: Math.random() * 800,
+      x: Math.random() * W,
+      y: Math.random() * H,
       vx: (Math.random() - .5) * .3,
       vy: (Math.random() - .5) * .3,
       r: Math.random() * 1.5 + .5,
       o: Math.random() * .5 + .1,
     });
   }
+
+  window.addEventListener('resize', resize, { passive: true });
 
   let mouse = { x: -999, y: -999 };
   canvas.parentElement.addEventListener('mousemove', e => {
