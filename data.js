@@ -34,6 +34,25 @@ const TRANSLATIONS = {
       success: "✓ Message envoyé ! Je te réponds bientôt.",
       error: "Configure Formspree ou utilise le lien mail ci-dessous.",
     },
+    about: {
+      title: "À propos",
+      lead: "Je suis Victor Ponthus, étudiant en Bac Pro CIEL à ma 3ème année. Passionné de tech, de cuisine et de cinéma — j'essaie de tout faire avec la même intensité.",
+      sub: "J'ai pas mal voyagé aussi. Voici quelques pays où je suis allé :",
+      cooking: {
+        title: "La cuisine",
+        desc: "Mon plat signature : poulet curry coco. Mais je maîtrise vraiment beaucoup de choses — de la carbonnade flamande au gratin dauphinois, en passant par de belles pièces de boeuf.",
+      },
+      cinema: {
+        title: "Le cinéma",
+        desc: "Plus de 100 films en 2024. Objectif 300 en 2025. J'ai vu toute la filmographie de Kubrick, courts-métrages inclus.",
+        fav1: "The Shining — film préféré",
+        fav2: "Eraserhead, Blue Velvet…",
+      },
+      sport: {
+        title: "Sport & musculation",
+        desc: "Hypertrophie, randonnée. Encore débutant mais ça progresse — les chiffres parlent d'eux-mêmes.",
+      },
+    },
     footer: { copy: "© 2025 Victor Ponthus — Tous droits réservés" },
     theme: { light: "Mode clair", dark: "Mode sombre" },
   },
@@ -66,6 +85,25 @@ const TRANSLATIONS = {
       send: "Send message",
       success: "✓ Message sent! I'll get back to you soon.",
       error: "Set up Formspree or use the email link below.",
+    },
+    about: {
+      title: "About",
+      lead: "I'm Victor Ponthus, a Bac Pro CIEL student in my 3rd year. Passionate about tech, cooking and cinema — I try to approach everything with the same intensity.",
+      sub: "I've also traveled quite a bit. Here are some countries I've visited:",
+      cooking: {
+        title: "Cooking",
+        desc: "My signature dish: coconut chicken curry. But I really master a wide range — from Flemish beef stew to gratin dauphinois, to beautiful cuts of beef.",
+      },
+      cinema: {
+        title: "Cinema",
+        desc: "Over 100 films in 2024. Target: 300 in 2025. I've seen Kubrick's entire filmography, including short films.",
+        fav1: "The Shining — all-time favorite",
+        fav2: "Eraserhead, Blue Velvet…",
+      },
+      sport: {
+        title: "Sport & fitness",
+        desc: "Hypertrophy training, hiking. Still a beginner but progressing — the numbers speak for themselves.",
+      },
     },
     footer: { copy: "© 2025 Victor Ponthus — All rights reserved" },
     theme: { light: "Light mode", dark: "Dark mode" },

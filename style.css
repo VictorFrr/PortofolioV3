@@ -554,3 +554,187 @@ footer{border-top:1px solid var(--border);padding:2rem 0;background:var(--bg)}
   .stats-inner{gap:1rem}
   .stat-divider{display:none}
 }
+
+/* ── ABOUT ──────────────────────────────────────────────────── */
+#about { background: var(--bg); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-intro { }
+.about-lead {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.about-sub {
+  font-size: .9rem;
+  color: var(--text-dim);
+  margin-bottom: 1.4rem;
+}
+.about-countries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.country-tag {
+  font-family: var(--font-m);
+  font-size: .72rem;
+  padding: .3rem .7rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text-dim);
+  transition: all var(--t);
+}
+.country-tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* Hobby grid */
+.hobby-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+.hobby-card:first-child { grid-column: 1 / -1; }
+
+.hobby-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  transition: all var(--t);
+  position: relative;
+  overflow: hidden;
+}
+.hobby-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s var(--spring);
+}
+.hobby-card:hover { border-color: var(--border-h); transform: translateY(-3px); box-shadow: var(--shadow-glow), var(--shadow-sm); }
+.hobby-card:hover::before { transform: scaleX(1); }
+
+.hobby-icon { font-size: 2rem; margin-bottom: .8rem; }
+.hobby-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: .6rem;
+}
+.hobby-desc {
+  font-size: .86rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.hobby-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+.hobby-tags span {
+  font-family: var(--font-m);
+  font-size: .68rem;
+  padding: .25rem .6rem;
+  background: rgba(0,229,255,.06);
+  border: 1px solid rgba(0,229,255,.12);
+  border-radius: 4px;
+  color: var(--accent);
+}
+[data-theme="light"] .hobby-tags span {
+  background: rgba(0,120,170,.06);
+  border-color: rgba(0,120,170,.15);
+}
+
+/* Cinema / directors */
+.hobby-highlight { display: flex; flex-direction: column; gap: .6rem; }
+.director-card {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: .6rem .8rem;
+  background: var(--bg3);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.director-rank {
+  font-family: var(--font-m);
+  font-size: .75rem;
+  color: var(--accent);
+  font-weight: 700;
+  min-width: 24px;
+}
+.director-name {
+  display: block;
+  font-weight: 700;
+  font-size: .9rem;
+}
+.director-fav {
+  display: block;
+  font-family: var(--font-m);
+  font-size: .7rem;
+  color: var(--text-muted);
+  margin-top: .1rem;
+}
+
+/* Lifts */
+.lifts-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.lift-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .7rem 1rem;
+  min-width: 70px;
+  transition: all var(--t);
+}
+.lift-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+.lift-num {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.lift-unit {
+  font-size: .65rem;
+  font-weight: 600;
+}
+.lift-name {
+  font-family: var(--font-m);
+  font-size: .65rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: .2rem;
+}
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .hobby-grid { grid-template-columns: 1fr; }
+  .hobby-card:first-child { grid-column: auto; }
+}

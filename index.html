@@ -26,6 +26,7 @@
     <div class="nav-inner">
       <a class="nav-logo" href="#" aria-label="Home">VP<span class="dot">.</span></a>
       <ul class="nav-links" id="navLinks">
+        <li><a href="#about"    data-i18n="nav.about"></a></li>
         <li><a href="#skills"   data-i18n="nav.skills"></a></li>
         <li><a href="#projects" data-i18n="nav.projects"></a></li>
         <li><a href="#contact"  data-i18n="nav.contact"></a></li>
@@ -44,6 +45,7 @@
       </div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
+      <a href="#about"    class="mob-link" data-i18n="nav.about"></a>
       <a href="#skills"   class="mob-link" data-i18n="nav.skills"></a>
       <a href="#projects" class="mob-link" data-i18n="nav.projects"></a>
       <a href="#contact"  class="mob-link" data-i18n="nav.contact"></a>
@@ -95,22 +97,112 @@
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <span class="stat-num" data-count="2">0</span>
+        <span class="stat-num" data-count="3">0</span>
         <span class="stat-label" data-i18n="stats.years"></span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-num" data-count="100">0</span><span class="stat-num">%</span>
-        <span class="stat-label" data-i18n="stats.passion"></span>
       </div>
     </div>
   </div>
+
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-number">01</span>
+        <h2 data-i18n="about.title"></h2>
+      </div>
+      <div class="about-grid">
+
+        <!-- Intro card -->
+        <div class="about-intro reveal">
+          <p class="about-lead" data-i18n="about.lead"></p>
+          <p class="about-sub" data-i18n="about.sub"></p>
+          <div class="about-countries">
+            <span class="country-tag">🇫🇷 France</span>
+            <span class="country-tag">🇪🇸 Espagne</span>
+            <span class="country-tag">🇵🇹 Portugal</span>
+            <span class="country-tag">🇮🇹 Italie</span>
+            <span class="country-tag">🇹🇭 Thaïlande</span>
+            <span class="country-tag">🇹🇷 Turquie</span>
+            <span class="country-tag">🇲🇦 Maroc</span>
+            <span class="country-tag">🇳🇱 Pays-Bas</span>
+            <span class="country-tag">🇪🇬 Égypte</span>
+            <span class="country-tag">🇺🇸 New York</span>
+            <span class="country-tag">🇪🇸 Canaries</span>
+            <span class="country-tag">🇬🇷 Crète</span>
+            <span class="country-tag">🇪🇸 Majorque</span>
+          </div>
+        </div>
+
+        <!-- Hobby cards -->
+        <div class="hobby-grid">
+
+          <div class="hobby-card reveal">
+            <div class="hobby-icon">🍳</div>
+            <h4 class="hobby-title" data-i18n="about.cooking.title"></h4>
+            <p class="hobby-desc" data-i18n="about.cooking.desc"></p>
+            <div class="hobby-tags">
+              <span>Poulet curry coco</span>
+              <span>Gratin dauphinois</span>
+              <span>Carbonnade flamande</span>
+              <span>Entrecôte</span>
+              <span>Jarret de porc</span>
+              <span>Couscous</span>
+            </div>
+          </div>
+
+          <div class="hobby-card reveal">
+            <div class="hobby-icon">🎬</div>
+            <h4 class="hobby-title" data-i18n="about.cinema.title"></h4>
+            <p class="hobby-desc" data-i18n="about.cinema.desc"></p>
+            <div class="hobby-highlight">
+              <div class="director-card">
+                <span class="director-rank">#1</span>
+                <div>
+                  <span class="director-name">Stanley Kubrick</span>
+                  <span class="director-fav" data-i18n="about.cinema.fav1"></span>
+                </div>
+              </div>
+              <div class="director-card">
+                <span class="director-rank">#2</span>
+                <div>
+                  <span class="director-name">David Lynch</span>
+                  <span class="director-fav" data-i18n="about.cinema.fav2"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hobby-card reveal">
+            <div class="hobby-icon">💪</div>
+            <h4 class="hobby-title" data-i18n="about.sport.title"></h4>
+            <p class="hobby-desc" data-i18n="about.sport.desc"></p>
+            <div class="lifts-grid">
+              <div class="lift-item">
+                <span class="lift-num">60<span class="lift-unit">kg</span></span>
+                <span class="lift-name">Bench press</span>
+              </div>
+              <div class="lift-item">
+                <span class="lift-num">90<span class="lift-unit">kg</span></span>
+                <span class="lift-name">Deadlift</span>
+              </div>
+              <div class="lift-item">
+                <span class="lift-num">55<span class="lift-unit">kg</span></span>
+                <span class="lift-name">Squat</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ── SKILLS ── -->
   <section id="skills">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-number">01</span>
+        <span class="section-number">02</span>
         <h2 data-i18n="skills.title"></h2>
       </div>
       <div class="skills-grid" id="skillsGrid"></div>
@@ -121,7 +213,7 @@
   <section id="projects">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-number">02</span>
+        <span class="section-number">03</span>
         <h2 data-i18n="projects.title"></h2>
       </div>
       <div class="projects-grid" id="projectsGrid"></div>
@@ -132,7 +224,7 @@
   <section id="contact">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-number">03</span>
+        <span class="section-number">04</span>
         <h2 data-i18n="contact.title"></h2>
       </div>
       <div class="contact-inner">
