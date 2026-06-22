@@ -3,7 +3,7 @@
 //  All project data + i18n translations
 // ============================================================
 
-const TRANSLATIONS = {
+window.TRANSLATIONS = {
   fr: {
     nav: { skills: "Compétences", projects: "Projets", about: "À propos", contact: "Contact" },
     hero: {
@@ -120,7 +120,7 @@ const TRANSLATIONS = {
   }
 };
 
-const COUNTRIES = [
+window.COUNTRIES = [
   { flag: "🇫🇷", fr: "France", en: "France" },
   { flag: "🇪🇸", fr: "Espagne", en: "Spain" },
   { flag: "🇵🇹", fr: "Portugal", en: "Portugal" },
@@ -136,7 +136,7 @@ const COUNTRIES = [
   { flag: "🇪🇸", fr: "Majorque", en: "Mallorca" },
 ];
 
-const PROJECTS = [
+window.PROJECTS = [
   {
     id: "tool",
     num: "01",

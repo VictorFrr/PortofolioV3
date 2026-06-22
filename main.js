@@ -12,6 +12,10 @@
 
   function t(){ return TRANSLATIONS[LANG]; }
 
+  function safe(fn, label){
+    try { fn(); } catch(err) { console.error("Render block failed:", label, err); }
+  }
+
   /* ---------------- THEME ---------------- */
   function initTheme(){
     const saved = localStorage.getItem("theme");
@@ -48,71 +52,89 @@
   function render(){
     const d = t();
 
-    // nav
-    $("#nav-skills").textContent = d.nav.skills;
-    $("#nav-projects").textContent = d.nav.projects;
-    $("#nav-about").textContent = d.nav.about;
-    $("#nav-contact").textContent = d.nav.contact;
-    $("#lang-btn").textContent = LANG.toUpperCase();
+    safe(() => {
+      // nav
+      $("#nav-skills").textContent = d.nav.skills;
+      $("#nav-projects").textContent = d.nav.projects;
+      $("#nav-about").textContent = d.nav.about;
+      $("#nav-contact").textContent = d.nav.contact;
+      $("#lang-btn").textContent = LANG.toUpperCase();
+    }, "nav");
 
-    // hero
-    $("#hero-tag").textContent = d.hero.tag;
-    $("#hero-greet").textContent = d.hero.greeting;
-    $("#hero-name").textContent = d.hero.name;
-    $("#hero-sub").textContent = d.hero.sub;
-    $("#hero-cta-projects").textContent = d.hero.cta_projects;
-    $("#hero-cta-contact").textContent = d.hero.cta_contact;
-    $("#scroll-label").textContent = d.hero.scroll;
+    safe(() => {
+      // hero
+      $("#hero-tag").textContent = d.hero.tag;
+      $("#hero-greet").textContent = d.hero.greeting;
+      $("#hero-name").textContent = d.hero.name;
+      $("#hero-sub").textContent = d.hero.sub;
+      $("#hero-cta-projects").textContent = d.hero.cta_projects;
+      $("#hero-cta-contact").textContent = d.hero.cta_contact;
+      $("#scroll-label").textContent = d.hero.scroll;
+    }, "hero");
 
-    // stats
-    $("#stat-projects-label").textContent = d.stats.projects;
-    $("#stat-langs-label").textContent = d.stats.langs;
-    $("#stat-years-label").textContent = d.stats.years;
-    $("#stat-consoles-label").textContent = d.stats.consoles;
+    safe(() => {
+      // stats
+      $("#stat-projects-label").textContent = d.stats.projects;
+      $("#stat-langs-label").textContent = d.stats.langs;
+      $("#stat-years-label").textContent = d.stats.years;
+      $("#stat-consoles-label").textContent = d.stats.consoles;
+    }, "stats");
 
-    // skills
-    $("#skills-eyebrow").textContent = d.skills.eyebrow;
-    $("#skills-title").textContent = d.skills.title;
-    renderSkills(d);
+    safe(() => {
+      // skills
+      $("#skills-eyebrow").textContent = d.skills.eyebrow;
+      $("#skills-title").textContent = d.skills.title;
+      renderSkills(d);
+    }, "skills");
 
-    // projects
-    $("#projects-eyebrow").textContent = d.projects.eyebrow;
-    $("#projects-title").textContent = d.projects.title;
-    renderProjects(d);
+    safe(() => {
+      // projects
+      $("#projects-eyebrow").textContent = d.projects.eyebrow;
+      $("#projects-title").textContent = d.projects.title;
+      renderProjects(d);
+    }, "projects");
 
-    // about
-    $("#about-eyebrow").textContent = d.about.eyebrow;
-    $("#about-title").textContent = d.about.title;
-    $("#about-lead").textContent = d.about.lead;
-    $("#about-sub").textContent = d.about.sub;
-    renderCountries();
-    $("#about-cooking-title").textContent = d.about.cooking.title;
-    $("#about-cooking-desc").textContent = d.about.cooking.desc;
-    $("#about-cinema-title").textContent = d.about.cinema.title;
-    $("#about-cinema-desc").textContent = d.about.cinema.desc;
-    $("#about-cinema-fav1").textContent = d.about.cinema.fav1;
-    $("#about-cinema-fav2").textContent = d.about.cinema.fav2;
-    $("#about-sport-title").textContent = d.about.sport.title;
-    $("#about-sport-desc").textContent = d.about.sport.desc;
+    safe(() => {
+      // about
+      $("#about-eyebrow").textContent = d.about.eyebrow;
+      $("#about-title").textContent = d.about.title;
+      $("#about-lead").textContent = d.about.lead;
+      $("#about-sub").textContent = d.about.sub;
+      renderCountries();
+      $("#about-cooking-title").textContent = d.about.cooking.title;
+      $("#about-cooking-desc").textContent = d.about.cooking.desc;
+      $("#about-cinema-title").textContent = d.about.cinema.title;
+      $("#about-cinema-desc").textContent = d.about.cinema.desc;
+      $("#about-cinema-fav1").textContent = d.about.cinema.fav1;
+      $("#about-cinema-fav2").textContent = d.about.cinema.fav2;
+      $("#about-sport-title").textContent = d.about.sport.title;
+      $("#about-sport-desc").textContent = d.about.sport.desc;
+    }, "about");
 
-    // contact
-    $("#contact-eyebrow").textContent = d.contact.eyebrow;
-    $("#contact-heading").textContent = d.contact.heading;
-    $("#contact-sub").textContent = d.contact.sub;
-    $("#label-name").textContent = d.contact.name;
-    $("#label-email").textContent = d.contact.email;
-    $("#label-message").textContent = d.contact.message;
-    $("#input-name").placeholder = d.contact.name_ph;
-    $("#input-email").placeholder = d.contact.email_ph;
-    $("#input-message").placeholder = d.contact.msg_ph;
-    $("#submit-btn").textContent = d.contact.send;
-    $("#availability-label").textContent = (LANG==="fr" ? "Disponible pour stage / alternance" : "Available for internship / apprenticeship");
+    safe(() => {
+      // contact
+      $("#contact-eyebrow").textContent = d.contact.eyebrow;
+      $("#contact-heading").textContent = d.contact.heading;
+      $("#contact-sub").textContent = d.contact.sub;
+      $("#label-name").textContent = d.contact.name;
+      $("#label-email").textContent = d.contact.email;
+      $("#label-message").textContent = d.contact.message;
+      $("#input-name").placeholder = d.contact.name_ph;
+      $("#input-email").placeholder = d.contact.email_ph;
+      $("#input-message").placeholder = d.contact.msg_ph;
+      $("#submit-btn").textContent = d.contact.send;
+      $("#availability-label").textContent = (LANG==="fr" ? "Disponible pour stage / alternance" : "Available for internship / apprenticeship");
+    }, "contact");
 
-    // footer
-    $("#footer-copy").textContent = d.footer.copy;
-    $("#footer-back-label").textContent = d.footer.back_top;
+    safe(() => {
+      // footer
+      $("#footer-copy").textContent = d.footer.copy;
+      $("#footer-back-label").textContent = d.footer.back_top;
+    }, "footer");
 
-    updateThemeIcon(document.documentElement.getAttribute("data-theme") || "dark");
+    safe(() => {
+      updateThemeIcon(document.documentElement.getAttribute("data-theme") || "dark");
+    }, "theme-icon");
   }
 
   function renderSkills(d){
@@ -140,7 +162,7 @@
             <div class="row-short">${c.short}</div>
           </div>
           <div class="row-tech">
-            ${p.tech.slice(0,3).map(tc => `<span>${tc}</span>`).join("")}
+            ${c.tech.slice(0,3).map(tc => `<span>${tc}</span>`).join("")}
           </div>
           <div class="row-arrow">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 19 19 5M9 5h10v10" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -176,7 +198,7 @@
     $("#modal-label-features").textContent = d.projects.features;
     $("#modal-features").innerHTML = c.features.map(f => `<li>${f}</li>`).join("");
     $("#modal-label-tech").textContent = d.projects.tech;
-    $("#modal-tech").innerHTML = p.tech.map(tc => `<span class="tag">${tc}</span>`).join("");
+    $("#modal-tech").innerHTML = c.tech.map(tc => `<span class="tag">${tc}</span>`).join("");
     $("#modal-backdrop").classList.add("open");
     document.body.style.overflow = "hidden";
   }
@@ -188,6 +210,11 @@
   /* ---------------- REVEAL ON SCROLL ---------------- */
   let revealObserver;
   function observeReveals(){
+    if (typeof IntersectionObserver === "undefined") {
+      // No IO support: just show everything immediately, no animation.
+      $$("[data-reveal]").forEach(el => el.classList.add("in"));
+      return;
+    }
     if(!revealObserver){
       revealObserver = new IntersectionObserver(entries => {
         entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add("in"); revealObserver.unobserve(e.target); } });
@@ -236,28 +263,32 @@
   /* ---------------- INIT ---------------- */
   function init(){
     document.documentElement.setAttribute("lang", LANG);
-    initTheme();
-    render();
-    initNavScroll();
-    initForm();
+    safe(initTheme, "initTheme");
+    safe(render, "render");
+    safe(initNavScroll, "initNavScroll");
+    safe(initForm, "initForm");
 
-    $("#theme-toggle").addEventListener("click", toggleTheme);
-    $("#lang-btn").addEventListener("click", () => setLang(LANG === "fr" ? "en" : "fr"));
-    $("#modal-close").addEventListener("click", closeModal);
-    $("#modal-backdrop").addEventListener("click", e => { if(e.target.id === "modal-backdrop") closeModal(); });
-    document.addEventListener("keydown", e => { if(e.key === "Escape") closeModal(); });
+    safe(() => {
+      $("#theme-toggle").addEventListener("click", toggleTheme);
+      $("#lang-btn").addEventListener("click", () => setLang(LANG === "fr" ? "en" : "fr"));
+      $("#modal-close").addEventListener("click", closeModal);
+      $("#modal-backdrop").addEventListener("click", e => { if(e.target.id === "modal-backdrop") closeModal(); });
+      document.addEventListener("keydown", e => { if(e.key === "Escape") closeModal(); });
+    }, "controls");
 
-    $$('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", e => {
-        const id = a.getAttribute("href");
-        if(id.length > 1){
-          const target = $(id);
-          if(target){ e.preventDefault(); target.scrollIntoView({ behavior:"smooth" }); }
-        }
+    safe(() => {
+      $$('a[href^="#"]').forEach(a => {
+        a.addEventListener("click", e => {
+          const id = a.getAttribute("href");
+          if(id.length > 1){
+            const target = $(id);
+            if(target){ e.preventDefault(); target.scrollIntoView({ behavior:"smooth" }); }
+          }
+        });
       });
-    });
+    }, "anchor-links");
 
-    animateCounters();
+    safe(animateCounters, "animateCounters");
 
     window.addEventListener("load", () => {
       setTimeout(() => { const l = $("#loader"); if(l) l.classList.add("hidden"); }, 300);
@@ -267,6 +298,12 @@
 
   function animateCounters(){
     const targets = { "stat-projects-num": 10, "stat-langs-num": 6, "stat-years-num": 3, "stat-consoles-num": 15 };
+
+    if (typeof IntersectionObserver === "undefined") {
+      Object.keys(targets).forEach(id => { const el = document.getElementById(id); if(el) el.textContent = targets[id] + "+"; });
+      return;
+    }
+
     const obs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
@@ -286,5 +323,13 @@
     Object.keys(targets).forEach(id => { const el = document.getElementById(id); if(el) obs.observe(el); });
   }
 
-  document.addEventListener("DOMContentLoaded", init);
+  document.addEventListener("DOMContentLoaded", function(){
+    try {
+      init();
+    } catch (err) {
+      console.error("Init error:", err);
+      const l = document.getElementById("loader");
+      if (l) l.classList.add("hidden");
+    }
+  });
 })();

@@ -5,10 +5,15 @@
 (function(){
   "use strict";
 
-  if (typeof THREE === "undefined") return;
-
   const canvas = document.getElementById("scene-canvas");
   if (!canvas) return;
+
+  if (typeof THREE === "undefined") {
+    // Three.js failed to load (CDN blocked/offline) — hide the canvas and bail out silently.
+    // The rest of the site must keep working without it.
+    canvas.style.display = "none";
+    return;
+  }
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

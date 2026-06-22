@@ -216,9 +216,21 @@
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" onerror="window.__THREE_FAILED__=true"></script>
 <script src="data.js"></script>
 <script src="scene.js"></script>
 <script src="main.js"></script>
+<script>
+  // Hard safety net: no matter what happens above, the loader must disappear
+  // and the page must never stay blank.
+  (function(){
+    function killLoader(){
+      var l = document.getElementById("loader");
+      if (l) l.classList.add("hidden");
+    }
+    window.addEventListener("error", killLoader);
+    setTimeout(killLoader, 1800);
+  })();
+</script>
 </body>
 </html>
