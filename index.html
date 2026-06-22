@@ -7,19 +7,13 @@
   <title>Victor Ponthus — Portfolio</title>
   <link rel="stylesheet" href="style.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
-  <!-- CURSOR -->
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
-
   <!-- SCROLL PROGRESS -->
   <div id="scroll-progress"></div>
-
-  <!-- NOISE OVERLAY -->
-  <div class="noise-overlay"></div>
 
   <!-- ── NAVBAR ── -->
   <nav id="navbar">
@@ -34,12 +28,12 @@
       <div class="nav-controls">
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="fr">FR</button>
-          <span class="lang-sep">|</span>
+          <span class="lang-sep">/</span>
           <button class="lang-btn" data-lang="en">EN</button>
         </div>
         <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="2" x2="12" y2="4.2"/><line x1="12" y1="19.8" x2="12" y2="22"/><line x1="4.9" y1="4.9" x2="6.4" y2="6.4"/><line x1="17.6" y1="17.6" x2="19.1" y2="19.1"/><line x1="2" y1="12" x2="4.2" y2="12"/><line x1="19.8" y1="12" x2="22" y2="12"/><line x1="4.9" y1="19.1" x2="6.4" y2="17.6"/><line x1="17.6" y1="6.4" x2="19.1" y2="4.9"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 14.5A8.5 8.5 0 119.5 3.5a7 7 0 0011 11z"/></svg>
         </button>
         <button class="hamburger" id="hamburger" aria-label="menu"><span></span><span></span><span></span></button>
       </div>
@@ -54,33 +48,26 @@
 
   <!-- ── HERO ── -->
   <section id="hero">
-    <canvas id="heroCanvas"></canvas>
-    <div class="hero-bg">
-      <div class="grid-lines"></div>
-      <div class="glow glow-1"></div>
-      <div class="glow glow-2"></div>
-      <div class="glow glow-3"></div>
-    </div>
-    <div class="hero-content">
-      <p class="hero-tag"><span class="tag-dot"></span><span data-i18n="hero.tag"></span></p>
-      <h1 class="hero-title">
-        <span class="line" data-i18n="hero.greeting"></span>
-        <span class="line accent" id="typedName" aria-label="Victor Ponthus"><span class="typed-placeholder">Victor Ponthus</span></span>
-      </h1>
-      <p class="hero-sub" data-i18n="hero.sub"></p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary mag-btn" data-i18n="hero.cta_projects"></a>
-        <a href="#contact"  class="btn btn-ghost  mag-btn" data-i18n="hero.cta_contact"></a>
-      </div>
-      <div class="hero-scroll">
-        <span data-i18n="hero.scroll"></span>
-        <div class="scroll-line"></div>
+    <div class="hero-scene" id="heroScene" aria-hidden="true"></div>
+    <div class="hero-veil"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow reveal"><span class="eyebrow-dot"></span><span data-i18n="hero.tag"></span></p>
+        <h1 class="hero-title reveal">
+          <span class="line" data-i18n="hero.greeting"></span>
+          <span class="line accent" id="typedName" aria-label="Victor Ponthus"><span class="typed-placeholder">Victor Ponthus</span></span>
+        </h1>
+        <p class="hero-sub reveal" data-i18n="hero.sub"></p>
+        <div class="hero-cta reveal">
+          <a href="#projects" class="btn btn-primary" data-i18n="hero.cta_projects"></a>
+          <a href="#contact"  class="btn btn-ghost"   data-i18n="hero.cta_contact"></a>
+        </div>
       </div>
     </div>
-    <!-- floating badges -->
-    <div class="hero-badge badge-1"><span>Python</span></div>
-    <div class="hero-badge badge-2"><span>Cybersec</span></div>
-    <div class="hero-badge badge-3"><span>Linux</span></div>
+    <div class="hero-scroll-cue">
+      <span data-i18n="hero.scroll"></span>
+      <span class="scroll-cue-line"></span>
+    </div>
   </section>
 
   <!-- ── STATS STRIP ── -->
@@ -103,12 +90,11 @@
     </div>
   </div>
 
-
   <!-- ── SKILLS ── -->
   <section id="skills">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-number">01</span>
+        <span class="eyebrow-label" data-i18n="skills.title"></span>
         <h2 data-i18n="skills.title"></h2>
       </div>
       <div class="skills-grid" id="skillsGrid"></div>
@@ -119,7 +105,7 @@
   <section id="projects">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-number">02</span>
+        <span class="eyebrow-label" data-i18n="projects.title"></span>
         <h2 data-i18n="projects.title"></h2>
       </div>
       <div class="projects-grid" id="projectsGrid"></div>
@@ -130,7 +116,7 @@
   <section id="about">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-number">03</span>
+        <span class="eyebrow-label" data-i18n="about.title"></span>
         <h2 data-i18n="about.title"></h2>
       </div>
       <div class="about-grid">
@@ -224,7 +210,7 @@
   <section id="contact">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-number">04</span>
+        <span class="eyebrow-label" data-i18n="contact.title"></span>
         <h2 data-i18n="contact.title"></h2>
       </div>
       <div class="contact-inner">
@@ -237,7 +223,7 @@
               GitHub
             </a>
             <a href="mailto:victor.ponthus@gmail.com" class="social-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               victor.ponthus@gmail.com
             </a>
           </div>
@@ -259,7 +245,7 @@
             <label for="fmessage" data-i18n="contact.message"></label>
             <textarea id="fmessage" rows="5" data-i18n-ph="contact.msg_ph" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary full mag-btn" data-i18n="contact.send"></button>
+          <button type="submit" class="btn btn-primary full" data-i18n="contact.send"></button>
           <p class="form-note" id="formNote"></p>
         </form>
       </div>
@@ -279,11 +265,10 @@
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal" id="modal" role="dialog" aria-modal="true">
       <button class="modal-close" id="modalClose" aria-label="Close">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
       <div class="modal-image-wrap">
         <img class="modal-image" id="modalImage" src="" alt=""/>
-        <div class="modal-image-gradient"></div>
       </div>
       <div class="modal-body">
         <div class="modal-header">
@@ -309,5 +294,6 @@
 
   <script src="data.js"></script>
   <script src="main.js"></script>
+  <script type="module" src="scene.js"></script>
 </body>
 </html>

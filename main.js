@@ -1,5 +1,5 @@
 /* ============================================================
-   MAIN.JS — Victor Ponthus Portfolio
+   MAIN.JS — Victor Ponthus Portfolio v3
    ============================================================ */
 
 let currentLang  = localStorage.getItem('lang')  || 'fr';
@@ -18,14 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initModal();
   initContactForm();
-  initCursor();
   initScrollProgress();
   initTypingEffect();
   initCounters();
-  initMagneticButtons();
   document.querySelectorAll('.reveal').forEach(el => observeReveal(el));
-  // Canvas AFTER a short delay so hero has its real size
-  setTimeout(initHeroCanvas, 100);
 });
 
 /* ── THEME ─────────────────────────────────────────────────── */
@@ -33,6 +29,7 @@ function applyTheme(theme) {
   currentTheme = theme;
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
+  window.dispatchEvent(new CustomEvent('themechange', { detail: theme }));
 }
 function initThemeToggle() {
   const btn = document.getElementById('themeBtn');
@@ -81,7 +78,7 @@ function initScrollReveal() {
       if (!entry.isIntersecting) return;
       const isCard = entry.target.classList.contains('project-card')
                   || entry.target.classList.contains('skill-category');
-      setTimeout(() => entry.target.classList.add('visible'), isCard ? i * 70 : 0);
+      setTimeout(() => entry.target.classList.add('visible'), isCard ? i * 60 : 0);
       revealObserver.unobserve(entry.target);
     });
   }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
@@ -109,20 +106,23 @@ function renderSkills() {
 
 /* ── RENDER PROJECTS ───────────────────────────────────────── */
 const GH_SVG  = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>`;
-const EXT_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+const EXT_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
 
 function renderProjects() {
   const grid = document.getElementById('projectsGrid');
   if (!grid) return;
   const lbl = TRANSLATIONS[currentLang].projects.details;
+  const MAX_TECH = 3;
   grid.innerHTML = PROJECTS.map(p => {
     const d = p[currentLang];
+    const visibleTech = d.tech.slice(0, MAX_TECH);
+    const extra = d.tech.length - MAX_TECH;
     const links = [
       p.github ? `<a href="${p.github}" target="_blank" rel="noopener" title="GitHub" onclick="event.stopPropagation()">${GH_SVG}</a>` : '',
       p.demo   ? `<a href="${p.demo}"   target="_blank" rel="noopener" title="Demo"   onclick="event.stopPropagation()">${EXT_SVG}</a>` : '',
     ].join('');
     return `
-      <article class="project-card reveal" data-id="${p.id}">
+      <article class="project-card reveal" data-id="${p.id}" tabindex="0" role="button" aria-label="${d.title}">
         <div class="card-image">
           <img src="${p.image}" alt="${d.title}" loading="lazy"/>
           <div class="card-image-overlay"><span>${lbl} →</span></div>
@@ -134,13 +134,19 @@ function renderProjects() {
           </div>
           <h3 class="card-title">${d.title}</h3>
           <p class="card-desc">${d.short}</p>
-          <div class="card-tech">${d.tech.map(t => `<span>${t}</span>`).join('')}</div>
+          <div class="card-tech">
+            ${visibleTech.map(t => `<span>${t}</span>`).join('')}
+            ${extra > 0 ? `<span class="more">+${extra}</span>` : ''}
+          </div>
         </div>
       </article>`;
   }).join('');
   grid.querySelectorAll('.project-card').forEach(card => {
     observeReveal(card);
     card.addEventListener('click', () => openModal(card.dataset.id));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card.dataset.id); }
+    });
   });
 }
 
@@ -150,9 +156,9 @@ function initNavbar() {
   const navLinks = document.querySelectorAll('.nav-links a');
   const sections = document.querySelectorAll('section[id]');
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 30);
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
     let cur = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) cur = s.id; });
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 160) cur = s.id; });
     navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${cur}`));
   }, { passive: true });
 }
@@ -234,47 +240,17 @@ function initContactForm() {
         note.textContent = T.success;
         note.style.color = 'var(--accent)';
         form.reset();
-      } else {
-        throw new Error('form error');
-      }
+      } else throw new Error();
     } catch {
-      // Fallback: open mail client directly
       const sub  = encodeURIComponent('Contact depuis portfolio');
       const body = encodeURIComponent(`Nom: ${payload.name}\nEmail: ${payload.email}\n\n${payload.message}`);
       window.open(`mailto:victor.ponthus@gmail.com?subject=${sub}&body=${body}`);
       note.textContent = T.error;
-      note.style.color = 'var(--text-muted)';
+      note.style.color = 'var(--ink-mute)';
     }
 
     btn.textContent = T.send;
     btn.disabled    = false;
-  });
-}
-
-/* ── CUSTOM CURSOR ─────────────────────────────────────────── */
-function initCursor() {
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-  const dot  = document.getElementById('cursor-dot');
-  const ring = document.getElementById('cursor-ring');
-  if (!dot || !ring) return;
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top  = my + 'px';
-  }, { passive: true });
-  (function animRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(animRing);
-  })();
-  document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
-  document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-click'));
-  document.querySelectorAll('a, button, .project-card, .tag, .lang-btn').forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
   });
 }
 
@@ -288,171 +264,28 @@ function initScrollProgress() {
   }, { passive: true });
 }
 
-/* ── HERO CANVAS ───────────────────────────────────────────── */
-function initHeroCanvas() {
-  const canvas = document.getElementById('heroCanvas');
-  if (!canvas) return;
-  const ctx  = canvas.getContext('2d');
-  const hero = document.getElementById('hero');
-  let W = 0, H = 0, animId = null;
-  let particles = [], meteors = [];
-
-  function getColors() {
-    return currentTheme === 'light'
-      ? { main: '#0077aa', alt: '#5b3fc8' }
-      : { main: '#00e5ff', alt: '#7b61ff' };
-  }
-
-  function resize() {
-    W = canvas.width  = hero.clientWidth  || window.innerWidth;
-    H = canvas.height = hero.clientHeight || window.innerHeight;
-  }
-
-  function spawnParticles() {
-    particles = [];
-    // More particles, 2 color types
-    for (let i = 0; i < 90; i++) {
-      particles.push({
-        x:    Math.random() * W,
-        y:    Math.random() * H,
-        vx:   (Math.random() - 0.5) * 0.4,
-        vy:   (Math.random() - 0.5) * 0.4,
-        r:    Math.random() * 2 + 0.4,
-        o:    Math.random() * 0.55 + 0.1,
-        type: Math.random() > 0.7 ? 1 : 0, // 0=main, 1=alt color
-      });
-    }
-  }
-
-  function spawnMeteor() {
-    meteors.push({
-      x:   Math.random() * W,
-      y:   -20,
-      len: Math.random() * 80 + 60,
-      spd: Math.random() * 4 + 3,
-      o:   0.7,
-    });
-  }
-
-  resize();
-  spawnParticles();
-  // Spawn meteors periodically
-  setInterval(spawnMeteor, 2800);
-  window.addEventListener('resize', () => { resize(); spawnParticles(); }, { passive: true });
-
-  let mouse = { x: -9999, y: -9999 };
-  hero.addEventListener('mousemove', e => {
-    const rect = hero.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  }, { passive: true });
-  hero.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    const { main, alt } = getColors();
-
-    // Draw meteors
-    meteors = meteors.filter(m => m.o > 0.05);
-    for (const m of meteors) {
-      const grad = ctx.createLinearGradient(m.x, m.y, m.x - m.len * 0.5, m.y - m.len);
-      grad.addColorStop(0, main + 'cc');
-      grad.addColorStop(1, main + '00');
-      ctx.beginPath();
-      ctx.moveTo(m.x, m.y);
-      ctx.lineTo(m.x - m.len * 0.5, m.y - m.len);
-      ctx.strokeStyle = grad;
-      ctx.globalAlpha = m.o;
-      ctx.lineWidth   = 1.5;
-      ctx.stroke();
-      m.x   += m.spd * 0.5;
-      m.y   += m.spd;
-      m.o   -= 0.008;
-    }
-
-    // Draw particles + connections
-    for (let i = 0; i < particles.length; i++) {
-      const p   = particles[i];
-      const col = p.type === 1 ? alt : main;
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0) p.x = W;
-      if (p.x > W) p.x = 0;
-      if (p.y < 0) p.y = H;
-      if (p.y > H) p.y = 0;
-
-      // Mouse attraction (subtle)
-      const mdx = mouse.x - p.x, mdy = mouse.y - p.y;
-      const md  = Math.sqrt(mdx * mdx + mdy * mdy);
-      if (md < 160 && md > 0) {
-        p.x += (mdx / md) * 0.5;
-        p.y += (mdy / md) * 0.5;
-      }
-
-      // Draw particle with soft glow
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = col;
-      ctx.globalAlpha = p.o;
-      ctx.fill();
-
-      // Connections between nearby particles
-      for (let j = i + 1; j < particles.length; j++) {
-        const p2 = particles[j];
-        const dx = p.x - p2.x, dy = p.y - p2.y;
-        const d  = Math.sqrt(dx * dx + dy * dy);
-        if (d < 130) {
-          const c2 = p2.type === 1 ? alt : main;
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p2.x, p2.y);
-          // Gradient line between the two particle colors
-          const lg = ctx.createLinearGradient(p.x, p.y, p2.x, p2.y);
-          lg.addColorStop(0, col);
-          lg.addColorStop(1, c2);
-          ctx.strokeStyle = lg;
-          ctx.globalAlpha = (1 - d / 130) * 0.2;
-          ctx.lineWidth   = 0.7;
-          ctx.stroke();
-        }
-      }
-    }
-    ctx.globalAlpha = 1;
-    animId = requestAnimationFrame(draw);
-  }
-
-  if (animId) cancelAnimationFrame(animId);
-  draw();
-}
-
 /* ── TYPING EFFECT ─────────────────────────────────────────── */
 function initTypingEffect() {
   const el = document.getElementById('typedName');
   if (!el) return;
   const text = 'Victor Ponthus';
   let i = 0;
-
-  // Key fix: set explicit width BEFORE clearing content
-  // This prevents the layout shift when the placeholder disappears
   const fullWidth = el.offsetWidth;
   if (fullWidth > 0) el.style.minWidth = fullWidth + 'px';
-
-  // Now clear and start typing
   el.innerHTML = '<span class="typed-cursor"></span>';
-
   function type() {
     if (i < text.length) {
       el.innerHTML = text.slice(0, ++i) + '<span class="typed-cursor"></span>';
-      setTimeout(type, 75 + Math.random() * 45);
+      setTimeout(type, 70 + Math.random() * 40);
     }
   }
-  setTimeout(type, 500);
+  setTimeout(type, 700);
 }
 
 /* ── COUNTERS ──────────────────────────────────────────────── */
 function initCounters() {
   const nums = document.querySelectorAll('.stat-num[data-count]');
   if (!nums.length || !('IntersectionObserver' in window)) return;
-
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -462,27 +295,12 @@ function initCounters() {
       const start  = performance.now();
       (function tick(now) {
         const p = Math.min((now - start) / dur, 1);
-        const e = 1 - Math.pow(2, -10 * p); // easeOutExpo
+        const e = 1 - Math.pow(2, -10 * p);
         el.textContent = Math.round(e * target);
         if (p < 1) requestAnimationFrame(tick);
       })(start);
       obs.unobserve(el);
     });
   }, { threshold: 0.5 });
-
   nums.forEach(el => obs.observe(el));
-}
-
-/* ── MAGNETIC BUTTONS ──────────────────────────────────────── */
-function initMagneticButtons() {
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-  document.querySelectorAll('.mag-btn').forEach(btn => {
-    btn.addEventListener('mousemove', e => {
-      const r  = btn.getBoundingClientRect();
-      const dx = (e.clientX - (r.left + r.width  / 2)) * 0.22;
-      const dy = (e.clientY - (r.top  + r.height / 2)) * 0.22;
-      btn.style.transform = `translate(${dx}px, ${dy}px) translateY(-2px)`;
-    });
-    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-  });
 }
