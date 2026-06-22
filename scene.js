@@ -1,188 +1,211 @@
-/* ============================================================
-   SCENE.JS — Three.js hero 3D scene
-   Icosahedron that reacts to:
-     • scroll  → slow rotation + slight scale-down as page scrolls
-     • mouse   → gentle tilt toward cursor (parallax feel)
-   Aesthetic: soft wireframe edges with glowing vertex points,
-   muted teal palette — matches the "soft" design system.
-   ============================================================ */
+// ============================================================
+//  SCENE.JS — Interactive 3D node network (Three.js)
+//  Reacts to scroll (depth/rotation) and mouse (parallax)
+// ============================================================
+(function(){
+  "use strict";
 
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js';
+  if (typeof THREE === "undefined") return;
 
-/* ── helpers ── */
-const lerp = (a, b, t) => a + (b - a) * t;
-const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+  const canvas = document.getElementById("scene-canvas");
+  if (!canvas) return;
 
-/* ── init ── */
-const mount  = document.getElementById('heroScene');
-if (!mount) throw new Error('heroScene mount not found');
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setClearColor(0x000000, 0);
-mount.appendChild(renderer.domElement);
+  let width = window.innerWidth;
+  let height = window.innerHeight;
 
-const scene  = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-camera.position.set(0, 0, 5.2);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(52, width/height, 0.1, 100);
+  camera.position.set(0, 0, 16);
 
-/* ── palette (synced with CSS) ── */
-function palette() {
-  const dark = document.documentElement.getAttribute('data-theme') !== 'light';
-  return {
-    edge:   dark ? 0x8fc9bb : 0x3e6259,
-    vertex: dark ? 0xc8e8e0 : 0x2a4d45,
-    glow:   dark ? 0x5aada0 : 0x4d8577,
-    edgeAlpha:   dark ? 0.28 : 0.22,
-    vertexAlpha: dark ? 0.75 : 0.65,
-  };
-}
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(width, height);
 
-/* ── geometry ── */
-const radius  = 1.55;
-const geo     = new THREE.IcosahedronGeometry(radius, 1);
+  /* ----- Build node network ----- */
+  const NODE_COUNT = 90;
+  const RADIUS = 8.5;
+  const nodes = [];
 
-// Wireframe — subtle lines
-const edgeGeo = new THREE.EdgesGeometry(geo);
-let pal = palette();
+  function getAccentColor(){
+    const theme = document.documentElement.getAttribute("data-theme") || "dark";
+    return theme === "light" ? 0x1f9d55 : 0x4ade80;
+  }
+  function getLineColor(){
+    const theme = document.documentElement.getAttribute("data-theme") || "dark";
+    return theme === "light" ? 0x1f9d55 : 0x4ade80;
+  }
 
-const wireMat = new THREE.LineBasicMaterial({
-  color:       pal.edge,
-  transparent: true,
-  opacity:     pal.edgeAlpha,
-  blending:    THREE.AdditiveBlending,
-  depthWrite:  false,
-});
-const wire = new THREE.LineSegments(edgeGeo, wireMat);
-scene.add(wire);
+  let accentColor = getAccentColor();
 
-// Vertex dots — glowing points
-const posAttr = geo.attributes.position;
-const uniqueVerts = [];
-const seen = new Set();
-for (let i = 0; i < posAttr.count; i++) {
-  const x = +posAttr.getX(i).toFixed(4);
-  const y = +posAttr.getY(i).toFixed(4);
-  const z = +posAttr.getZ(i).toFixed(4);
-  const key = `${x},${y},${z}`;
-  if (!seen.has(key)) { seen.add(key); uniqueVerts.push(x, y, z); }
-}
-const dotGeo  = new THREE.BufferGeometry();
-dotGeo.setAttribute('position', new THREE.Float32BufferAttribute(uniqueVerts, 3));
-const dotMat  = new THREE.PointsMaterial({
-  color:       pal.vertex,
-  size:        0.055,
-  transparent: true,
-  opacity:     pal.vertexAlpha,
-  sizeAttenutaionByDistance: true,
-  blending:    THREE.AdditiveBlending,
-  depthWrite:  false,
-});
-const dots = new THREE.Points(dotGeo, dotMat);
-scene.add(dots);
+  // Node positions: distributed in an ellipsoid-ish volume, off-center to the right
+  for (let i = 0; i < NODE_COUNT; i++) {
+    const phi = Math.acos(2 * Math.random() - 1);
+    const theta = Math.random() * Math.PI * 2;
+    const r = RADIUS * (0.45 + Math.random() * 0.55);
+    const x = r * Math.sin(phi) * Math.cos(theta) * 1.25;
+    const y = r * Math.sin(phi) * Math.sin(theta) * 0.95;
+    const z = r * Math.cos(phi) * 0.85;
+    nodes.push({
+      pos: new THREE.Vector3(x, y, z),
+      basePos: new THREE.Vector3(x, y, z),
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.15 + Math.random() * 0.25,
+    });
+  }
 
-// Subtle inner glow sphere
-const glowGeo = new THREE.SphereGeometry(radius * 0.72, 32, 24);
-const glowMat = new THREE.MeshBasicMaterial({
-  color:       pal.glow,
-  transparent: true,
-  opacity:     0.04,
-  wireframe:   false,
-  blending:    THREE.AdditiveBlending,
-  depthWrite:  false,
-});
-const glow = new THREE.Mesh(glowGeo, glowMat);
-scene.add(glow);
+  // Points geometry
+  const pointsGeo = new THREE.BufferGeometry();
+  const positions = new Float32Array(NODE_COUNT * 3);
+  nodes.forEach((n, i) => { positions[i*3]=n.pos.x; positions[i*3+1]=n.pos.y; positions[i*3+2]=n.pos.z; });
+  pointsGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
-/* ── resize ── */
-function resize() {
-  const w = mount.clientWidth;
-  const h = mount.clientHeight;
-  renderer.setSize(w, h, false);
-  camera.aspect = w / h;
-  camera.updateProjectionMatrix();
-}
-resize();
-const ro = new ResizeObserver(resize);
-ro.observe(mount);
+  const pointsMat = new THREE.PointsMaterial({
+    color: accentColor,
+    size: 0.085,
+    transparent: true,
+    opacity: 0.9,
+    sizeAttenuation: true,
+  });
+  const pointCloud = new THREE.Points(pointsGeo, pointsMat);
+  scene.add(pointCloud);
 
-/* ── state ── */
-const mouse   = { x: 0, y: 0 };   // normalised -1..1
-let   scrollT = 0;                 // 0..1 scroll progress through hero
-let   tiltX   = 0, tiltY = 0;     // smoothed rotation targets
-let   autoRot = 0;                 // slow auto-rotation angle
+  // Connections: connect nodes within a distance threshold, capped
+  const MAX_DIST = 3.1;
+  const lineVerts = [];
+  for (let i = 0; i < NODE_COUNT; i++) {
+    let connections = 0;
+    for (let j = i + 1; j < NODE_COUNT; j++) {
+      if (connections >= 3) break;
+      const d = nodes[i].basePos.distanceTo(nodes[j].basePos);
+      if (d < MAX_DIST) {
+        lineVerts.push(nodes[i].pos.x, nodes[i].pos.y, nodes[i].pos.z);
+        lineVerts.push(nodes[j].pos.x, nodes[j].pos.y, nodes[j].pos.z);
+        connections++;
+      }
+    }
+  }
+  const lineGeo = new THREE.BufferGeometry();
+  lineGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(lineVerts), 3));
+  const lineMat = new THREE.LineBasicMaterial({ color: getLineColor(), transparent:true, opacity:0.14 });
+  const lineMesh = new THREE.LineSegments(lineGeo, lineMat);
+  scene.add(lineMesh);
 
-/* ── mouse tracking ── */
-const hero = document.getElementById('hero');
-function onMove(e) {
-  const r = mount.getBoundingClientRect();
-  mouse.x = clamp((e.clientX - r.left) / r.width  * 2 - 1, -1, 1);
-  mouse.y = clamp((e.clientY - r.top)  / r.height * 2 - 1, -1, 1);
-}
-window.addEventListener('mousemove', onMove, { passive: true });
-// touch tilt
-window.addEventListener('touchmove', e => {
-  const t = e.touches[0];
-  const r = mount.getBoundingClientRect();
-  mouse.x = clamp((t.clientX - r.left) / r.width  * 2 - 1, -1, 1);
-  mouse.y = clamp((t.clientY - r.top)  / r.height * 2 - 1, -1, 1);
-}, { passive: true });
+  // A few larger "hub" nodes with subtle glow rings
+  const hubGroup = new THREE.Group();
+  const hubIndices = [];
+  for (let k = 0; k < 6; k++) hubIndices.push(Math.floor(Math.random()*NODE_COUNT));
+  hubIndices.forEach(idx => {
+    const ringGeo = new THREE.RingGeometry(0.16, 0.19, 24);
+    const ringMat = new THREE.MeshBasicMaterial({ color: accentColor, transparent:true, opacity:0.55, side:THREE.DoubleSide });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.position.copy(nodes[idx].basePos);
+    ring.lookAt(camera.position);
+    hubGroup.add(ring);
+  });
+  scene.add(hubGroup);
 
-/* ── scroll tracking ── */
-function updateScroll() {
-  const heroH = mount.parentElement.clientHeight || window.innerHeight;
-  scrollT = clamp(window.scrollY / heroH, 0, 1);
-}
-window.addEventListener('scroll', updateScroll, { passive: true });
-updateScroll();
+  /* ----- Container group for whole-scene transforms ----- */
+  const group = new THREE.Group();
+  group.add(pointCloud, lineMesh, hubGroup);
+  group.position.x = 2.6; // bias to the right side, away from text
+  scene.add(group);
 
-/* ── theme change ── */
-window.addEventListener('themechange', () => {
-  pal = palette();
-  wireMat.color.set(pal.edge);
-  wireMat.opacity = pal.edgeAlpha;
-  dotMat.color.set(pal.vertex);
-  dotMat.opacity = pal.vertexAlpha;
-  glowMat.color.set(pal.glow);
-});
+  /* ----- Mouse parallax ----- */
+  let mouseX = 0, mouseY = 0;
+  let targetRotX = 0, targetRotY = 0;
+  window.addEventListener("mousemove", (e) => {
+    mouseX = (e.clientX / width) * 2 - 1;
+    mouseY = (e.clientY / height) * 2 - 1;
+  }, { passive:true });
 
-/* ── render loop ── */
-const clock = new THREE.Clock();
+  /* ----- Scroll-driven depth & rotation ----- */
+  let scrollProgress = 0;
+  function updateScroll(){
+    const heroHeight = window.innerHeight;
+    scrollProgress = Math.min(1, Math.max(0, window.scrollY / heroHeight));
+  }
+  window.addEventListener("scroll", updateScroll, { passive:true });
+  updateScroll();
 
-function animate() {
-  requestAnimationFrame(animate);
+  /* ----- Resize ----- */
+  function onResize(){
+    width = window.innerWidth;
+    height = window.innerHeight;
+    camera.aspect = width/height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+  }
+  window.addEventListener("resize", onResize);
 
-  const dt = Math.min(clock.getDelta(), 0.05);
-  autoRot += dt * 0.18;                             // slow idle spin
+  /* ----- Theme reactivity ----- */
+  window.addEventListener("themechange", () => {
+    accentColor = getAccentColor();
+    pointsMat.color.setHex(accentColor);
+    lineMat.color.setHex(getLineColor());
+    hubGroup.children.forEach(r => r.material.color.setHex(accentColor));
+  });
 
-  // Parallax tilt from mouse (gentle)
-  const targetTiltY =  mouse.x * 0.45;
-  const targetTiltX = -mouse.y * 0.32;
-  tiltX = lerp(tiltX, targetTiltX, 1 - Math.pow(0.04, dt));
-  tiltY = lerp(tiltY, targetTiltY, 1 - Math.pow(0.04, dt));
+  /* ----- Animation loop ----- */
+  const clock = new THREE.Clock();
+  let visible = true;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { visible = e.isIntersecting; });
+  }, { threshold: 0 });
+  const heroEl = document.getElementById("hero");
+  if (heroEl) io.observe(heroEl);
 
-  // Compose rotation: auto-spin + tilt
-  wire.rotation.y = autoRot + tiltY;
-  wire.rotation.x = tiltX;
-  dots.rotation.copy(wire.rotation);
-  glow.rotation.copy(wire.rotation);
+  function animate(){
+    requestAnimationFrame(animate);
+    if (!visible) return;
 
-  // Scale + opacity fade as user scrolls past hero
-  const sc = lerp(1, 0.72, scrollT);
-  wire.scale.setScalar(sc);
-  dots.scale.setScalar(sc);
-  glow.scale.setScalar(sc);
-  wireMat.opacity = lerp(pal.edgeAlpha,   0.0, scrollT * 1.4);
-  dotMat.opacity  = lerp(pal.vertexAlpha, 0.0, scrollT * 1.4);
-  glowMat.opacity = lerp(0.04,            0.0, scrollT * 1.4);
+    const t = clock.getElapsedTime();
 
-  // Camera drift — very subtle breathe
-  const t = clock.getElapsedTime();
-  camera.position.y = Math.sin(t * 0.2) * 0.04;
-  camera.position.x = Math.cos(t * 0.14) * 0.025;
-  camera.lookAt(0, 0, 0);
+    // gentle ambient float per-node
+    if (!reduceMotion) {
+      const posAttr = pointsGeo.attributes.position;
+      const linePosAttr = lineGeo.attributes.position;
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        const fx = Math.sin(t * n.speed + n.phase) * 0.18;
+        const fy = Math.cos(t * n.speed * 0.8 + n.phase) * 0.18;
+        const fz = Math.sin(t * n.speed * 0.6 + n.phase * 1.3) * 0.18;
+        n.pos.set(n.basePos.x + fx, n.basePos.y + fy, n.basePos.z + fz);
+        posAttr.array[i*3] = n.pos.x;
+        posAttr.array[i*3+1] = n.pos.y;
+        posAttr.array[i*3+2] = n.pos.z;
+      }
+      posAttr.needsUpdate = true;
 
-  renderer.render(scene, camera);
-}
+      // rebuild line endpoints to follow nodes (cheap approximation: skip full rebuild, just nudge whole mesh)
+      linePosAttr.needsUpdate = false;
+    }
 
-animate();
+    // mouse parallax — smooth lerp toward target
+    targetRotX += (mouseY * 0.18 - targetRotX) * 0.04;
+    targetRotY += (mouseX * 0.22 - targetRotY) * 0.04;
+
+    // scroll-driven base rotation + depth push
+    const scrollRotY = scrollProgress * Math.PI * 0.35;
+    const scrollZ = scrollProgress * 4.5;
+    const scrollFade = 1 - scrollProgress * 0.9;
+
+    group.rotation.x = targetRotX + scrollProgress * 0.15;
+    group.rotation.y = targetRotY + scrollRotY + t * 0.025;
+    group.position.z = -scrollZ;
+
+    pointsMat.opacity = Math.max(0, 0.9 * scrollFade);
+    lineMat.opacity = Math.max(0, 0.14 * scrollFade);
+    hubGroup.children.forEach(r => { r.material.opacity = Math.max(0, 0.55 * scrollFade); r.lookAt(camera.position); });
+
+    renderer.render(scene, camera);
+  }
+
+  // fade in once ready
+  requestAnimationFrame(() => {
+    canvas.classList.add("ready");
+  });
+
+  animate();
+})();

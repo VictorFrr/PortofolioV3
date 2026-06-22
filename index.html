@@ -1,299 +1,224 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Victor Ponthus — Portfolio Bac Pro CIEL, Cybersécurité & Développement"/>
-  <title>Victor Ponthus — Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victor Ponthus — Cybersécurité, Développement & Hardware</title>
+<meta name="description" content="Portfolio de Victor Ponthus, étudiant Bac Pro CIEL — projets en cybersécurité, développement logiciel et hardware.">
+<meta name="theme-color" content="#0a0b0d">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- SCROLL PROGRESS -->
-  <div id="scroll-progress"></div>
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-text"><span class="loader-dot"></span> Initializing</div>
+</div>
 
-  <!-- ── NAVBAR ── -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a class="nav-logo" href="#" aria-label="Home">VP<span class="dot">.</span></a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#skills"   data-i18n="nav.skills"></a></li>
-        <li><a href="#projects" data-i18n="nav.projects"></a></li>
-        <li><a href="#about"    data-i18n="nav.about"></a></li>
-        <li><a href="#contact"  data-i18n="nav.contact"></a></li>
-      </ul>
-      <div class="nav-controls">
-        <div class="lang-switcher">
-          <button class="lang-btn active" data-lang="fr">FR</button>
-          <span class="lang-sep">/</span>
-          <button class="lang-btn" data-lang="en">EN</button>
-        </div>
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="2" x2="12" y2="4.2"/><line x1="12" y1="19.8" x2="12" y2="22"/><line x1="4.9" y1="4.9" x2="6.4" y2="6.4"/><line x1="17.6" y1="17.6" x2="19.1" y2="19.1"/><line x1="2" y1="12" x2="4.2" y2="12"/><line x1="19.8" y1="12" x2="22" y2="12"/><line x1="4.9" y1="19.1" x2="6.4" y2="17.6"/><line x1="17.6" y1="6.4" x2="19.1" y2="4.9"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 14.5A8.5 8.5 0 119.5 3.5a7 7 0 0011 11z"/></svg>
-        </button>
-        <button class="hamburger" id="hamburger" aria-label="menu"><span></span><span></span><span></span></button>
-      </div>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#skills"   class="mob-link" data-i18n="nav.skills"></a>
-      <a href="#projects" class="mob-link" data-i18n="nav.projects"></a>
-      <a href="#about"    class="mob-link" data-i18n="nav.about"></a>
-      <a href="#contact"  class="mob-link" data-i18n="nav.contact"></a>
-    </div>
-  </nav>
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">VP<span>.</span></div>
+  <div class="nav-links">
+    <a href="#skills" id="nav-skills">Compétences</a>
+    <a href="#projects" id="nav-projects">Projets</a>
+    <a href="#about" id="nav-about">À propos</a>
+    <a href="#contact" id="nav-contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="icon-btn lang-btn" id="lang-btn" aria-label="Switch language">FR</button>
+    <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</nav>
 
-  <!-- ── HERO ── -->
-  <section id="hero">
-    <div class="hero-scene" id="heroScene" aria-hidden="true"></div>
-    <div class="hero-veil"></div>
-    <div class="container hero-inner">
-      <div class="hero-copy">
-        <p class="eyebrow reveal"><span class="eyebrow-dot"></span><span data-i18n="hero.tag"></span></p>
-        <h1 class="hero-title reveal">
-          <span class="line" data-i18n="hero.greeting"></span>
-          <span class="line accent" id="typedName" aria-label="Victor Ponthus"><span class="typed-placeholder">Victor Ponthus</span></span>
-        </h1>
-        <p class="hero-sub reveal" data-i18n="hero.sub"></p>
-        <div class="hero-cta reveal">
-          <a href="#projects" class="btn btn-primary" data-i18n="hero.cta_projects"></a>
-          <a href="#contact"  class="btn btn-ghost"   data-i18n="hero.cta_contact"></a>
-        </div>
-      </div>
-    </div>
-    <div class="hero-scroll-cue">
-      <span data-i18n="hero.scroll"></span>
-      <span class="scroll-cue-line"></span>
-    </div>
-  </section>
-
-  <!-- ── STATS STRIP ── -->
-  <div class="stats-strip">
-    <div class="stats-inner">
-      <div class="stat-item">
-        <span class="stat-num" data-count="10">0</span>
-        <span class="stat-label" data-i18n="stats.projects"></span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-num" data-count="4">0</span>
-        <span class="stat-label" data-i18n="stats.langs"></span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-num" data-count="3">0</span>
-        <span class="stat-label" data-i18n="stats.years"></span>
+<!-- HERO -->
+<header id="hero">
+  <canvas id="scene-canvas"></canvas>
+  <div class="hero-content">
+    <div class="wrap">
+      <div class="hero-tag" id="hero-tag"></div>
+      <div class="hero-greet" id="hero-greet"></div>
+      <h1 class="hero-name" id="hero-name"></h1>
+      <p class="hero-sub" id="hero-sub"></p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn btn-primary" id="hero-cta-projects"></a>
+        <a href="#contact" class="btn btn-ghost" id="hero-cta-contact"></a>
       </div>
     </div>
   </div>
+  <div class="scroll-indicator">
+    <span class="scroll-line"></span>
+    <span id="scroll-label"></span>
+  </div>
+</header>
 
-  <!-- ── SKILLS ── -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow-label" data-i18n="skills.title"></span>
-        <h2 data-i18n="skills.title"></h2>
-      </div>
-      <div class="skills-grid" id="skillsGrid"></div>
+<!-- STATS -->
+<section id="stats">
+  <div class="wrap stats-grid">
+    <div class="stat-item">
+      <div class="stat-num" id="stat-projects-num">0+</div>
+      <div class="stat-label" id="stat-projects-label"></div>
     </div>
-  </section>
-
-  <!-- ── PROJECTS ── -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow-label" data-i18n="projects.title"></span>
-        <h2 data-i18n="projects.title"></h2>
-      </div>
-      <div class="projects-grid" id="projectsGrid"></div>
+    <div class="stat-item">
+      <div class="stat-num" id="stat-langs-num">0+</div>
+      <div class="stat-label" id="stat-langs-label"></div>
     </div>
-  </section>
+    <div class="stat-item">
+      <div class="stat-num" id="stat-years-num">0+</div>
+      <div class="stat-label" id="stat-years-label"></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" id="stat-consoles-num">0+</div>
+      <div class="stat-label" id="stat-consoles-label"></div>
+    </div>
+  </div>
+</section>
 
-  <!-- ── ABOUT ── -->
-  <section id="about">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow-label" data-i18n="about.title"></span>
-        <h2 data-i18n="about.title"></h2>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow" id="skills-eyebrow"></div>
+      <h2 class="section-title" id="skills-title"></h2>
+    </div>
+    <div class="skills-grid" id="skills-grid"></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow" id="projects-eyebrow"></div>
+      <h2 class="section-title" id="projects-title"></h2>
+    </div>
+    <div class="projects-list" id="projects-list"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow" id="about-eyebrow"></div>
+      <h2 class="section-title" id="about-title"></h2>
+    </div>
+    <div class="about-grid">
+      <div data-reveal>
+        <p class="about-lead" id="about-lead"></p>
+        <p class="about-sub" id="about-sub"></p>
+        <div class="country-list" id="country-list"></div>
       </div>
-      <div class="about-grid">
-
-        <!-- Intro card -->
-        <div class="about-intro reveal">
-          <p class="about-lead" data-i18n="about.lead"></p>
-          <p class="about-sub" data-i18n="about.sub"></p>
-          <div class="about-countries">
-            <span class="country-tag">🇫🇷 France</span>
-            <span class="country-tag">🇪🇸 Espagne</span>
-            <span class="country-tag">🇵🇹 Portugal</span>
-            <span class="country-tag">🇮🇹 Italie</span>
-            <span class="country-tag">🇹🇭 Thaïlande</span>
-            <span class="country-tag">🇹🇷 Turquie</span>
-            <span class="country-tag">🇲🇦 Maroc</span>
-            <span class="country-tag">🇳🇱 Pays-Bas</span>
-            <span class="country-tag">🇪🇬 Égypte</span>
-            <span class="country-tag">🇺🇸 États-Unis</span>
-            <span class="country-tag">🇪🇸 Canaries</span>
-            <span class="country-tag">🇬🇷 Crète</span>
-            <span class="country-tag">🇪🇸 Majorque</span>
-          </div>
+      <div class="about-cards" data-reveal>
+        <div class="about-card">
+          <h3 id="about-cooking-title"></h3>
+          <p id="about-cooking-desc"></p>
         </div>
-
-        <!-- Hobby cards -->
-        <div class="hobby-grid">
-
-          <div class="hobby-card reveal">
-            <div class="hobby-icon">🍳</div>
-            <h4 class="hobby-title" data-i18n="about.cooking.title"></h4>
-            <p class="hobby-desc" data-i18n="about.cooking.desc"></p>
-            <div class="hobby-tags">
-              <span>Poulet curry coco</span>
-              <span>Gratin dauphinois</span>
-              <span>Carbonnade flamande</span>
-              <span>Entrecôte</span>
-              <span>Jarret de porc</span>
-              <span>Couscous</span>
-            </div>
-          </div>
-
-          <div class="hobby-card reveal">
-            <div class="hobby-icon">🎬</div>
-            <h4 class="hobby-title" data-i18n="about.cinema.title"></h4>
-            <p class="hobby-desc" data-i18n="about.cinema.desc"></p>
-            <div class="hobby-highlight">
-              <div class="director-card">
-                <span class="director-rank">#1</span>
-                <div>
-                  <span class="director-name">Stanley Kubrick</span>
-                  <span class="director-fav" data-i18n="about.cinema.fav1"></span>
-                </div>
-              </div>
-              <div class="director-card">
-                <span class="director-rank">#2</span>
-                <div>
-                  <span class="director-name">David Lynch</span>
-                  <span class="director-fav" data-i18n="about.cinema.fav2"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="hobby-card reveal">
-            <div class="hobby-icon">💪</div>
-            <h4 class="hobby-title" data-i18n="about.sport.title"></h4>
-            <p class="hobby-desc" data-i18n="about.sport.desc"></p>
-            <div class="lifts-grid">
-              <div class="lift-item">
-                <span class="lift-num">70<span class="lift-unit">kg</span></span>
-                <span class="lift-name">Bench press</span>
-              </div>
-              <div class="lift-item">
-                <span class="lift-num">100<span class="lift-unit">kg</span></span>
-                <span class="lift-name">Deadlift</span>
-              </div>
-              <div class="lift-item">
-                <span class="lift-num">60<span class="lift-unit">kg</span></span>
-                <span class="lift-name">Squat</span>
-              </div>
-            </div>
-          </div>
-
+        <div class="about-card">
+          <h3 id="about-cinema-title"></h3>
+          <p id="about-cinema-desc"></p>
+          <div class="fav" id="about-cinema-fav1"></div>
+          <div class="fav" id="about-cinema-fav2"></div>
+        </div>
+        <div class="about-card">
+          <h3 id="about-sport-title"></h3>
+          <p id="about-sport-desc"></p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ── CONTACT ── -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow-label" data-i18n="contact.title"></span>
-        <h2 data-i18n="contact.title"></h2>
-      </div>
-      <div class="contact-inner">
-        <div class="contact-text reveal">
-          <h3 data-i18n="contact.heading"></h3>
-          <p data-i18n="contact.sub"></p>
-          <div class="contact-socials">
-            <a href="https://github.com/VictorFrr" target="_blank" class="social-link">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="mailto:victor.ponthus@gmail.com" class="social-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              victor.ponthus@gmail.com
-            </a>
-          </div>
-          <div class="availability-badge">
-            <span class="avail-dot"></span>
-            <span data-i18n="contact.available"></span>
-          </div>
-        </div>
-        <form class="contact-form reveal" id="contactForm">
-          <div class="form-group">
-            <label for="fname" data-i18n="contact.name"></label>
-            <input type="text" id="fname" data-i18n-ph="contact.name_ph" required/>
-          </div>
-          <div class="form-group">
-            <label for="femail" data-i18n="contact.email"></label>
-            <input type="email" id="femail" data-i18n-ph="contact.email_ph" required/>
-          </div>
-          <div class="form-group">
-            <label for="fmessage" data-i18n="contact.message"></label>
-            <textarea id="fmessage" rows="5" data-i18n-ph="contact.msg_ph" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary full" data-i18n="contact.send"></button>
-          <p class="form-note" id="formNote"></p>
-        </form>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-left" data-reveal>
+      <div class="eyebrow" id="contact-eyebrow"></div>
+      <h2 id="contact-heading"></h2>
+      <p id="contact-sub"></p>
+      <a href="mailto:contact@victorponthus.dev" class="contact-email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        contact@victorponthus.dev
+      </a>
+      <div class="availability">
+        <span class="dot-live"></span>
+        <span id="availability-label"></span>
       </div>
     </div>
-  </section>
+    <form id="contact-form" data-reveal action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-group">
+        <label for="input-name" id="label-name"></label>
+        <input type="text" id="input-name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="input-email" id="label-email"></label>
+        <input type="email" id="input-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="input-message" id="label-message"></label>
+        <textarea id="input-message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%; justify-content:center;"></button>
+      <div class="form-msg" id="form-msg"></div>
+    </form>
+  </div>
+</section>
 
-  <!-- ── FOOTER ── -->
-  <footer>
-    <div class="container footer-inner">
-      <span class="footer-logo">VP<span class="dot">.</span></span>
-      <span class="footer-copy" data-i18n="footer.copy"></span>
-      <a href="https://github.com/VictorFrr" target="_blank" class="footer-gh">GitHub ↗</a>
-    </div>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; width:100%;">
+    <span id="footer-copy"></span>
+    <a href="#hero" class="footer-back" id="footer-back">
+      <span id="footer-back-label"></span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</footer>
 
-  <!-- ── MODAL ── -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal" id="modal" role="dialog" aria-modal="true">
-      <button class="modal-close" id="modalClose" aria-label="Close">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+<!-- PROJECT MODAL -->
+<div id="modal-backdrop">
+  <div id="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <button class="modal-close" id="modal-close" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>
       </button>
-      <div class="modal-image-wrap">
-        <img class="modal-image" id="modalImage" src="" alt=""/>
+      <div class="modal-num" id="modal-num"></div>
+      <h3 class="modal-title" id="modal-title"></h3>
+      <div class="modal-links">
+        <a href="#" target="_blank" rel="noopener" class="btn btn-ghost" id="modal-github" style="padding:9px 18px; font-size:13px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px;"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.31.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.522 2 12 2Z"/></svg>
+          GitHub
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="btn btn-ghost" id="modal-demo" style="padding:9px 18px; font-size:13px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-right:6px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+          Démo
+        </a>
       </div>
-      <div class="modal-body">
-        <div class="modal-header">
-          <span class="modal-num" id="modalNum"></span>
-          <div class="modal-actions" id="modalActions"></div>
-        </div>
-        <h2 class="modal-title" id="modalTitle"></h2>
-        <div class="modal-section">
-          <h4 class="modal-section-title" id="modalContextLabel"></h4>
-          <p class="modal-context" id="modalContext"></p>
-        </div>
-        <div class="modal-section">
-          <h4 class="modal-section-title" id="modalFeaturesLabel"></h4>
-          <ul class="modal-features" id="modalFeatures"></ul>
-        </div>
-        <div class="modal-section">
-          <h4 class="modal-section-title" id="modalTechLabel"></h4>
-          <div class="modal-tech" id="modalTech"></div>
-        </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <h4 id="modal-label-context"></h4>
+        <p id="modal-context"></p>
+      </div>
+      <div class="modal-section">
+        <h4 id="modal-label-features"></h4>
+        <ul class="feature-list" id="modal-features"></ul>
+      </div>
+      <div class="modal-section" style="margin-bottom:0;">
+        <h4 id="modal-label-tech"></h4>
+        <div class="modal-tech" id="modal-tech"></div>
       </div>
     </div>
   </div>
+</div>
 
-  <script src="data.js"></script>
-  <script src="main.js"></script>
-  <script type="module" src="scene.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="data.js"></script>
+<script src="scene.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
