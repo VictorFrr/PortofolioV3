@@ -129,11 +129,12 @@ h1,h2,h3{ font-family:var(--font-display); font-weight:600; letter-spacing:-0.01
 ============================================================ */
 #hero{
   position:relative; min-height:100vh; display:flex; flex-direction:column;
-  justify-content:center; overflow:hidden;
+  justify-content:center;
 }
 #scene-canvas{
-  position:absolute; inset:0; width:100%; height:100%; z-index:1;
+  position:fixed; inset:0; width:100%; height:100%; z-index:0;
   opacity:0; transition:opacity 1.4s var(--ease);
+  pointer-events:none;
 }
 #scene-canvas.ready{ opacity:1; }
 .hero-content{
@@ -177,7 +178,12 @@ h1,h2,h3{ font-family:var(--font-display); font-weight:600; letter-spacing:-0.01
 /* ============================================================
    STATS BAR
 ============================================================ */
-#stats{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+#stats{
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  position:relative; z-index:1;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(18px);
+}
 .stats-grid{
   display:grid; grid-template-columns:repeat(4,1fr);
   padding:48px var(--pad);
@@ -190,7 +196,12 @@ h1,h2,h3{ font-family:var(--font-display); font-weight:600; letter-spacing:-0.01
 /* ============================================================
    SECTION GENERIC
 ============================================================ */
-section{ position:relative; padding:120px 0; }
+section{
+  position:relative; z-index:1; padding:120px 0;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(18px);
+}
+#hero{ z-index:1; }
 .section-head{ margin-bottom:64px; max-width:680px; }
 .section-head p{ color:var(--text-dim); font-size:16px; }
 
@@ -319,6 +330,9 @@ footer{
   border-top:1px solid var(--line); padding:36px 0;
   display:flex; align-items:center; justify-content:space-between;
   font-size:13px; color:var(--text-faint);
+  position:relative; z-index:1;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(18px);
 }
 .footer-back{ display:flex; align-items:center; gap:8px; color:var(--text-dim); transition:color .25s var(--ease); }
 .footer-back:hover{ color:var(--accent); }
