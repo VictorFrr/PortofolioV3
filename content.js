@@ -7,7 +7,7 @@ export const REV = "2026.10"; // change quand tu fais une grosse mise à jour
 
 export const ME = {
   tagline: "Je construis des choses qui compilent, qui scannent, qui s'allument.",
-  chips: ["École 42 — Piscine réussie", "Tronc commun en cours", "Bac Pro CIEL · mention Bien"],
+  chips: ["Tronc commun en cours", "École 42 — Piscine réussie", "Bac Pro CIEL · mention Bien"],
   bio: "Sorti d'un Bac Pro CIEL (cybersécurité, informatique, réseaux, électronique) avec mention Bien, j'ai décroché ma place à l'école 42 en passant la Piscine. J'y suis en tronc commun. Je code en C, je fais du pentest en labo, je soude, je monte des serveurs avec du matériel de récup — et je cours, je roule et je marche pour garder la tête claire.",
   links: [
     { label: "GitHub", url: "https://github.com/VictorFrr" },
