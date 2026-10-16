@@ -8,7 +8,7 @@ export const REV = "2026.10"; // change quand tu fais une grosse mise à jour
 export const ME = {
   tagline: "Je construis des choses qui compilent, qui scannent, qui s'allument.",
   chips: ["École 42 — Piscine réussie", "Tronc commun en cours", "Bac Pro CIEL · mention Bien"],
-  bio: "Sorti d'un Bac Pro CIEL (cybersécurité, informatique, réseaux, électronique) avec mention Bien, j'ai décroché ma place à l'école 42 en passant la Piscine. J'y suis en tronc commun. Je code en C, je fais du pentest en labo, je soude, je monte des serveurs avec du matériel de récup — et je cours pour garder la tête claire.",
+  bio: "Sorti d'un Bac Pro CIEL (cybersécurité, informatique, réseaux, électronique) avec mention Bien, j'ai décroché ma place à l'école 42 en passant la Piscine. J'y suis en tronc commun. Je code en C, je fais du pentest en labo, je soude, je monte des serveurs avec du matériel de récup — et je cours, je roule et je marche pour garder la tête claire.",
   links: [
     { label: "GitHub", url: "https://github.com/VictorFrr" },
     // { label: "LinkedIn", url: "https://..." },
@@ -25,6 +25,7 @@ export const SPECS = [
   ["10 km", "< 55 min"],
   ["5 km", "< 26 min"],
   ["Langages", "C · Python · JS · PHP"],
+  ["Anglais", "Courant"],
 ];
 
 export const PROJECTS = [
@@ -78,12 +79,12 @@ export const PROJECTS = [
 export const EDU = [
   { when: "2026 →", what: "École 42 — tronc commun", note: "Admis après la Piscine. Apprentissage par projets, en C.", hot: true },
   { when: "Juil. 2026", what: "Piscine de l'école 42 — réussie", note: "Examen d'entrée : admis.", hot: true },
-  { when: "Juin 2026", what: "Bac Pro CIEL — mention Bien", note: "Lycée Champollion, Lattes (34) · sept. 2023 → juil. 2026" },
+  { when: "Juin 2026", what: "Bac Pro CIEL — mention Bien", note: "sept. 2023 → juil. 2026" },
   { when: "Juin 2024", what: "Habilitation électrique B1V" },
   { when: "Juin 2023", what: "Brevet des collèges" },
   { when: "Mai 2023", what: "ASSR 2" },
   { when: "2022 — 2023", what: "Option Sciences Numériques", note: "Robotique, participation à un concours." },
-  { when: "2019 — 2023", what: "Collège Frédéric Mistral, Pérols" },
+  { when: "2019 — 2023", what: "Collège" },
 ];
 
 export const EXP = [
@@ -102,4 +103,19 @@ export const STACK = [
   ["Systèmes", ["Debian", "Ubuntu", "Kali", "Arch", "Fedora", "Windows Server 2008", "Git"]],
   ["Électronique", ["Proteus", "Soudure traversante", "ESP32", "Raspberry Pi"]],
   ["Création", ["Unreal Engine 5", "Blender", "IA générative (Claude, Gemini, Copilot, DeepSeek)"]],
+];
+
+// Hors du travail — ce qui tourne quand l'écran est éteint.
+export const HOBBIES = [
+  ["Sport", ["Course à pied", "Vélo", "Randonnée", "Musculation"]],
+  ["Cuisine", ["Poulet curry coco", "Gratin dauphinois", "Kibbeh (spécialité irakienne)"]],
+  ["Musique & ciné", ["Piano", "Filmo Kubrick complète", "100+ films / an"]],
+  ["Jeux vidéo", ["Valorant · Diamant", "Faceit (CS) · Niveau 6"]],
+];
+
+// Pays visités.
+export const COUNTRIES = [
+  "🇫🇷 France", "🇪🇸 Espagne", "🇵🇹 Portugal", "🇮🇹 Italie", "🇹🇭 Thaïlande",
+  "🇹🇷 Turquie", "🇲🇦 Maroc", "🇳🇱 Pays-Bas", "🇪🇬 Égypte", "🇺🇸 États-Unis",
+  "🇪🇸 Canaries", "🇬🇷 Crète", "🇪🇸 Majorque",
 ];

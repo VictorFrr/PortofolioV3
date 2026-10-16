@@ -1,4 +1,4 @@
-import { REV, ME, SPECS, PROJECTS, EDU, EXP, STACK } from "./content.js";
+import { REV, ME, SPECS, PROJECTS, EDU, EXP, STACK, HOBBIES, COUNTRIES } from "./content.js";
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
@@ -20,6 +20,8 @@ const rows = (a) => a.map((r) => `<div class="row${r.hot ? " hot" : ""}" data-r>
 $("#edu").innerHTML = rows(EDU);
 $("#exp").innerHTML = rows(EXP);
 $("#stack").innerHTML = STACK.map(([g, t]) => `<div class="grp" data-r><h4 class="mono">${esc(g)}</h4><div class="tags">${t.map((x) => `<span>${esc(x)}</span>`).join("")}</div></div>`).join("");
+$("#hobbies").innerHTML = HOBBIES.map(([g, t]) => `<div class="grp" data-r><h4 class="mono">${esc(g)}</h4><div class="tags">${t.map((x) => `<span>${esc(x)}</span>`).join("")}</div></div>`).join("");
+$("#countries").innerHTML = COUNTRIES.map((c) => `<li>${esc(c)}</li>`).join("");
 $("#links").innerHTML = ME.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} <span>↗</span></a>`).join("");
 $("#yr").textContent = new Date().getFullYear();
 $("#rev-n").textContent = REV;

@@ -68,6 +68,8 @@ h3.mono{color:var(--dim);margin-bottom:14px}
 .pinout{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border:1px solid var(--ink)}
 .grp{padding:26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
 .grp h4{color:var(--sig);margin-bottom:16px}
+.extra-sub{margin-top:46px}
+#countries.chips li{border-color:var(--line);color:var(--dim)}
 
 footer{margin-top:130px;background:var(--ink);color:var(--paper);padding:90px var(--pad) 36px}
 footer>*{max-width:1280px;margin-left:auto;margin-right:auto}
