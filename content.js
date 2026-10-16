@@ -22,7 +22,7 @@ export const SPECS = [
   ["École 42", "Piscine réussie"],
   ["Projets", "11"],
   ["Stages", "6"],
-  ["Langages", "C · Python · JS · PHP"],
+  ["Langages", "C · Python · JS · PHP . HTML"],
   ["Anglais", "Courant"],
 ];
 
