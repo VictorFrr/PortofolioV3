@@ -1,35 +1,18 @@
-# Portfolio — Victor Ponthus
+# Victor — portfolio
 
-Site statique (HTML / CSS / JS vanilla + Three.js pour la scène 3D du hero). Aucun build, aucune dépendance npm.
+Site statique, **zéro build, zéro dépendance**. HTML + CSS + JS natif (modules ES).
 
-## Déployer sur Vercel
+## Faire vivre le site
+Tout le contenu est dans **`content.js`** — c'est le seul fichier à toucher :
+- nouveau projet → copie un bloc dans `PROJECTS` (le plus récent en premier, numéro `VF-0xx` suivant)
+- nouvelle étape (école, stage, diplôme) → une ligne dans `EDU` ou `EXP`
+- nouveaux records / chiffres → `SPECS`
+- liens (LinkedIn, mail…) → `ME.links`
+- change `REV` après une grosse mise à jour
 
-1. Crée un repo Git avec ces fichiers (ou importe le zip directement dans Vercel : "Add New Project" → "Upload").
-2. Aucune configuration nécessaire — `vercel.json` est déjà inclus, Vercel détecte un site statique automatiquement.
-3. Déploie.
+## Déployer
+Push sur GitHub, puis sur Vercel : *Add New → Project → importer le repo → Deploy*. Aucune config.
 
-## Formulaire de contact
-
-Le formulaire pointe vers Formspree (`index.html`, attribut `action` du `<form id="contact-form">`).
-Remplace `YOUR_FORM_ID` par ton véritable ID Formspree (gratuit sur formspree.io) :
-
-```html
-<form id="contact-form" action="https://formspree.io/f/abcd1234" method="POST">
-```
-
-Tant que l'ID n'est pas remplacé, le formulaire affichera un message d'erreur propre plutôt que d'échouer silencieusement.
-
-## Structure
-
-- `index.html` — structure de la page, tous les textes sont injectés en JS (i18n)
-- `data.js` — toutes les données : traductions FR/EN, projets, pays visités
-- `style.css` — design system complet (tokens CSS, thème clair/sombre)
-- `scene.js` — scène 3D interactive (réseau de nœuds, Three.js) dans le hero
-- `main.js` — rendu i18n, modal projets, thème, animations au scroll, formulaire
-- `images/` — icônes SVG des projets (conservées du site précédent)
-
-## Personnalisation rapide
-
-- Couleur d'accent : variable `--accent` dans `style.css`
-- Email de contact : lien `mailto:` dans `index.html`
-- Contenu des projets / traductions : tout est dans `data.js`
+## Vie privée
+`index.html` contient `noindex` : Google n'indexe pas le site. Supprime cette ligne quand tu voudras être trouvable.
+Pour tester en local : `npx serve .` (les modules ES ne marchent pas en ouvrant le fichier directement).

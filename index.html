@@ -2,235 +2,60 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Victor Ponthus — Cybersécurité, Développement & Hardware</title>
-<meta name="description" content="Portfolio de Victor Ponthus, étudiant Bac Pro CIEL — projets en cybersécurité, développement logiciel et hardware.">
-<meta name="theme-color" content="#0a0b0d">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Victor — C, cybersécurité, hardware</title>
+<meta name="description" content="Portfolio de Victor — école 42, cybersécurité, C et électronique.">
+<!-- Retire cette ligne le jour où tu veux que Google indexe le site -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ece8df">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2312110f'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23ff4d1a' font-family='serif'%3EV%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- LOADER -->
-<div id="loader">
-  <div class="loader-text"><span class="loader-dot"></span> Initializing</div>
-</div>
-
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-logo">VP<span>.</span></div>
-  <div class="nav-links">
-    <a href="#skills" id="nav-skills">Compétences</a>
-    <a href="#projects" id="nav-projects">Projets</a>
-    <a href="#about" id="nav-about">À propos</a>
-    <a href="#contact" id="nav-contact">Contact</a>
-  </div>
-  <div class="nav-actions">
-    <button class="icon-btn lang-btn" id="lang-btn" aria-label="Switch language">FR</button>
-    <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme"></button>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header id="hero">
-  <canvas id="scene-canvas"></canvas>
-  <div class="hero-content">
-    <div class="wrap">
-      <div class="hero-tag" id="hero-tag"></div>
-      <div class="hero-greet" id="hero-greet"></div>
-      <h1 class="hero-name" id="hero-name"></h1>
-      <p class="hero-sub" id="hero-sub"></p>
-      <div class="hero-ctas">
-        <a href="#projects" class="btn btn-primary" id="hero-cta-projects"></a>
-        <a href="#contact" class="btn btn-ghost" id="hero-cta-contact"></a>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-indicator">
-    <span class="scroll-line"></span>
-    <span id="scroll-label"></span>
-  </div>
+<header class="nav">
+  <a href="#top" class="logo">V<i>/</i>42</a>
+  <nav><a href="#specs">Specs</a><a href="#parts">Projets</a><a href="#rev">Parcours</a><a href="#pins">Stack</a><a href="#contact">Contact</a></nav>
 </header>
 
-<!-- STATS -->
-<section id="stats">
-  <div class="wrap stats-grid">
-    <div class="stat-item">
-      <div class="stat-num" id="stat-projects-num">0+</div>
-      <div class="stat-label" id="stat-projects-label"></div>
+<main id="top">
+  <section class="hero">
+    <div class="hero-text">
+      <p class="mono tag" id="doc-ref"></p>
+      <h1>Victor<b>.</b></h1>
+      <p class="lead" id="tagline"></p>
+      <ul class="chips" id="chips"></ul>
     </div>
-    <div class="stat-item">
-      <div class="stat-num" id="stat-langs-num">0+</div>
-      <div class="stat-label" id="stat-langs-label"></div>
+    <div class="stage" aria-hidden="true">
+      <div class="chip" id="chip">
+        <div class="plate"></div>
+        <div class="pin t"></div><div class="pin b"></div><div class="pin l"></div><div class="pin r"></div>
+        <div class="body"><span class="notch"></span><span class="mark">VF—42</span><span class="sub">C · SEC · HW</span></div>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-num" id="stat-years-num">0+</div>
-      <div class="stat-label" id="stat-years-label"></div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" id="stat-consoles-num">0+</div>
-      <div class="stat-label" id="stat-consoles-label"></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <div class="eyebrow" id="skills-eyebrow"></div>
-      <h2 class="section-title" id="skills-title"></h2>
-    </div>
-    <div class="skills-grid" id="skills-grid"></div>
-  </div>
-</section>
+  <section id="specs"><h2 class="sec"><span>01</span>Spécifications</h2>
+    <div class="cols"><p class="bio" id="bio"></p><dl class="specs" id="specs-list"></dl></div>
+  </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <div class="eyebrow" id="projects-eyebrow"></div>
-      <h2 class="section-title" id="projects-title"></h2>
-    </div>
-    <div class="projects-list" id="projects-list"></div>
-  </div>
-</section>
+  <section id="parts"><h2 class="sec"><span>02</span>Nomenclature des projets</h2><div id="parts-list"></div></section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <div class="eyebrow" id="about-eyebrow"></div>
-      <h2 class="section-title" id="about-title"></h2>
-    </div>
-    <div class="about-grid">
-      <div data-reveal>
-        <p class="about-lead" id="about-lead"></p>
-        <p class="about-sub" id="about-sub"></p>
-        <div class="country-list" id="country-list"></div>
-      </div>
-      <div class="about-cards" data-reveal>
-        <div class="about-card">
-          <h3 id="about-cooking-title"></h3>
-          <p id="about-cooking-desc"></p>
-        </div>
-        <div class="about-card">
-          <h3 id="about-cinema-title"></h3>
-          <p id="about-cinema-desc"></p>
-          <div class="fav" id="about-cinema-fav1"></div>
-          <div class="fav" id="about-cinema-fav2"></div>
-        </div>
-        <div class="about-card">
-          <h3 id="about-sport-title"></h3>
-          <p id="about-sport-desc"></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <section id="rev"><h2 class="sec"><span>03</span>Historique de révisions</h2>
+    <div class="cols"><div><h3 class="mono">Formation</h3><div id="edu"></div></div><div><h3 class="mono">Expérience</h3><div id="exp"></div></div></div>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="wrap contact-grid">
-    <div class="contact-left" data-reveal>
-      <div class="eyebrow" id="contact-eyebrow"></div>
-      <h2 id="contact-heading"></h2>
-      <p id="contact-sub"></p>
-      <a href="mailto:contact@victorponthus.dev" class="contact-email">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
-        contact@victorponthus.dev
-      </a>
-      <div class="availability">
-        <span class="dot-live"></span>
-        <span id="availability-label"></span>
-      </div>
-    </div>
-    <form id="contact-form" data-reveal action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <div class="form-group">
-        <label for="input-name" id="label-name"></label>
-        <input type="text" id="input-name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="input-email" id="label-email"></label>
-        <input type="email" id="input-email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="input-message" id="label-message"></label>
-        <textarea id="input-message" name="message" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%; justify-content:center;"></button>
-      <div class="form-msg" id="form-msg"></div>
-    </form>
-  </div>
-</section>
+  <section id="pins"><h2 class="sec"><span>04</span>Brochage — la stack</h2><div class="pinout" id="stack"></div></section>
+</main>
 
-<!-- FOOTER -->
-<footer>
-  <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; width:100%;">
-    <span id="footer-copy"></span>
-    <a href="#hero" class="footer-back" id="footer-back">
-      <span id="footer-back-label"></span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-  </div>
+<footer id="contact">
+  <p class="mono">05 / Contact</p>
+  <h2>Construisons<br><em>quelque chose.</em></h2>
+  <div class="links" id="links"></div>
+  <p class="mono small">© <span id="yr"></span> Victor · Rév. <span id="rev-n"></span></p>
 </footer>
-
-<!-- PROJECT MODAL -->
-<div id="modal-backdrop">
-  <div id="modal" role="dialog" aria-modal="true">
-    <div class="modal-head">
-      <button class="modal-close" id="modal-close" aria-label="Close">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>
-      </button>
-      <div class="modal-num" id="modal-num"></div>
-      <h3 class="modal-title" id="modal-title"></h3>
-      <div class="modal-links">
-        <a href="#" target="_blank" rel="noopener" class="btn btn-ghost" id="modal-github" style="padding:9px 18px; font-size:13px;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px;"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.31.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.522 2 12 2Z"/></svg>
-          GitHub
-        </a>
-        <a href="#" target="_blank" rel="noopener" class="btn btn-ghost" id="modal-demo" style="padding:9px 18px; font-size:13px;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-right:6px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
-          Démo
-        </a>
-      </div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-section">
-        <h4 id="modal-label-context"></h4>
-        <p id="modal-context"></p>
-      </div>
-      <div class="modal-section">
-        <h4 id="modal-label-features"></h4>
-        <ul class="feature-list" id="modal-features"></ul>
-      </div>
-      <div class="modal-section" style="margin-bottom:0;">
-        <h4 id="modal-label-tech"></h4>
-        <div class="modal-tech" id="modal-tech"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" onerror="window.__THREE_FAILED__=true"></script>
-<script src="data.js"></script>
-<script src="scene.js"></script>
-<script src="main.js"></script>
-<script>
-  // Hard safety net: no matter what happens above, the loader must disappear
-  // and the page must never stay blank.
-  (function(){
-    function killLoader(){
-      var l = document.getElementById("loader");
-      if (l) l.classList.add("hidden");
-    }
-    window.addEventListener("error", killLoader);
-    setTimeout(killLoader, 1800);
-  })();
-</script>
+<script type="module" src="app.js"></script>
 </body>
 </html>
