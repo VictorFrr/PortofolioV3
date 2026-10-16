@@ -98,7 +98,7 @@ export const EXP = [
 export const STACK = [
   ["Code", ["C", "Python", "JavaScript", "HTML / CSS", "PHP", "VBA"]],
   ["Sécurité", ["Pentest (Kali)", "pfSense", "Cisco Packet Tracer", "OSINT", "Chiffrement"]],
-  ["Systèmes", ["Debian", "Ubuntu", "Kali", "Arch", "Fedora", "Windows Server 2008", "Git"]],
+  ["Systèmes", ["Debian", "Ubuntu", "Kali", "Arch", "Fedora", "Windows Server 2008", "Git", "Vim"]],
   ["Électronique", ["Proteus", "Soudure traversante", "ESP32", "Raspberry Pi"]],
   ["Création", ["Unreal Engine 5", "Blender", "IA générative (Claude, Gemini, Copilot, DeepSeek)"]],
 ];
@@ -106,7 +106,7 @@ export const STACK = [
 // Hors du travail — ce qui tourne quand l'écran est éteint.
 export const HOBBIES = [
   ["Sport", ["Course à pied", "Vélo", "Randonnée"]],
-  ["Cuisine", ["Poulet curry coco", "Gratin dauphinois", "Kibbeh (spécialité irakienne)"]],
+  ["Cuisine", ["Poulet curry", "Gratin dauphinois", "Kibbeh", "Couscous", "Et bien d'autre"]],
   ["Ciné", ["Filmo Kubrick complète", "200+ films / an", "Réalisateur fav David Lynch"]],
   ["Jeux vidéo", ["Valorant · Diamant", "Faceit (CS) · Niveau 6"]],
 ];
