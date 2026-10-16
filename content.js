@@ -22,8 +22,6 @@ export const SPECS = [
   ["Tronc commun", "En cours"],
   ["Projets", "11"],
   ["Stages", "6"],
-  ["10 km", "< 55 min"],
-  ["5 km", "< 26 min"],
   ["Langages", "C · Python · JS · PHP"],
   ["Anglais", "Courant"],
 ];
@@ -107,9 +105,9 @@ export const STACK = [
 
 // Hors du travail — ce qui tourne quand l'écran est éteint.
 export const HOBBIES = [
-  ["Sport", ["Course à pied", "Vélo", "Randonnée", "Musculation"]],
+  ["Sport", ["Course à pied", "Vélo", "Randonnée"]],
   ["Cuisine", ["Poulet curry coco", "Gratin dauphinois", "Kibbeh (spécialité irakienne)"]],
-  ["Musique & ciné", ["Piano", "Filmo Kubrick complète", "100+ films / an"]],
+  ["Ciné", ["Filmo Kubrick complète", "200+ films / an", "Réalisateur fav David Lynch"]],
   ["Jeux vidéo", ["Valorant · Diamant", "Faceit (CS) · Niveau 6"]],
 ];
 
