@@ -18,8 +18,8 @@ export const ME = {
 
 // [étiquette, valeur] — le style « absolute maximum ratings » d'une datasheet
 export const SPECS = [
-  ["École 42", "Piscine réussie"],
   ["Tronc commun", "En cours"],
+  ["École 42", "Piscine réussie"],
   ["Projets", "11"],
   ["Stages", "6"],
   ["Langages", "C · Python · JS · PHP"],
@@ -76,7 +76,7 @@ export const PROJECTS = [
 // Le plus récent en premier. `hot: true` = mis en avant en orange.
 export const EDU = [
   { when: "2026 →", what: "École 42 — tronc commun", note: "Admis après la Piscine. Apprentissage par projets, en C.", hot: true },
-  { when: "Juil. 2026", what: "Piscine de l'école 42 — réussie", note: "Examen d'entrée : admis.", hot: true },
+  { when: "Juil. 2026", what: "Piscine de l'école 42 — réussie", note: "Examen d'entrée : admis." },
   { when: "Juin 2026", what: "Bac Pro CIEL — mention Bien", note: "sept. 2023 → juil. 2026" },
   { when: "Juin 2024", what: "Habilitation électrique B1V" },
   { when: "Juin 2023", what: "Brevet des collèges" },
