@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="music.css">
 </head>
 <body>
 <header class="nav">
@@ -54,6 +55,10 @@
     <h3 class="mono extra-sub">Pays visités</h3>
     <ul class="chips" id="countries"></ul>
   </section>
+
+  <section id="music"><h2 class="sec"><span>06</span>Musique</h2>
+    <div class="music" id="music-strip" aria-label="Albums écoutés"></div>
+  </section>
 </main>
 
 <footer id="contact">
@@ -63,5 +68,6 @@
   <p class="mono small">© <span id="yr"></span> Victor · Rév. <span id="rev-n"></span></p>
 </footer>
 <script type="module" src="app.js"></script>
+<script type="module" src="music.js"></script>
 </body>
 </html>
