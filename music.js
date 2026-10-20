@@ -15,7 +15,7 @@ async function init() {
     d.className = "music__item";
     if (a.src) {
       const img = new Image();
-      img.src = "public" + a.src; img.alt = a.alt || ""; img.width = img.height = 600;
+      img.src = a.src.slice(1); img.alt = a.alt || ""; img.width = img.height = 600;
       img.loading = "lazy"; img.decoding = "async"; img.draggable = false;
       d.appendChild(img);
     } else {
