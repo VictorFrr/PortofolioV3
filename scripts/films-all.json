@@ -1,0 +1,772 @@
+[
+ {
+  "title": "2001: A Space Odyssey",
+  "year": 1968,
+  "rating": 5.0,
+  "uri": "https://boxd.it/2bf0",
+  "slug": "2001-a-space-odyssey-1968"
+ },
+ {
+  "title": "Barry Lyndon",
+  "year": 1975,
+  "rating": 5.0,
+  "uri": "https://boxd.it/25A2",
+  "slug": "barry-lyndon-1975"
+ },
+ {
+  "title": "Black Swan",
+  "year": 2010,
+  "rating": 5.0,
+  "uri": "https://boxd.it/Sw0",
+  "slug": "black-swan-2010"
+ },
+ {
+  "title": "Blow Out",
+  "year": 1981,
+  "rating": 5.0,
+  "uri": "https://boxd.it/1TlE",
+  "slug": "blow-out-1981"
+ },
+ {
+  "title": "Blue Velvet",
+  "year": 1986,
+  "rating": 5.0,
+  "uri": "https://boxd.it/29BI",
+  "slug": "blue-velvet-1986"
+ },
+ {
+  "title": "Dead Poets Society",
+  "year": 1989,
+  "rating": 5.0,
+  "uri": "https://boxd.it/2aSg",
+  "slug": "dead-poets-society-1989"
+ },
+ {
+  "title": "Django Unchained",
+  "year": 2012,
+  "rating": 5.0,
+  "uri": "https://boxd.it/2cCk",
+  "slug": "django-unchained-2012"
+ },
+ {
+  "title": "Eyes Wide Shut",
+  "year": 1999,
+  "rating": 5.0,
+  "uri": "https://boxd.it/2axs",
+  "slug": "eyes-wide-shut-1999"
+ },
+ {
+  "title": "Interstella 5555: The 5tory of the 5ecret 5tar 5ystem",
+  "year": 2003,
+  "rating": 5.0,
+  "uri": "https://boxd.it/1ULy",
+  "slug": "interstella-5555-the-5tory-of-the-5ecret-5tar-5ystem-2003"
+ },
+ {
+  "title": "Irreversible",
+  "year": 2002,
+  "rating": 5.0,
+  "uri": "https://boxd.it/29as",
+  "slug": "irreversible-2002"
+ },
+ {
+  "title": "Lawrence of Arabia",
+  "year": 1962,
+  "rating": 5.0,
+  "uri": "https://boxd.it/2wRE",
+  "slug": "lawrence-of-arabia-1962"
+ },
+ {
+  "title": "Memento",
+  "year": 2000,
+  "rating": 5.0,
+  "uri": "https://boxd.it/2bcK",
+  "slug": "memento-2000"
+ },
+ {
+  "title": "Memories of Murder",
+  "year": 2003,
+  "rating": 5.0,
+  "uri": "https://boxd.it/1TSo",
+  "slug": "memories-of-murder-2003"
+ },
+ {
+  "title": "Michael",
+  "year": 2026,
+  "rating": 5.0,
+  "uri": "https://boxd.it/zi5M",
+  "slug": "michael-2026"
+ },
+ {
+  "title": "Millennium Actress",
+  "year": 2001,
+  "rating": 5.0,
+  "uri": "https://boxd.it/1fK0",
+  "slug": "millennium-actress-2001"
+ },
+ {
+  "title": "Neon Genesis Evangelion",
+  "year": 1995,
+  "rating": 5.0,
+  "uri": "https://boxd.it/ptEI",
+  "slug": "neon-genesis-evangelion-1995"
+ },
+ {
+  "title": "Neon Genesis Evangelion: The End of Evangelion",
+  "year": 1997,
+  "rating": 5.0,
+  "uri": "https://boxd.it/1GRM",
+  "slug": "neon-genesis-evangelion-the-end-of-evangelion-1997"
+ },
+ {
+  "title": "Parasite",
+  "year": 2019,
+  "rating": 5.0,
+  "uri": "https://boxd.it/hTha",
+  "slug": "parasite-2019"
+ },
+ {
+  "title": "Perfect Blue",
+  "year": 1997,
+  "rating": 5.0,
+  "uri": "https://boxd.it/1W7A",
+  "slug": "perfect-blue-1997"
+ },
+ {
+  "title": "Phenomena",
+  "year": 1985,
+  "rating": 5.0,
+  "uri": "https://boxd.it/1o4s",
+  "slug": "phenomena-1985"
+ },
+ {
+  "title": "Requiem for a Dream",
+  "year": 2000,
+  "rating": 5.0,
+  "uri": "https://boxd.it/29VI",
+  "slug": "requiem-for-a-dream-2000"
+ },
+ {
+  "title": "Ritual",
+  "year": 2000,
+  "rating": 5.0,
+  "uri": "https://boxd.it/14z6",
+  "slug": "ritual-2000"
+ },
+ {
+  "title": "Technophobe",
+  "year": 2015,
+  "rating": 5.0,
+  "uri": "https://boxd.it/JmlE",
+  "slug": "technophobe-2015"
+ },
+ {
+  "title": "12 Angry Men",
+  "year": 1957,
+  "rating": 4.5,
+  "uri": "https://boxd.it/2auI",
+  "slug": "12-angry-men-1957"
+ },
+ {
+  "title": "Berserk",
+  "year": 1997,
+  "rating": 4.5,
+  "uri": "https://boxd.it/pzgM",
+  "slug": "berserk-1997"
+ },
+ {
+  "title": "Blade Runner",
+  "year": 1982,
+  "rating": 4.5,
+  "uri": "https://boxd.it/2bcA",
+  "slug": "blade-runner-1982"
+ },
+ {
+  "title": "Boogie Nights",
+  "year": 1997,
+  "rating": 4.5,
+  "uri": "https://boxd.it/23um",
+  "slug": "boogie-nights-1997"
+ },
+ {
+  "title": "Carrie",
+  "year": 1976,
+  "rating": 4.5,
+  "uri": "https://boxd.it/20ZQ",
+  "slug": "carrie-1976"
+ },
+ {
+  "title": "Come and See",
+  "year": 1985,
+  "rating": 4.5,
+  "uri": "https://boxd.it/1w9q",
+  "slug": "come-and-see-1985"
+ },
+ {
+  "title": "Cyberpunk: Edgerunners",
+  "year": 2022,
+  "rating": 4.5,
+  "uri": "https://boxd.it/COP4",
+  "slug": "cyberpunk-edgerunners-2022"
+ },
+ {
+  "title": "Demolition",
+  "year": 2015,
+  "rating": 4.5,
+  "uri": "https://boxd.it/9GuY",
+  "slug": "demolition-2015"
+ },
+ {
+  "title": "Dune: Part Two",
+  "year": 2024,
+  "rating": 4.5,
+  "uri": "https://boxd.it/pUfA",
+  "slug": "dune-part-two-2024"
+ },
+ {
+  "title": "Full Metal Jacket",
+  "year": 1987,
+  "rating": 4.5,
+  "uri": "https://boxd.it/2a1Q",
+  "slug": "full-metal-jacket-1987"
+ },
+ {
+  "title": "Howl's Moving Castle",
+  "year": 2004,
+  "rating": 4.5,
+  "uri": "https://boxd.it/23De",
+  "slug": "howl-s-moving-castle-2004"
+ },
+ {
+  "title": "La Haine",
+  "year": 1995,
+  "rating": 4.5,
+  "uri": "https://boxd.it/2as8",
+  "slug": "la-haine-1995"
+ },
+ {
+  "title": "Lost Highway",
+  "year": 1997,
+  "rating": 4.5,
+  "uri": "https://boxd.it/29Wc",
+  "slug": "lost-highway-1997"
+ },
+ {
+  "title": "Love & Pop",
+  "year": 1998,
+  "rating": 4.5,
+  "uri": "https://boxd.it/2sv0",
+  "slug": "love-pop-1998"
+ },
+ {
+  "title": "Léon: The Professional",
+  "year": 1994,
+  "rating": 4.5,
+  "uri": "https://boxd.it/2b8S",
+  "slug": "leon-the-professional-1994"
+ },
+ {
+  "title": "Mulholland Drive",
+  "year": 2001,
+  "rating": 4.5,
+  "uri": "https://boxd.it/297o",
+  "slug": "mulholland-drive-2001"
+ },
+ {
+  "title": "Paths of Glory",
+  "year": 1957,
+  "rating": 4.5,
+  "uri": "https://boxd.it/29b6",
+  "slug": "paths-of-glory-1957"
+ },
+ {
+  "title": "Porco Rosso",
+  "year": 1992,
+  "rating": 4.5,
+  "uri": "https://boxd.it/1Tp2",
+  "slug": "porco-rosso-1992"
+ },
+ {
+  "title": "Prisoners",
+  "year": 2013,
+  "rating": 4.5,
+  "uri": "https://boxd.it/4E5i",
+  "slug": "prisoners-2013"
+ },
+ {
+  "title": "Ran",
+  "year": 1985,
+  "rating": 4.5,
+  "uri": "https://boxd.it/1Tlu",
+  "slug": "ran-1985"
+ },
+ {
+  "title": "Rashomon",
+  "year": 1950,
+  "rating": 4.5,
+  "uri": "https://boxd.it/2a9K",
+  "slug": "rashomon-1950"
+ },
+ {
+  "title": "Se7en",
+  "year": 1995,
+  "rating": 4.5,
+  "uri": "https://boxd.it/29zs",
+  "slug": "se7en-1995"
+ },
+ {
+  "title": "Stalker",
+  "year": 1979,
+  "rating": 4.5,
+  "uri": "https://boxd.it/28PO",
+  "slug": "stalker-1979"
+ },
+ {
+  "title": "Suspiria",
+  "year": 1977,
+  "rating": 4.5,
+  "uri": "https://boxd.it/1SNW",
+  "slug": "suspiria-1977"
+ },
+ {
+  "title": "The Departed",
+  "year": 2006,
+  "rating": 4.5,
+  "uri": "https://boxd.it/28MA",
+  "slug": "the-departed-2006"
+ },
+ {
+  "title": "The Elephant Man",
+  "year": 1980,
+  "rating": 4.5,
+  "uri": "https://boxd.it/27LQ",
+  "slug": "the-elephant-man-1980"
+ },
+ {
+  "title": "The Hateful Eight",
+  "year": 2015,
+  "rating": 4.5,
+  "uri": "https://boxd.it/8gw8",
+  "slug": "the-hateful-eight-2015"
+ },
+ {
+  "title": "The Killing",
+  "year": 1956,
+  "rating": 4.5,
+  "uri": "https://boxd.it/2aMi",
+  "slug": "the-killing-1956"
+ },
+ {
+  "title": "The Shining",
+  "year": 1980,
+  "rating": 4.5,
+  "uri": "https://boxd.it/29Nu",
+  "slug": "the-shining-1980"
+ },
+ {
+  "title": "The Silence of the Lambs",
+  "year": 1991,
+  "rating": 4.5,
+  "uri": "https://boxd.it/2aHW",
+  "slug": "the-silence-of-the-lambs-1991"
+ },
+ {
+  "title": "The Usual Suspects",
+  "year": 1995,
+  "rating": 4.5,
+  "uri": "https://boxd.it/29XE",
+  "slug": "the-usual-suspects-1995"
+ },
+ {
+  "title": "The Wrestler",
+  "year": 2008,
+  "rating": 4.5,
+  "uri": "https://boxd.it/1So8",
+  "slug": "the-wrestler-2008"
+ },
+ {
+  "title": "Trainspotting",
+  "year": 1996,
+  "rating": 4.5,
+  "uri": "https://boxd.it/29XY",
+  "slug": "trainspotting-1996"
+ },
+ {
+  "title": "Vertigo",
+  "year": 1958,
+  "rating": 4.5,
+  "uri": "https://boxd.it/2apI",
+  "slug": "vertigo-1958"
+ },
+ {
+  "title": "Vinland Saga",
+  "year": 2019,
+  "rating": 4.5,
+  "uri": "https://boxd.it/qdwU",
+  "slug": "vinland-saga-2019"
+ },
+ {
+  "title": "A Clockwork Orange",
+  "year": 1971,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2aVE",
+  "slug": "a-clockwork-orange-1971"
+ },
+ {
+  "title": "Amadeus",
+  "year": 1984,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2aH8",
+  "slug": "amadeus-1984"
+ },
+ {
+  "title": "Avatar",
+  "year": 2009,
+  "rating": 4.0,
+  "uri": "https://boxd.it/1Efm",
+  "slug": "avatar-2009"
+ },
+ {
+  "title": "Blade Runner 2049",
+  "year": 2017,
+  "rating": 4.0,
+  "uri": "https://boxd.it/b8wK",
+  "slug": "blade-runner-2049-2017"
+ },
+ {
+  "title": "Body Double",
+  "year": 1984,
+  "rating": 4.0,
+  "uri": "https://boxd.it/1TGW",
+  "slug": "body-double-1984"
+ },
+ {
+  "title": "Catch Me If You Can",
+  "year": 2002,
+  "rating": 4.0,
+  "uri": "https://boxd.it/29VS",
+  "slug": "catch-me-if-you-can-2002"
+ },
+ {
+  "title": "Donnie Darko",
+  "year": 2001,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2b2A",
+  "slug": "donnie-darko-2001"
+ },
+ {
+  "title": "Drive",
+  "year": 2011,
+  "rating": 4.0,
+  "uri": "https://boxd.it/IG",
+  "slug": "drive-2011"
+ },
+ {
+  "title": "Fight Club",
+  "year": 1999,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2a9q",
+  "slug": "fight-club-1999"
+ },
+ {
+  "title": "Good Will Hunting",
+  "year": 1997,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2ahY",
+  "slug": "good-will-hunting-1997"
+ },
+ {
+  "title": "Grave of the Fireflies",
+  "year": 1988,
+  "rating": 4.0,
+  "uri": "https://boxd.it/1RUM",
+  "slug": "grave-of-the-fireflies-1988"
+ },
+ {
+  "title": "Inglourious Basterds",
+  "year": 2009,
+  "rating": 4.0,
+  "uri": "https://boxd.it/1JzG",
+  "slug": "inglourious-basterds-2009"
+ },
+ {
+  "title": "Interstellar",
+  "year": 2014,
+  "rating": 4.0,
+  "uri": "https://boxd.it/4VZ8",
+  "slug": "interstellar-2014"
+ },
+ {
+  "title": "Kill Bill: Vol. 1",
+  "year": 2003,
+  "rating": 4.0,
+  "uri": "https://boxd.it/70w",
+  "slug": "kill-bill-vol-1-2003"
+ },
+ {
+  "title": "Marty Supreme",
+  "year": 2025,
+  "rating": 4.0,
+  "uri": "https://boxd.it/Off0",
+  "slug": "marty-supreme-2025"
+ },
+ {
+  "title": "Match Point",
+  "year": 2005,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2b6s",
+  "slug": "match-point-2005"
+ },
+ {
+  "title": "Midnight Express",
+  "year": 1978,
+  "rating": 4.0,
+  "uri": "https://boxd.it/1U7I",
+  "slug": "midnight-express-1978"
+ },
+ {
+  "title": "Midsommar",
+  "year": 2019,
+  "rating": 4.0,
+  "uri": "https://boxd.it/jhxe",
+  "slug": "midsommar-2019"
+ },
+ {
+  "title": "Minority Report",
+  "year": 2002,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2aWi",
+  "slug": "minority-report-2002"
+ },
+ {
+  "title": "Obsession",
+  "year": 2025,
+  "rating": 4.0,
+  "uri": "https://boxd.it/PNqo",
+  "slug": "obsession-2025"
+ },
+ {
+  "title": "Ocean's Eleven",
+  "year": 2001,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2aZm",
+  "slug": "ocean-s-eleven-2001"
+ },
+ {
+  "title": "Oldboy",
+  "year": 2003,
+  "rating": 4.0,
+  "uri": "https://boxd.it/29R2",
+  "slug": "oldboy-2003"
+ },
+ {
+  "title": "On the Silver Globe",
+  "year": 1988,
+  "rating": 4.0,
+  "uri": "https://boxd.it/1sAM",
+  "slug": "on-the-silver-globe-1988"
+ },
+ {
+  "title": "Oppenheimer",
+  "year": 2023,
+  "rating": 4.0,
+  "uri": "https://boxd.it/wUow",
+  "slug": "oppenheimer-2023"
+ },
+ {
+  "title": "Persona",
+  "year": 1966,
+  "rating": 4.0,
+  "uri": "https://boxd.it/29B4",
+  "slug": "persona-1966"
+ },
+ {
+  "title": "Phantom of the Paradise",
+  "year": 1974,
+  "rating": 4.0,
+  "uri": "https://boxd.it/1s34",
+  "slug": "phantom-of-the-paradise-1974"
+ },
+ {
+  "title": "Pi",
+  "year": 1998,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2ajq",
+  "slug": "pi-1998"
+ },
+ {
+  "title": "Psycho",
+  "year": 1960,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2ab2",
+  "slug": "psycho-1960"
+ },
+ {
+  "title": "Pyramid Game",
+  "year": 2024,
+  "rating": 4.0,
+  "uri": "https://boxd.it/M71K",
+  "slug": "pyramid-game-2024"
+ },
+ {
+  "title": "Reservoir Dogs",
+  "year": 1992,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2agc",
+  "slug": "reservoir-dogs-1992"
+ },
+ {
+  "title": "Return of the Jedi",
+  "year": 1983,
+  "rating": 4.0,
+  "uri": "https://boxd.it/27Vm",
+  "slug": "return-of-the-jedi-1983"
+ },
+ {
+  "title": "Rocky",
+  "year": 1976,
+  "rating": 4.0,
+  "uri": "https://boxd.it/28Uk",
+  "slug": "rocky-1976"
+ },
+ {
+  "title": "Safe",
+  "year": 1995,
+  "rating": 4.0,
+  "uri": "https://boxd.it/1gKU",
+  "slug": "safe-1995"
+ },
+ {
+  "title": "Shutter Island",
+  "year": 2010,
+  "rating": 4.0,
+  "uri": "https://boxd.it/1U82",
+  "slug": "shutter-island-2010"
+ },
+ {
+  "title": "Sicario",
+  "year": 2015,
+  "rating": 4.0,
+  "uri": "https://boxd.it/8i7u",
+  "slug": "sicario-2015"
+ },
+ {
+  "title": "Society of the Snow",
+  "year": 2023,
+  "rating": 4.0,
+  "uri": "https://boxd.it/y9aw",
+  "slug": "society-of-the-snow-2023"
+ },
+ {
+  "title": "Star Wars: Episode III – Revenge of the Sith",
+  "year": 2005,
+  "rating": 4.0,
+  "uri": "https://boxd.it/27US",
+  "slug": "star-wars-episode-iii-revenge-of-the-sith-2005"
+ },
+ {
+  "title": "Tenebre",
+  "year": 1982,
+  "rating": 4.0,
+  "uri": "https://boxd.it/1mRM",
+  "slug": "tenebre-1982"
+ },
+ {
+  "title": "The Amazing Spider-Man",
+  "year": 2012,
+  "rating": 4.0,
+  "uri": "https://boxd.it/27PI",
+  "slug": "the-amazing-spider-man-2012"
+ },
+ {
+  "title": "The Birds",
+  "year": 1963,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2a6m",
+  "slug": "the-birds-1963"
+ },
+ {
+  "title": "The Count of Monte Cristo",
+  "year": 2024,
+  "rating": 4.0,
+  "uri": "https://boxd.it/F1Nk",
+  "slug": "the-count-of-monte-cristo-2024"
+ },
+ {
+  "title": "The Empire Strikes Back",
+  "year": 1980,
+  "rating": 4.0,
+  "uri": "https://boxd.it/27Vw",
+  "slug": "the-empire-strikes-back-1980"
+ },
+ {
+  "title": "The Killing Fields",
+  "year": 1984,
+  "rating": 4.0,
+  "uri": "https://boxd.it/29Yi",
+  "slug": "the-killing-fields-1984"
+ },
+ {
+  "title": "The Lives of Others",
+  "year": 2006,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2a4A",
+  "slug": "the-lives-of-others-2006"
+ },
+ {
+  "title": "The Matrix",
+  "year": 1999,
+  "rating": 4.0,
+  "uri": "https://boxd.it/2a1m",
+  "slug": "the-matrix-1999"
+ },
+ {
+  "title": "The Old Oak",
+  "year": 2023,
+  "rating": 4.0,
+  "uri": "https://boxd.it/AEng",
+  "slug": "the-old-oak-2023"
+ },
+ {
+  "title": "The Social Network",
+  "year": 2010,
+  "rating": 4.0,
+  "uri": "https://boxd.it/17ue",
+  "slug": "the-social-network-2010"
+ },
+ {
+  "title": "The Thing",
+  "year": 1982,
+  "rating": 4.0,
+  "uri": "https://boxd.it/294O",
+  "slug": "the-thing-1982"
+ },
+ {
+  "title": "Tomodachi Game",
+  "year": 2022,
+  "rating": 4.0,
+  "uri": "https://boxd.it/BCRq",
+  "slug": "tomodachi-game-2022"
+ },
+ {
+  "title": "Top Gun: Maverick",
+  "year": 2022,
+  "rating": 4.0,
+  "uri": "https://boxd.it/cjr4",
+  "slug": "top-gun-maverick-2022"
+ },
+ {
+  "title": "Vanilla Sky",
+  "year": 2001,
+  "rating": 4.0,
+  "uri": "https://boxd.it/27TK",
+  "slug": "vanilla-sky-2001"
+ },
+ {
+  "title": "Zodiac",
+  "year": 2007,
+  "rating": 4.0,
+  "uri": "https://boxd.it/27MO",
+  "slug": "zodiac-2007"
+ }
+]

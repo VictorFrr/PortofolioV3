@@ -71,11 +71,11 @@ async function imageUrl(name) {
 }
 
 const films = JSON.parse(await fs.readFile("src/data/films.json", "utf8"));
-await fs.mkdir("public/posters", { recursive: true });
+await fs.mkdir("posters", { recursive: true });
 
 const missing = [];
 for (const f of films) {
-  const out = path.join("public/posters", `${f.slug}.jpg`);
+  const out = path.join("posters", `${f.slug}.jpg`);
   try { await fs.access(out); continue; } catch {}
 
   let title = pickTitle(await searchTitles(`${f.title} ${f.year} film`), f);
