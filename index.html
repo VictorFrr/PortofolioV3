@@ -62,9 +62,17 @@
   </section>
 
   <section id="cinema"><h2 class="sec"><span>07</span>Cinéma</h2>
-    <div class="cine__bar" id="cine-bar"></div>
-    <ul class="cine" id="cine-grid" aria-label="Films notés 4 étoiles et plus"></ul>
-    <p class="mono cine__src"><a href="https://letterboxd.com/victor_34/" target="_blank" rel="noopener">Letterboxd ↗</a> · Affiches : Wikipédia</p>
+    <div class="reel-wrap" data-r>
+      <div class="reel" id="reel" role="region" aria-roledescription="carousel" aria-label="Mes films notés 5 étoiles" tabindex="0"></div>
+      <button class="reel__nav reel__nav--prev" id="reel-prev" type="button" aria-label="Film précédent">←</button>
+      <button class="reel__nav reel__nav--next" id="reel-next" type="button" aria-label="Film suivant">→</button>
+    </div>
+    <div class="reel__cap" id="reel-cap" aria-live="polite">
+      <b class="reel__title"></b>
+      <span class="mono reel__meta"></span>
+      <a class="mono reel__link" href="https://letterboxd.com/victor_34/" target="_blank" rel="noopener">Fiche Letterboxd ↗</a>
+    </div>
+    <p class="mono reel__src">Mes films notés 5★ · <a href="https://letterboxd.com/victor_34/" target="_blank" rel="noopener">Letterboxd ↗</a> · Affiches : Wikipédia</p>
   </section>
 </main>
 
