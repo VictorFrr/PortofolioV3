@@ -4,7 +4,7 @@ if (el) init();
 
 async function init() {
   let albums = [];
-  try { albums = await (await fetch("src/data/albums.json")).json(); } catch {}
+  try { albums = await (await fetch("data/albums.json")).json(); } catch {}
   const items = albums.length ? albums
     : Array.from({ length: 16 }, (_, i) => ({ src: null, hue: (i * 47) % 360 })); // carrés de couleur en attendant
   const GAP = 28, n = items.length;
@@ -15,8 +15,8 @@ async function init() {
     d.className = "music__item";
     if (a.src) {
       const img = new Image();
-      img.src = a.src.slice(1); img.alt = a.alt || ""; img.width = img.height = 600;
-      img.loading = "lazy"; img.decoding = "async"; img.draggable = false;
+      img.src = a.src; img.alt = a.alt || ""; img.width = img.height = 600;
+      img.loading = "lazy"; img.decoding = "async"; img.draggable = false; img.onerror = () => d.remove();
       d.appendChild(img);
     } else {
       d.innerHTML = `<div class="music__ph" style="background:linear-gradient(135deg,hsl(${a.hue} 60% 42%),hsl(${a.hue + 40} 60% 16%))"></div>`;

@@ -6,8 +6,8 @@ import sharp from 'sharp';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '..');
-const OUT = path.join(ROOT, 'public/music');
-const DATA = path.join(ROOT, 'src/data/albums.json');
+const OUT = path.join(ROOT, 'assets/music');
+const DATA = path.join(ROOT, 'data/albums.json');
 const CACHE = path.join(HERE, 'cache.json');
 const SIZE = 600;
 const DELAY = 3200; // l'API iTunes limite à ~20 requêtes/min
@@ -92,10 +92,10 @@ for (const line of lines) {
     } catch (e) { console.log(`✗ ${line} → ${e.message}`); }
     await sleep(DELAY);
   }
-  entries.push({ src: `/music/${file}`, alt: `${album} — ${artist}`, artist });
+  entries.push({ src: `assets/music/${file}`, alt: `${album} — ${artist}`, artist });
 }
 
 const ok = [];
-for (const e of entries) if (await fs.stat(path.join(ROOT, 'public', e.src)).catch(() => null)) ok.push(e);
+for (const e of entries) if (await fs.stat(path.join(ROOT, e.src)).catch(() => null)) ok.push(e);
 await fs.writeFile(DATA, JSON.stringify(shuffle(ok), null, 2));
-console.log(`\n${ok.length}/${lines.length} covers → src/data/albums.json`);
+console.log(`\n${ok.length}/${lines.length} covers → data/albums.json`);

@@ -1,11 +1,11 @@
 // Section Cinéma : carrousel 3D (coverflow) de mes films notés 5★ sur Letterboxd.
-// Données : src/data/films.json — affiches : posters/<slug>.jpg
+// Données : data/films.json — affiches : assets/posters/<slug>.jpg
 const reel = document.getElementById("reel");
 if (reel) init();
 
 async function init() {
   let films = [];
-  try { films = (await (await fetch("src/data/films.json")).json()).filter((f) => f.rating === 5); } catch {}
+  try { films = (await (await fetch("data/films.json")).json()).filter((f) => f.rating === 5); } catch {}
   if (!films.length) { document.getElementById("cinema").hidden = true; return; }
 
   const n = films.length;
@@ -22,7 +22,7 @@ async function init() {
     const ph = document.createElement("span");
     ph.textContent = f.title;
     const img = new Image();
-    img.src = `posters/${f.slug}.jpg`; img.alt = `${f.title} (${f.year})`;
+    img.src = `assets/posters/${f.slug}.jpg`; img.alt = `${f.title} (${f.year})`;
     img.width = 500; img.height = 750; img.decoding = "async"; img.draggable = false;
     img.onerror = () => img.remove();
     d.append(ph, img);

@@ -22,7 +22,7 @@ export const SPECS = [
   ["École 42", "Piscine réussie"],
   ["Projets", "11"],
   ["Stages", "6"],
-  ["Langages", "C · Python · JS · PHP . HTML"],
+  ["Langages", "C · Python · JS · PHP · HTML"],
   ["Anglais", "Courant"],
 ];
 
@@ -106,7 +106,7 @@ export const STACK = [
 // Hors du travail — ce qui tourne quand l'écran est éteint.
 export const HOBBIES = [
   ["Sport", ["Course à pied", "Vélo", "Randonnée"]],
-  ["Cuisine", ["Poulet curry", "Gratin dauphinois", "Kibbeh", "Couscous", "Et bien d'autre"]],
+  ["Cuisine", ["Poulet curry", "Gratin dauphinois", "Kibbeh", "Couscous", "Et bien d'autres"]],
   ["Ciné", ["Filmo Kubrick complète", "200+ films / an", "Réalisateur fav David Lynch"]],
   ["Jeux vidéo", ["Valorant · Diamant", "Faceit (CS) · Niveau 6"]],
 ];

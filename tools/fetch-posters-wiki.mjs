@@ -70,12 +70,12 @@ async function imageUrl(name) {
   return info?.thumburl || info?.url || null;
 }
 
-const films = JSON.parse(await fs.readFile("src/data/films.json", "utf8"));
-await fs.mkdir("posters", { recursive: true });
+const films = JSON.parse(await fs.readFile("data/films.json", "utf8"));
+await fs.mkdir("assets/posters", { recursive: true });
 
 const missing = [];
 for (const f of films) {
-  const out = path.join("posters", `${f.slug}.jpg`);
+  const out = path.join("assets/posters", `${f.slug}.jpg`);
   try { await fs.access(out); continue; } catch {}
 
   let title = pickTitle(await searchTitles(`${f.title} ${f.year} film`), f);

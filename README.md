@@ -1,38 +1,42 @@
-# Portfolio — style "datasheet"
+# Portfolio — style « datasheet »
 
-Un portfolio personnel en une page, pensé comme la fiche technique (*datasheet*) d'un composant électronique. Site statique, **zéro build, zéro dépendance** : HTML + CSS + JS natif (modules ES). Pas de framework, pas de `npm install`.
+Portfolio personnel en une page, pensé comme la fiche technique d'un composant électronique.
+Site statique : **HTML + CSS + JS natif (modules ES)**, zéro build, zéro dépendance.
 
-C'est le portfolio de Victor, mais le template est libre de réutilisation — si le style te plaît, fork-le et remplace le contenu par le tien.
+## Structure
 
-## Structure du projet
 ```
-index.html     → structure de la page (sections, à ne presque jamais toucher)
-content.js     → TOUT le contenu (le seul fichier à éditer au quotidien)
-app.js         → injecte le contenu de content.js dans index.html
-style.css      → le design "datasheet"
+index.html            Structure de la page
+vercel.json           Déploiement : en-têtes de sécurité + cache des images
+assets/
+  css/style.css       Tout le design (base, musique, cinéma)
+  js/content.js       ★ TOUT le contenu texte — le seul fichier à éditer au quotidien
+  js/app.js           Injecte content.js dans index.html (+ puce 3D, apparition au scroll)
+  js/music.js         Section Musique
+  js/cinema.js        Section Cinéma
+  js/main.js          Point d'entrée (importe les trois fichiers ci-dessus)
+  music/, posters/    Pochettes (.webp) et affiches (.jpg)
+data/                 albums.json, films.json
+tools/                Scripts Node pour regénérer pochettes et affiches
+archive/              Ancien code / fichiers non utilisés — supprimable (non déployé)
 ```
 
-## Faire vivre le site (ou te l'approprier)
-Tout le contenu éditable vit dans **`content.js`** :
-- `ME` → nom, accroche, bio, chips, liens (GitHub, LinkedIn, mail…)
-- `SPECS` → la liste de stats/chiffres façon "specs techniques"
-- `PROJECTS` → tes projets (le plus récent en premier)
-- `EDU` / `EXP` → parcours scolaire et stages/expériences
-- `STACK` → tes compétences techniques, groupées par catégorie
-- `HOBBIES` → tes centres d'intérêt hors travail, groupés par catégorie
-- `COUNTRIES` → les pays visités, affichés en pastilles
-- `REV` → change cette valeur après une grosse mise à jour, elle s'affiche dans le footer
+## Modifier le contenu
+Tout est dans `assets/js/content.js` : `ME`, `SPECS`, `PROJECTS` (le plus récent en premier), `EDU`, `EXP`, `STACK`, `HOBBIES`, `COUNTRIES`, `REV`.
 
-Pour réutiliser ce template pour toi-même : fork le repo, remplace les valeurs dans `content.js` par les tiennes (et retire/adapte les sections dont tu n'as pas besoin dans `index.html` + `app.js`).
+## Ajouter un film
+1. Ajouter une entrée dans `data/films.json` (`title`, `year`, `rating`, `uri`, `slug`). Seuls les films `rating: 5` s'affichent.
+2. `node tools/fetch-posters-wiki.mjs` télécharge l'affiche dans `assets/posters/`.
 
-## Déployer
-Push sur GitHub, puis sur [Vercel](https://vercel.com) : *Add New → Project → importer le repo → Deploy*. Aucune configuration nécessaire — c'est un site statique.
+## Ajouter un album
+1. Ajouter `Artiste - Album` dans `tools/albums.txt`.
+2. `npm i -D sharp` (une fois), puis `node tools/fetch-covers.mjs`. Relire les lignes « ? VÉRIFIE ».
 
 ## Développement local
-Les modules ES ne fonctionnent pas en ouvrant `index.html` directement dans le navigateur (double-clic). Il faut un petit serveur local :
-```
-npx serve .
-```
+Les modules ES ne marchent pas en double-cliquant sur `index.html` : lancer `npx serve .`
+
+## Déployer
+GitHub → [Vercel](https://vercel.com) : *Add New → Project → importer le repo → Deploy*. `.vercelignore` exclut `archive/` et `tools/`.
 
 ## Vie privée
-`index.html` contient une balise `noindex` : les moteurs de recherche n'indexent pas le site tant qu'elle est présente. Supprime-la le jour où tu veux être trouvable sur Google.
+`index.html` contient `noindex, nofollow` : le site n'est pas indexé tant que cette ligne est présente.
