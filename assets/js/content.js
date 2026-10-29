@@ -20,13 +20,24 @@ export const ME = {
 export const SPECS = [
   ["Tronc commun", "En cours"],
   ["École 42", "Piscine réussie"],
-  ["Projets", "11"],
+  ["Projets", "12"],
   ["Stages", "6"],
   ["Langages", "C · Python · JS · PHP · HTML"],
   ["Anglais", "Courant"],
 ];
 
 export const PROJECTS = [
+  { id: "VF-012", title: "Libft — ma bibliothèque C (École 42)", kind: "Programmation C · Projet 42",
+    short: "Premier projet du cursus 42 : recréer de zéro une bibliothèque C d'une trentaine de fonctions, réutilisable dans tous les projets suivants.",
+    points: [
+      "Réécriture de la libc : strlen, strlcpy, strlcat, strchr, strnstr, atoi, memset, memcpy, memmove, memcmp, calloc, strdup, toupper…",
+      "Fonctions utilitaires : substr, strjoin, strtrim, split, itoa, strmapi, putnbr_fd, putstr_fd…",
+      "Bonus : listes chaînées (lstnew, lstadd_back, lstmap, lstclear…) avec gestion propre de la mémoire",
+      "Gestion fine de la mémoire (malloc / free, aucune fuite), cas limites et comportements non définis pris en compte",
+      "Compilée en libft.a avec un Makefile, code conforme à la Norme de 42",
+      "Code non public : les règles de 42 interdisent de partager les sources des projets",
+    ],
+    tech: ["C", "Makefile", "Listes chaînées", "Gestion mémoire", "Norme 42"] },
   { id: "VF-011", title: "Tetris en C", kind: "Programmation C",
     short: "Un Tetris complet, programmé en C.",
     points: ["Écrit entièrement en C", "Pièces, rotations, collisions, lignes complètes", "Premier vrai projet de jeu bas niveau"],
