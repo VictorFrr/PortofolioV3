@@ -12,9 +12,11 @@ assets/
   css/style.css       Tout le design (base, musique, cinéma)
   js/content.js       ★ TOUT le contenu texte — le seul fichier à éditer au quotidien
   js/app.js           Injecte content.js dans index.html (+ puce 3D, apparition au scroll)
+  js/pushswap.js      Démo push_swap : piles, code façon gdb, commandes
+  js/pushswap-engine.js  Ton code C (SOURCE) + moteur qui le rejoue ligne par ligne
   js/music.js         Section Musique
   js/cinema.js        Section Cinéma
-  js/main.js          Point d'entrée (importe les trois fichiers ci-dessus)
+  js/main.js          Point d'entrée (importe les fichiers ci-dessus)
   music/, posters/    Pochettes (.webp) et affiches (.jpg)
 data/                 albums.json, films.json
 tools/                Scripts Node pour regénérer pochettes et affiches
@@ -23,6 +25,11 @@ archive/              Ancien code / fichiers non utilisés — supprimable (non 
 
 ## Modifier le contenu
 Tout est dans `assets/js/content.js` : `ME`, `SPECS`, `PROJECTS` (le plus récent en premier), `EDU`, `EXP`, `STACK`, `HOBBIES`, `COUNTRIES`, `REV`.
+
+## Modifier la démo push_swap
+Tout est dans `assets/js/pushswap-engine.js` : la constante `SOURCE` est le code C affiché, et `trace()` le rejoue.
+Si tu changes l'algorithme en C, répercute le changement dans `trace()` : chaque ligne y est retrouvée par son texte, via `L('fonction', 'texte de la ligne')`.
+Hypothèse : `ft_sqrt` = racine carrée entière (`Math.floor(Math.sqrt(n))`). La démo est limitée à 100 éléments (`MAXN` dans `pushswap.js`).
 
 ## Ajouter un film
 1. Ajouter une entrée dans `data/films.json` (`title`, `year`, `rating`, `uri`, `slug`). Seuls les films `rating: 5` s'affichent.
