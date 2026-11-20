@@ -13,7 +13,7 @@ $("#parts-list").innerHTML = PROJECTS.map((p) => `
     <summary><span class="mono id">${esc(p.id)}</span><span class="t">${esc(p.title)}</span><span class="mono kind">${esc(p.kind)}</span><i></i></summary>
     <div class="pb"><p>${esc(p.short)}</p><ul>${p.points.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
     <div class="tags">${p.tech.map((t) => `<span>${esc(t)}</span>`).join("")}</div>
-    <div class="plinks">${p.link ? `<a href="${esc(p.link)}" target="_blank" rel="noopener">Code ↗</a>` : ""}${p.demo ? `<a href="${esc(p.demo)}" target="_blank" rel="noopener">Démo ↗</a>` : ""}</div></div>
+    <div class="plinks">${p.link ? `<a href="${esc(p.link)}" target="_blank" rel="noopener">Code ↗</a>` : ""}${p.demo ? (p.demo.startsWith("#") ? `<a href="${esc(p.demo)}">Démo en direct ↓</a>` : `<a href="${esc(p.demo)}" target="_blank" rel="noopener">Démo ↗</a>`) : ""}</div></div>
   </details>`).join("");
 
 const rows = (a) => a.map((r) => `<div class="row${r.hot ? " hot" : ""}" data-r><span class="mono when">${esc(r.when)}</span><div><b>${esc(r.what)}</b>${r.note ? `<small>${esc(r.note)}</small>` : ""}</div></div>`).join("");

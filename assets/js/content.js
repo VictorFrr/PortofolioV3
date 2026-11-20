@@ -20,13 +20,44 @@ export const ME = {
 export const SPECS = [
   ["Tronc commun", "En cours"],
   ["École 42", "Piscine réussie"],
-  ["Projets", "12"],
+  ["Projets", "15"],
   ["Stages", "6"],
   ["Langages", "C · Python · JS · PHP · HTML"],
   ["Anglais", "Courant"],
 ];
 
 export const PROJECTS = [
+  { id: "VF-015", title: "push_swap — trier avec deux piles (École 42)", kind: "Algorithmique · C · Projet 42",
+    short: "Le plus gros projet en C que j'ai fait : trier une pile d'entiers avec seulement deux piles et un jeu d'instructions limité, en un minimum d'opérations. Plusieurs stratégies de tri, dont « medium », celle sur laquelle j'ai le plus travaillé.",
+    points: [
+      "Instructions autorisées : sa, sb, pa, pb, ra, rb, rr, rra, rrb, rrr, sur deux piles a et b",
+      "Medium : les valeurs reçoivent un index (leur rang), sont coupées en tranches (≈ √n / 2) et envoyées dans b ; la moitié basse de chaque tranche part au fond de b",
+      "Retour dans a : à chaque tour, je ramène le plus grand index de b au sommet par la rotation la plus courte (rb ou rrb), puis pa",
+      "Piles en listes chaînées, compteur d'opérations pour comparer les stratégies",
+      "Écrit en C, conforme à la Norme de 42",
+      "Démo interactive juste en dessous : les deux piles et mon vrai code avancé ligne par ligne, façon gdb",
+    ],
+    tech: ["C", "Algorithmique", "Listes chaînées", "Complexité", "Norme 42"], demo: "#pushswap" },
+  { id: "VF-014", title: "ft_printf — ma version de printf (École 42)", kind: "Programmation C · Projet 42",
+    short: "Recréer printf à partir de zéro, avec une fonction à nombre d'arguments variable.",
+    points: [
+      "Fonction variadique avec stdarg (va_start, va_arg, va_end)",
+      "Conversions gérées : c, s, p, d, i, u, x, X et %",
+      "Retourne le nombre de caractères écrits, comme le vrai printf",
+      "Compilée en libftprintf.a avec un Makefile, code conforme à la Norme de 42",
+      "Code non public : les règles de 42 interdisent de partager les sources des projets",
+    ],
+    tech: ["C", "Fonctions variadiques", "Makefile", "Norme 42"] },
+  { id: "VF-013", title: "get_next_line — lire un fichier ligne par ligne (École 42)", kind: "Programmation C · Projet 42",
+    short: "Une fonction qui renvoie une ligne à chaque appel depuis un descripteur de fichier, quelle que soit la taille du buffer de lecture.",
+    points: [
+      "Lecture avec read() par blocs de BUFFER_SIZE, défini à la compilation",
+      "Variable statique pour garder ce qui a été lu mais pas encore renvoyé entre deux appels",
+      "Gestion de la mémoire (malloc / free) sans fuite, y compris en fin de fichier",
+      // Bonus fait ? Ajoute : "Bonus : plusieurs descripteurs de fichier gérés en même temps",
+      "Code non public : les règles de 42 interdisent de partager les sources des projets",
+    ],
+    tech: ["C", "read()", "Variable statique", "Gestion mémoire", "Norme 42"] },
   { id: "VF-012", title: "Libft — ma bibliothèque C (École 42)", kind: "Programmation C · Projet 42",
     short: "Premier projet du cursus 42 : recréer de zéro une bibliothèque C d'une trentaine de fonctions, réutilisable dans tous les projets suivants.",
     points: [
