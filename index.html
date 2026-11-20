@@ -17,7 +17,7 @@
 <body>
 <header class="nav">
   <a href="#top" class="logo">V<i>/</i>42</a>
-  <nav><a href="#specs">Specs</a><a href="#parts">Projets</a><a href="#rev">Parcours</a><a href="#pins">Stack</a><a href="#extra">Perso</a><a href="#contact">Contact</a></nav>
+  <nav><a href="#specs">Specs</a><a href="#parts">Projets</a><a href="#pushswap">Push_swap</a><a href="#rev">Parcours</a><a href="#pins">Stack</a><a href="#extra">Perso</a><a href="#contact">Contact</a></nav>
 </header>
 
 <main id="top">
@@ -43,23 +43,73 @@
 
   <section id="parts"><h2 class="sec"><span>02</span>Nomenclature des projets</h2><div id="parts-list"></div></section>
 
-  <section id="rev"><h2 class="sec"><span>03</span>Historique de révisions</h2>
+  <section id="pushswap"><h2 class="sec"><span>03</span>Push_swap en action</h2>
+    <p class="ps-intro">Mon algorithme « medium » découpe les valeurs en tranches, les envoie dans la pile b, puis rapatrie le plus grand à chaque tour. Ici il tourne en direct, avec mon vrai code C avancé ligne par ligne, comme dans gdb.</p>
+    <div class="ps" id="ps">
+      <div class="ps-bar">
+        <div class="ps-row">
+          <label class="ps-field" for="ps-n">Éléments <input type="range" id="ps-n" min="4" max="100" value="40"><output id="ps-n-out" for="ps-n">40</output></label>
+          <button type="button" class="ps-btn" id="ps-shuffle">Mélanger</button>
+          <form class="ps-list" id="ps-form" autocomplete="off">
+            <label class="sr" for="ps-input">Ta propre liste de nombres</label>
+            <input id="ps-input" type="text" inputmode="numeric" placeholder="ou ta liste : 42 -7 18 3">
+            <button type="submit" class="ps-btn">Charger</button>
+          </form>
+          <p class="ps-msg" id="ps-msg" role="status"></p>
+        </div>
+        <div class="ps-row" role="group" aria-label="Commandes du débogueur">
+          <button type="button" class="ps-btn" id="ps-back" title="reverse-step : revient d'une ligne en arrière">Reculer <kbd>←</kbd></button>
+          <button type="button" class="ps-btn" id="ps-step" title="step : avance d'une ligne, en entrant dans les fonctions">Pas <kbd>s</kbd></button>
+          <button type="button" class="ps-btn" id="ps-next" title="next : avance d'une ligne sans entrer dans les fonctions">Suivant <kbd>n</kbd></button>
+          <button type="button" class="ps-btn" id="ps-finish" title="finish : exécute jusqu'à la sortie de la fonction en cours">Sortir <kbd>f</kbd></button>
+          <button type="button" class="ps-btn" id="ps-op" title="exécute jusqu'à la prochaine opération (pb, ra…)">Opération <kbd>o</kbd></button>
+          <button type="button" class="ps-btn ps-btn--go" id="ps-play">Lecture <kbd>c</kbd></button>
+          <label class="ps-field" for="ps-speed">Vitesse <input type="range" id="ps-speed" min="0" max="7" value="4"></label>
+        </div>
+        <p class="ps-keys">Clique sur un numéro de ligne pour poser un point d'arrêt (b sur la ligne en cours). La lecture s'arrête dessus. Les opérations pb, ra… s'exécutent sans qu'on entre dedans.</p>
+      </div>
+      <div class="ps-grid">
+        <div class="ps-viz">
+          <p class="ps-state" id="ps-state"></p>
+          <canvas id="ps-canvas" role="img" aria-label="Piles a et b"></canvas>
+          <div class="ps-scrub"><input type="range" id="ps-scrub" min="0" max="0" value="0" aria-label="Position dans l'exécution"><span class="mono" id="ps-prog">0/0</span></div>
+          <ul class="ps-legend">
+            <li><i class="sw sw--lo"></i><i class="sw sw--hi"></i>petit index → grand index</li>
+            <li><i class="sw sw--sig"></i>tranche en cours, ou valeur visée dans b</li>
+            <li>sommet de pile en haut</li>
+          </ul>
+          <div class="ps-ops" id="ps-ops" aria-label="Opérations effectuées"></div>
+        </div>
+        <div class="ps-dbg">
+          <div class="ps-dbg-head"><span id="ps-file"></span><span id="ps-lineinfo"></span></div>
+          <div class="ps-code" id="ps-code" tabindex="0" role="region" aria-label="Code C de l'algorithme medium"></div>
+          <div class="ps-insp">
+            <div class="ps-box"><h5>bt</h5><pre id="ps-bt"></pre></div>
+            <div class="ps-box"><h5>info locals</h5><pre id="ps-loc"></pre></div>
+          </div>
+          <div class="ps-out"><h5>sortie</h5><pre id="ps-out"></pre></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rev"><h2 class="sec"><span>04</span>Historique de révisions</h2>
     <div class="cols"><div><h3 class="mono">Formation</h3><div id="edu"></div></div><div><h3 class="mono">Expérience</h3><div id="exp"></div></div></div>
   </section>
 
-  <section id="pins"><h2 class="sec"><span>04</span>Brochage — la stack</h2><div class="pinout" id="stack"></div></section>
+  <section id="pins"><h2 class="sec"><span>05</span>Brochage — la stack</h2><div class="pinout" id="stack"></div></section>
 
-  <section id="extra"><h2 class="sec"><span>05</span>Hors spec</h2>
+  <section id="extra"><h2 class="sec"><span>06</span>Hors spec</h2>
     <div class="pinout" id="hobbies"></div>
     <h3 class="mono extra-sub">Pays visités</h3>
     <ul class="chips" id="countries"></ul>
   </section>
 
-  <section id="music"><h2 class="sec"><span>06</span>Musique</h2>
+  <section id="music"><h2 class="sec"><span>07</span>Musique</h2>
     <div class="music" id="music-strip" aria-label="Albums écoutés"></div>
   </section>
 
-  <section id="cinema"><h2 class="sec"><span>07</span>Cinéma</h2>
+  <section id="cinema"><h2 class="sec"><span>08</span>Cinéma</h2>
     <div class="reel-wrap" data-r>
       <div class="reel" id="reel" role="region" aria-roledescription="carousel" aria-label="Mes films notés 5 étoiles" tabindex="0"></div>
       <button class="reel__nav reel__nav--prev" id="reel-prev" type="button" aria-label="Film précédent">←</button>
@@ -75,7 +125,7 @@
 </main>
 
 <footer id="contact">
-  <p class="mono">08 / Contact</p>
+  <p class="mono">09 / Contact</p>
   <h2>Construisons<br><em>quelque chose.</em></h2>
   <div class="links" id="links"></div>
   <p class="mono small">© <span id="yr"></span> Victor · Rév. <span id="rev-n"></span></p>
